@@ -17,10 +17,15 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->text('password');
+            $table->string('phone', 20)->nullable();
+            $table->text('address')->nullable();
+            $table->enum('role', ['Customer', 'Seller', 'Admin'])->nullable();
+            $table->text('photo')->nullable();
+            $table->BigInteger('store_id')->unsigned();
             $table->timestamps();
+            // $table->foreign('store_id')->reference('id')->on('stores')->onUpdate('cascade')->delete('cascade');
+
         });
     }
 

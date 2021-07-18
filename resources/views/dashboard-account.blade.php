@@ -1,3 +1,6 @@
+@extends('layout/admin')
+
+@section('container')
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -291,3 +294,4 @@
     </script>
   </body>
 </html>
+@endsection

@@ -22,7 +22,7 @@
         <div class="border-right" id="sidebar-wrapper">
           <div class="sidebar-heading text-center">
           <a href="index.html">
-            <img src="images/dashboard-store-logo.svg" alt="" class="my-4" />
+            <img src="{{ ('assets/img/dashboard-store-logo.svg') }}" alt="" class="my-4" />
           </a>
 		    </div>
           <div class="list-group list-group-flush">
@@ -93,7 +93,7 @@
                     aria-expanded="false"
                   >
                     <img
-                      src="images/icon-user.png"
+                      src="{{ ('assets/img/icon-user.png') }}"
                       alt=""
                       class="rounded-circle mr-2 profile-picture"
                     />
@@ -102,7 +102,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-inline-block mt-2" href="cart.html">
-                    <img src="images/icon-cart-empty.svg" alt="" />
+                    <img src="{{ ('assets/img/icon-cart-empty.svg') }}" alt="" />
                   </a>
                 </li>
               </ul>

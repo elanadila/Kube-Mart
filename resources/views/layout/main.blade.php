@@ -24,7 +24,7 @@
     >
       <div class="container">
         <a class="navbar-brand" href="dashboard.html">
-          <img src="images/logo.svg" alt="" />
+          <img src="{{ ('assets/img/logo.png') }}" alt="" />
         </a>
         <button
           class="navbar-toggler"

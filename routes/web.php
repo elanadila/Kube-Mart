@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+    return \App\User::all();
     return view('index');
 });
 
@@ -49,6 +50,22 @@ Route::get('/sukses', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
+});
+
+Route::get('/dashboard-products', function () {
+    return view('dashboard-products');
+});
+
+Route::get('/dashboard-transactions', function () {
+    return view('dashboard-transactions');
+});
+
+Route::get('/dashboard-settings', function () {
+    return view('dashboard-settings');
+});
+
+Route::get('/dashboard-account', function () {
+    return view('dashboard-account');
 });
 
 

@@ -218,10 +218,9 @@
           <div class="col-12 col-lg-8">
             <ul class="list-unstyled">
               <li class="media">
-                <img
-                  src="images/icon-testimonial-1.png"
-                  class="mr-3 rounded-circle"
-                  alt=""
+                <img src="{{ ('assets/img/icon-testimonial-1.png') }}"
+                class="mr-3 rounded-circle"
+                alt=""
                 />
                 <div class="media-body">
                   <h5 class="mt-2 mb-1">Hazza Risky</h5>
@@ -232,9 +231,9 @@
               </li>
               <li class="media my-4">
                 <img
-                  src="images/icon-testimonial-2.png"
-                  class="mr-3 rounded-circle"
-                  alt=""
+                src="{{ ('assets/img/icon-testimonial-2.png') }}"
+                class="mr-3 rounded-circle"
+                alt=""
                 />
                 <div class="media-body">
                   <h5 class="mt-2 mb-1">Anna Sukkirata</h5>
@@ -245,9 +244,9 @@
               </li>
               <li class="media">
                 <img
-                  src="images/icon-testimonial-3.png"
-                  class="mr-3 rounded-circle"
-                  alt=""
+                src="{{ ('assets/img/icon-testimonial-3.png') }}"
+                class="mr-3 rounded-circle"
+                alt=""
                 />
                 <div class="media-body">
                   <h5 class="mt-2 mb-1">Dakimu Wangi</h5>

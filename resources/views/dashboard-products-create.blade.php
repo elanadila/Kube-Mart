@@ -1,3 +1,6 @@
+@extends('layout/admin')
+
+@section('container')
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -235,3 +238,4 @@ The Nike Air Max 720 SE goes bigger than ever before with Nike's tallest Air uni
     </script>
   </body>
 </html>
+@endsection
