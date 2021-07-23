@@ -20,43 +20,7 @@
 
   <body>
     <div class="page-dashboard">
-      <div class="d-flex" id="wrapper" data-aos="fade-right">
-        <!-- Sidebar -->
-        <div class="border-right" id="sidebar-wrapper">
-          <div class="sidebar-heading text-center">
-          <a href="index.html">
-            <img src="images/dashboard-store-logo.svg" alt="" class="my-4" />
-          </a>
-		  </div>
-          <div class="list-group list-group-flush">
-            <a
-              href="dashboard.html"
-              class="list-group-item list-group-item-action"
-              >Dashboard</a
-            >
-            <a
-              href="dashboard-products.html"
-              class="list-group-item list-group-item-action"
-              >My Products</a
-            >
-            <a
-              href="dashboard-transactions.html"
-              class="list-group-item list-group-item-action"
-              >Transactions</a
-            >
-            <a
-              href="dashboard-settings.html"
-              class="list-group-item list-group-item-action active"
-              >Store Settings</a
-            >
-            <a
-              href="dashboard-account.html"
-              class="list-group-item list-group-item-action"
-              >My Account</a
-            >
-          </div>
-        </div>
-        <!-- /#sidebar-wrapper -->
+    
 
         <!-- Page Content -->
         <div id="page-content-wrapper">

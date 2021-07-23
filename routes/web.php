@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return \App\User::all();
+    // return \App\User::all();
     return view('index');
 });
 
@@ -52,8 +52,20 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('/toko', function () {
+    return view('toko');
+});
+
+Route::get('/toko-details', function () {
+    return view('toko-details');
+});
+
 Route::get('/dashboard-products', function () {
     return view('dashboard-products');
+});
+
+Route::get('/dashboard-products-details', function () {
+    return view('dashboard-products-details');
 });
 
 Route::get('/dashboard-transactions', function () {
@@ -67,5 +79,17 @@ Route::get('/dashboard-settings', function () {
 Route::get('/dashboard-account', function () {
     return view('dashboard-account');
 });
+
+Route::get('/dashboard-transactions-details', function () {
+    return view('dashboard-transactions-details');
+});
+
+Route::get('/dashboard-products-create', function () {
+    return view('dashboard-products-create');
+});
+
+
+
+
 
 

@@ -7,58 +7,7 @@
 <body>
   
 <div class="page-content page-home">
-      <section class="store-carousel">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12" data-aos="zoom-in">
-              <div
-                id="storeCarousel"
-                class="carousel slide"
-                data-ride="carousel"
-              >
-                <ol class="carousel-indicators">
-                  <li
-                    data-target="#storeCarousel"
-                    data-slide-to="0"
-                    class="active"
-                  ></li>
-                  <li data-target="#storeCarousel" data-slide-to="1"></li>
-                  <li data-target="#storeCarousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-				  <div class="slider">
-				  <figure>
-					<div class="slide">
-                    <img
-                      src="{{ ('assets/img/banner.jpg') }}"
-                      class="d-block w-100"
-                      alt="Carousel Image"
-                    />
-					</div>
-                  <div class="slide">
-                    <img
-                      src="{{ ('assets/img/banner.jpg') }}"
-                      class="d-block w-100"
-                      alt="Carousel Image"
-                    />
-                  </div>
-                  <div class="slide">
-                    <img
-                      src="{{ ('assets/img/banner.jpg') }}"
-                      class="d-block w-100"
-                      alt="Carousel Image"
-                    />
-                  </div>
-				  </figure>
-				  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="store-trend-categories">
+<section class="store-trend-categories">
         <div class="container">
           <div class="row">
             <div class="col-12" data-aos="fade-up">
@@ -80,7 +29,7 @@
                   />
                 </div>
                 <p class="categories-text">
-                  Gadgets
+                  UKM Pangan
                 </p>
               </a>
             </div>
@@ -98,7 +47,7 @@
                   />
                 </div>
                 <p class="categories-text">
-                  Furniture
+                  UKM Pertanian
                 </p>
               </a>
             </div>
@@ -116,7 +65,7 @@
                   />
                 </div>
                 <p class="categories-text">
-                  Makeup
+                  UKM Kerajinan
                 </p>
               </a>
             </div>
@@ -134,7 +83,7 @@
                   />
                 </div>
                 <p class="categories-text">
-                  Sneaker
+                  UKM Peternakan
                 </p>
               </a>
             </div>
@@ -152,7 +101,7 @@
                   />
                 </div>
                 <p class="categories-text">
-                  Tools
+                  UKM Kesenian
                 </p>
               </a>
             </div>
@@ -170,7 +119,7 @@
                   />
                 </div>
                 <p class="categories-text">
-                  Baby
+                  UKM Rekreasi
                 </p>
               </a>
             </div>
@@ -200,17 +149,11 @@
                   ></div>
                 </div>
                 <div class="products-text">
-                  Apple Watch 4
-				  
-				   <img
-                    src="{{ ('assets/img/8502.jpg') }} "
-					class="mr-3 rounded-circle"
-                      alt="image" height="30" width="30" 
-                  />
+                  Tas Malwas
 				  
                 </div>
                 <div class="products-price">
-                  $890
+                  Rp 890.000
                 </div>
 				
               </a>
@@ -230,10 +173,10 @@
                   ></div>
                 </div>
                 <div class="products-text">
-                  Orange Bogotta
+                  Golek Waris
                 </div>
                 <div class="products-price">
-                  $94,509
+                  Rp 94.509
                 </div>
               </a>
             </div>
@@ -252,10 +195,10 @@
                   ></div>
                 </div>
                 <div class="products-text">
-                  Sofa Ternyaman
+                  Efris
                 </div>
                 <div class="products-price">
-                  $1,409
+                  Rp 199.409
                 </div>
               </a>
             </div>
@@ -274,10 +217,10 @@
                   ></div>
                 </div>
                 <div class="products-text">
-                  Bubuk Maketti
+                  Herbal Jahe Merah
                 </div>
                 <div class="products-price">
-                  $225
+                  Rp 50.000
                 </div>
               </a>
             </div>
@@ -299,7 +242,7 @@
                   Tatakan Gelas
                 </div>
                 <div class="products-price">
-                  $45,184
+                  Rp 45.184
                 </div>
               </a>
             </div>
@@ -318,10 +261,10 @@
                   ></div>
                 </div>
                 <div class="products-text">
-                  Mavic Kawe
+                  Kerupuk Jember
                 </div>
                 <div class="products-price">
-                  $503
+                  Rp 20.000
                 </div>
               </a>
             </div>
@@ -340,10 +283,10 @@
                   ></div>
                 </div>
                 <div class="products-text">
-                  Black Edition Nike
+                  Wayang Cepot
                 </div>
                 <div class="products-price">
-                  $70,482
+                  Rp 200.199
                 </div>
               </a>
             </div>
@@ -362,10 +305,10 @@
                   ></div>
                 </div>
                 <div class="products-text">
-                  Monkey Toys
+                  Tanaman Obat
                 </div>
                 <div class="products-price">
-                  $783
+                  Rp 28.000
                 </div>
               </a>
             </div>

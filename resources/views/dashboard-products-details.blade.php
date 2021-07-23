@@ -20,43 +20,7 @@
 
   <body>
     <div class="page-dashboard">
-      <div class="d-flex" id="wrapper" data-aos="fade-right">
-        <!-- Sidebar -->
-        <div class="border-right" id="sidebar-wrapper">
-          <div class="sidebar-heading text-center">
-          <a href="index.html">
-            <img src="images/dashboard-store-logo.svg" alt="" class="my-4" />
-          </a>
-		  </div>
-          <div class="list-group list-group-flush">
-            <a
-              href="dashboard.html"
-              class="list-group-item list-group-item-action"
-              >Dashboard</a
-            >
-            <a
-              href="dashboard-products.html"
-              class="list-group-item list-group-item-action active"
-              >My Products</a
-            >
-            <a
-              href="dashboard-transactions.html"
-              class="list-group-item list-group-item-action"
-              >Transactions</a
-            >
-            <a
-              href="dashboard-settings.html"
-              class="list-group-item list-group-item-action"
-              >Store Settings</a
-            >
-            <a
-              href="dashboard-account.html"
-              class="list-group-item list-group-item-action"
-              >My Account</a
-            >
-          </div>
-        </div>
-        <!-- /#sidebar-wrapper -->
+    
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
@@ -105,7 +69,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-inline-block mt-2" href="cart.html">
-                    <img src="images/icon-cart-empty.svg" alt="" />
+                    <img src="{{ ('assets/img/icon-cart-empty.svg') }}" alt="" />
                   </a>
                 </li>
               </ul>
@@ -128,7 +92,7 @@
           <div
             class="section-content section-dashboard-home"
             data-aos="fade-up"
-          >
+            >
             <div class="container-fluid">
               <div class="dashboard-heading">
                 <h2 class="dashboard-title">Shirup Marzan</h2>
@@ -205,7 +169,7 @@ The Nike Air Max 720 SE goes bigger than ever before with Nike's tallest Air uni
                           <div class="col-md-4">
                             <div class="gallery-container">
                               <img
-                                src="images/product-card-1.png"
+                                src="{{ ('assets/img/product-card-1.png') }}"
                                 alt=""
                                 class="w-100"
                               />
@@ -217,24 +181,24 @@ The Nike Air Max 720 SE goes bigger than ever before with Nike's tallest Air uni
                           <div class="col-md-4">
                             <div class="gallery-container">
                               <img
-                                src="images/product-card-2.png"
+                                src="{{ ('assets/img/product-card-2.png') }}"
                                 alt=""
                                 class="w-100"
                               />
                               <a class="delete-gallery" href="#">
-                                <img src="images/icon-delete.svg" alt="" />
+                                <img src="{{ ('assets/img/icon-delete.svg') }}" alt="" />
                               </a>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="gallery-container">
                               <img
-                                src="images/product-card-3.png"
+                                src="{{ ('assets/img/product-card-3.png') }}"
                                 alt=""
                                 class="w-100"
                               />
                               <a class="delete-gallery" href="#">
-                                <img src="images/icon-delete.svg" alt="" />
+                                <img src="{{ ('assets/img/icon-delete.svg') }}" alt="" />
                               </a>
                             </div>
                           </div>

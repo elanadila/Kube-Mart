@@ -21,7 +21,7 @@
         <!-- Sidebar -->
         <div class="border-right" id="sidebar-wrapper">
           <div class="sidebar-heading text-center">
-          <a href="index.html">
+          <a href="/">
             <img src="{{ ('assets/img/dashboard-store-logo.svg') }}" alt="" class="my-4" />
           </a>
 		    </div>
@@ -141,6 +141,13 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
       });
+    </script>
+
+    <script>
+    $("a").click(function() {
+    $(".active").removeClass("active");
+    $(this).addClass("active");
+  });  
     </script>
   </body>
 </html>

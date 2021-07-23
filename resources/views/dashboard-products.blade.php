@@ -20,44 +20,7 @@
 
   <body>
     <div class="page-dashboard">
-      <div class="d-flex" id="wrapper" data-aos="fade-right">
-        <!-- Sidebar -->
-        <div class="border-right" id="sidebar-wrapper">
-          <div class="sidebar-heading text-center">
-          <a href="index.html">
-            <img src="images/dashboard-store-logo.svg" alt="" class="my-4" />
-          </a>
-		  </div>
-          <div class="list-group list-group-flush">
-            <a
-              href="dashboard.html"
-              class="list-group-item list-group-item-action"
-              >Dashboard</a
-            >
-            <a
-              href="dashboard-products.html"
-              class="list-group-item list-group-item-action active"
-              >My Products</a
-            >
-            <a
-              href="dashboard-transactions.html"
-              class="list-group-item list-group-item-action"
-              >Transactions</a
-            >
-            <a
-              href="dashboard-settings.html"
-              class="list-group-item list-group-item-action"
-              >Store Settings</a
-            >
-            <a
-              href="dashboard-account.html"
-              class="list-group-item list-group-item-action"
-              >My Account</a
-            >
-          </div>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
+      
         <!-- Page Content -->
         <div id="page-content-wrapper">
           <nav
@@ -96,7 +59,7 @@
                     aria-expanded="false"
                   >
                     <img
-                      src="images/icon-user.png"
+                      src="{{ ('assets/img/icon-user.png') }}"
                       alt=""
                       class="rounded-circle mr-2 profile-picture"
                     />
@@ -105,7 +68,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-inline-block mt-2" href="cart.html">
-                    <img src="images/icon-cart-empty.svg" alt="" />
+                    <img src="{{ ('assets/img/icon-cart-empty.svg') }}" alt="" />
                   </a>
                 </li>
               </ul>
@@ -140,7 +103,7 @@
                 <div class="row">
                   <div class="col-12">
                     <a
-                      href="dashboard-products-create.html"
+                      href="/dashboard-products-create"
                       class="btn btn-success"
                       >Add New Product</a
                     >
@@ -150,11 +113,11 @@
                   <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <a
                       class="card card-dashboard-product d-block"
-                      href="dashboard-products-details.html"
+                      href="/dashboard-products-details"
                     >
                       <div class="card-body">
                         <img
-                          src="images/product-card-1.png"
+                          src="{{ ('assets/img/product-card-1.png') }} "
                           alt=""
                           class="w-100 mb-2"
                         />
@@ -166,11 +129,11 @@
                   <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <a
                       class="card card-dashboard-product d-block"
-                      href="dashboard-products-details.html"
+                      href="/dashboard-products-details"
                     >
                       <div class="card-body">
                         <img
-                          src="images/product-card-2.png"
+                          src="{{ ('assets/img/product-card-2.png') }}"
                           alt=""
                           class="w-100 mb-2"
                         />
@@ -182,11 +145,11 @@
                   <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <a
                       class="card card-dashboard-product d-block"
-                      href="dashboard-products-details.html"
+                      href="/dashboard-products-details"
                     >
                       <div class="card-body">
                         <img
-                          src="images/product-card-3.png"
+                          src="{{ ('assets/img/product-card-3.png') }}"
                           alt=""
                           class="w-100 mb-2"
                         />
@@ -198,11 +161,11 @@
                   <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <a
                       class="card card-dashboard-product d-block"
-                      href="dashboard-products-details.html"
+                      href="/dashboard-products-details"
                     >
                       <div class="card-body">
                         <img
-                          src="images/product-card-4.png"
+                          src="{{ ('assets/img/product-card-4.png') }}"
                           alt=""
                           class="w-100 mb-2"
                         />
@@ -214,11 +177,11 @@
                   <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <a
                       class="card card-dashboard-product d-block"
-                      href="dashboard-products-details.html"
+                      href="/dashboard-products-details"
                     >
                       <div class="card-body">
                         <img
-                          src="images/product-card-5.png"
+                          src="{{ ('assets/img/product-card-5.png') }}"
                           alt=""
                           class="w-100 mb-2"
                         />

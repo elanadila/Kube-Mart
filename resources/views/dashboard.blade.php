@@ -63,7 +63,7 @@
                     <h5 class="mb-3">Recent Transactions</h5>
                     <a
                       class="card card-list d-block"
-                      href="dashboard-transactions-details.html"
+                      href="/dashboard-transactions-details"
                     >
                       <div class="card-body">
                         <div class="row">
@@ -94,7 +94,7 @@
                     </a>
                     <a
                       class="card card-list d-block"
-                      href="dashboard-transactions-details.html"
+                      href="/dashboard-transactions-details"
                     >
                       <div class="card-body">
                         <div class="row">
@@ -124,7 +124,7 @@
                     </a>
                     <a
                       class="card card-list d-block"
-                      href="dashboard-transactions-details.html"
+                      href="/dashboard-transactions-details"
                     >
                       <div class="card-body">
                         <div class="row">
