@@ -40,24 +40,24 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Home </a>
+              <a class="nav-link" href="{{ url('/')}}">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/kategori">Categories</a>
+              <a class="nav-link" href="{{ url('/categories')}}">Categories</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/maps">Address</a>
+              <a class="nav-link" href="{{ url('/maps')}}">Address</a>
             </li>
 			<li class="nav-item">
-              <a class="nav-link" href="/toko">Toko</a>
+              <a class="nav-link" href="{{ url('/toko')}}">Toko</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/register">Sign Up</a>
+              <a class="nav-link" href="{{ url('/register')}}">Sign Up</a>
             </li>
             <li class="nav-item">
               <a
                 class="btn btn-success nav-link px-4 text-white"
-                href="/login"
+                href="{{ url('/login')}}"
                 >Sign In</a
               >
             </li>
