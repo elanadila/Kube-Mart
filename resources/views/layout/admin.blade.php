@@ -47,6 +47,11 @@
               >Store Settings</a
             >
             <a
+              href="/dashboard-member"
+              class="list-group-item list-group-item-action"
+              >Anggota Kube Mart</a
+            >
+            <a
               href="/dashboard-account"
               class="list-group-item list-group-item-action"
               >My Account</a

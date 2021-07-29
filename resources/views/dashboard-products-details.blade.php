@@ -133,6 +133,32 @@
                                 />
                               </div>
                             </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="price">Stock</label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="stock"
+                                  aria-describedby="stock"
+                                  name="stock"
+                                  value="12"
+                                />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="price">Weight</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="weight"
+                                  aria-describedby="weight"
+                                  name="weight"
+                                  value="12 kg"
+                                />
+                              </div>
+                            </div>
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="description">Description</label>
@@ -167,6 +193,18 @@ The Nike Air Max 720 SE goes bigger than ever before with Nike's tallest Air uni
                       <div class="card-body">
                         <div class="row">
                           <div class="col-md-4">
+                            <!-- <div class="gallery-container">
+                              <img
+                                src="{{ ('assets/img/product-card-1.png') }}"
+                                alt=""
+                                class="w-100"
+                              />
+                              <a class="delete-gallery" href="#">
+                                <img src="images/icon-delete.svg" alt="" />
+                              </a>
+                            </div> -->
+                          </div>
+                          <div class="col-md-4">
                             <div class="gallery-container">
                               <img
                                 src="{{ ('assets/img/product-card-1.png') }}"
@@ -179,19 +217,7 @@ The Nike Air Max 720 SE goes bigger than ever before with Nike's tallest Air uni
                             </div>
                           </div>
                           <div class="col-md-4">
-                            <div class="gallery-container">
-                              <img
-                                src="{{ ('assets/img/product-card-2.png') }}"
-                                alt=""
-                                class="w-100"
-                              />
-                              <a class="delete-gallery" href="#">
-                                <img src="{{ ('assets/img/icon-delete.svg') }}" alt="" />
-                              </a>
-                            </div>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="gallery-container">
+                            <!-- <div class="gallery-container">
                               <img
                                 src="{{ ('assets/img/product-card-3.png') }}"
                                 alt=""
@@ -200,7 +226,7 @@ The Nike Air Max 720 SE goes bigger than ever before with Nike's tallest Air uni
                               <a class="delete-gallery" href="#">
                                 <img src="{{ ('assets/img/icon-delete.svg') }}" alt="" />
                               </a>
-                            </div>
+                            </div> -->
                           </div>
                           <div class="col mt-3">
                             <input
@@ -213,7 +239,7 @@ The Nike Air Max 720 SE goes bigger than ever before with Nike's tallest Air uni
                               class="btn btn-secondary btn-block"
                               onclick="thisFileUpload();"
                             >
-                              Add Photo
+                              Update Photo
                             </button>
                           </div>
                         </div>

@@ -11,28 +11,28 @@
 |
 */
 
-// Route::get('/', 'ProductController@index');
-// Route::get('/categories', 'ProductController@categories');
+Route::get('/', 'ProductController@index');
+Route::get('/categories', 'ProductController@categories');
 // Route::get('/', 'HomeController@index')->name('home.index');
 
-Route::prefix('/product')->group(function (){
-    Route::get('/', 'ProductController@indexPublic')->name('public.product.index');
-    Route::get('/detail/{id}', 'ProductController@detailPublic')->name('public.product.detail');
-});
+// Route::prefix('/product')->group(function (){
+//     Route::get('/', 'ProductController@indexPublic')->name('public.product.index');
+//     Route::get('/detail/{id}', 'ProductController@detailPublic')->name('public.product.detail');
+// });
 
-Route::prefix('/category')->group(function (){
-    Route::get('/', 'CategoryController@indexPublic')->name('public.category.index');
-    Route::get('/detail/{id}', 'CategoryController@detailPublic')->name('public.category.detail');
-});
+// Route::prefix('/category')->group(function (){
+//     Route::get('/', 'CategoryController@indexPublic')->name('public.category.index');
+//     Route::get('/detail/{id}', 'CategoryController@detailPublic')->name('public.category.detail');
+// });
 
-Route::prefix('/store')->group(function (){
-    Route::get('/', 'StoreController@indexPublic')->name('public.store.index');
-    Route::get('/detail/{id}', 'StoreController@detailPublic')->name('public.store.detail');
-});
+// Route::prefix('/store')->group(function (){
+//     Route::get('/', 'StoreController@indexPublic')->name('public.store.index');
+//     Route::get('/detail/{id}', 'StoreController@detailPublic')->name('public.store.detail');
+// });
 
-Route::prefix('/address')->group(function (){
-    Route::get('/', 'AddressController@indexPublic')->name('public.address.index');
-});
+// Route::prefix('/address')->group(function (){
+//     Route::get('/', 'AddressController@indexPublic')->name('public.address.index');
+// });
 
 Route::prefix('/auth')->group(function (){
     Route::get('/login', 'AuthController@login')->name('auth.login');
@@ -48,63 +48,63 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::get('/auth/logout', 'AuthController@logout')->name('auth.logout');
 
-        Route::prefix('/account')->group(function (){
-            Route::get('/detail', 'CategoryController@detail')->name('category.edit');
-            Route::post('/update/{id}', 'CategoryController@update')->name('category.update');
-        });
+//         Route::prefix('/account')->group(function (){
+//             Route::get('/detail', 'CategoryController@detail')->name('category.edit');
+//             Route::post('/update/{id}', 'CategoryController@update')->name('category.update');
+//         });
 
-        Route::prefix('/category')->group(function (){
-            Route::get('/', 'CategoryController@index')->name('category.index');
-            Route::get('/create', 'CategoryController@create')->name('category.create');
-            Route::post('/store', 'CategoryController@store')->name('category.store');
-            Route::get('/edit/{id}', 'CategoryController@edit')->name('category.edit');
-            Route::post('/update/{id}', 'CategoryController@update')->name('category.update');
-            Route::post('/delete/{id}', 'CategoryController@delete')->name('category.delete');
-        });
+//         Route::prefix('/category')->group(function (){
+//             Route::get('/', 'CategoryController@index')->name('category.index');
+//             Route::get('/create', 'CategoryController@create')->name('category.create');
+//             Route::post('/store', 'CategoryController@store')->name('category.store');
+//             Route::get('/edit/{id}', 'CategoryController@edit')->name('category.edit');
+//             Route::post('/update/{id}', 'CategoryController@update')->name('category.update');
+//             Route::post('/delete/{id}', 'CategoryController@delete')->name('category.delete');
+//         });
 
-        Route::prefix('/product')->group(function (){
-            Route::get('/', 'ProductController@index')->name('product.index');
-            Route::get('/create', 'ProductController@create')->name('product.create');
-            Route::post('/store', 'ProductController@store')->name('product.store');
-            Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
-            Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
-            Route::post('/update/{id}', 'ProductController@update')->name('product.update');
-            Route::post('/delete/{id}', 'ProductController@delete')->name('product.delete');
+//         Route::prefix('/product')->group(function (){
+//             Route::get('/', 'ProductController@index')->name('product.index');
+//             Route::get('/create', 'ProductController@create')->name('product.create');
+//             Route::post('/store', 'ProductController@store')->name('product.store');
+//             Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
+//             Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
+//             Route::post('/update/{id}', 'ProductController@update')->name('product.update');
+//             Route::post('/delete/{id}', 'ProductController@delete')->name('product.delete');
 
-            Route::prefix('/review')->group(function (){
-                Route::post('/update/{id}', 'ProductController@review')->name('product.review');
-            });
-        });
+//             Route::prefix('/review')->group(function (){
+//                 Route::post('/update/{id}', 'ProductController@review')->name('product.review');
+//             });
+//         });
 
-        Route::prefix('/bank-account')->group(function (){
-            Route::get('/', 'BankAccountController@index')->name('bank-account.index');
-            Route::get('/create', 'BankAccountController@create')->name('bank-account.create');
-            Route::post('/store', 'BankAccountController@store')->name('bank-account.store');
-            Route::get('/edit/{id}', 'BankAccountController@edit')->name('bank-account.edit');
-            Route::post('/update/{id}', 'BankAccountController@update')->name('bank-account.update');
-            Route::post('/delete/{id}', 'BankAccountController@delete')->name('bank-account.delete');
-        });
+//         Route::prefix('/bank-account')->group(function (){
+//             Route::get('/', 'BankAccountController@index')->name('bank-account.index');
+//             Route::get('/create', 'BankAccountController@create')->name('bank-account.create');
+//             Route::post('/store', 'BankAccountController@store')->name('bank-account.store');
+//             Route::get('/edit/{id}', 'BankAccountController@edit')->name('bank-account.edit');
+//             Route::post('/update/{id}', 'BankAccountController@update')->name('bank-account.update');
+//             Route::post('/delete/{id}', 'BankAccountController@delete')->name('bank-account.delete');
+//         });
 
-        Route::prefix('/invoice')->group(function (){
-            Route::get('/detail/{id}', 'InvoiceController@detail')->name('invoice.index');
-            Route::post('/update/{id}', 'InvoiceController@updateStatus')->name('invoice.update');    
-        });
+//         Route::prefix('/invoice')->group(function (){
+//             Route::get('/detail/{id}', 'InvoiceController@detail')->name('invoice.index');
+//             Route::post('/update/{id}', 'InvoiceController@updateStatus')->name('invoice.update');    
+//         });
 
-        Route::prefix('/store')->group(function (){
-            Route::get('/', 'StoreController@index')->name('store.index');
-            Route::post('/update/{id}', 'StoreController@update')->name('store.update');
-        });
+//         Route::prefix('/store')->group(function (){
+//             Route::get('/', 'StoreController@index')->name('store.index');
+//             Route::post('/update/{id}', 'StoreController@update')->name('store.update');
+//         });
 
-        Route::prefix('/transaction')->group(function (){
-            Route::get('/detail', 'TransactionController@detail')->name('transaction.index');
-        });
+//         Route::prefix('/transaction')->group(function (){
+//             Route::get('/detail', 'TransactionController@detail')->name('transaction.index');
+//         });
 
-        Route::prefix('/chart')->group(function (){
-            Route::get('/', 'ChartController@index')->name('chart.index');
-            Route::post('/add-chart/{product_id}', 'ChartController@addChart')->name('chart.add');
-            Route::post('/checkout/{transaction_id}', 'ChartController@checkout')->name('chart.checkout');
-            Route::post('/checkout/{transaction_id}/payment-proof', 'ChartController@paymentProof')->name('chart.payment.proof');
-        });
+//         Route::prefix('/chart')->group(function (){
+//             Route::get('/', 'ChartController@index')->name('chart.index');
+//             Route::post('/add-chart/{product_id}', 'ChartController@addChart')->name('chart.add');
+//             Route::post('/checkout/{transaction_id}', 'ChartController@checkout')->name('chart.checkout');
+//             Route::post('/checkout/{transaction_id}/payment-proof', 'ChartController@paymentProof')->name('chart.payment.proof');
+//         });
     });
 
 });
@@ -125,13 +125,6 @@ Route::get('/testimoni', function () {
     return view('testimoni');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
 
 Route::get('/details', function () {
     return view('details');
@@ -183,6 +176,10 @@ Route::get('/dashboard-transactions-details', function () {
 
 Route::get('/dashboard-products-create', function () {
     return view('dashboard-products-create');
+});
+
+Route::get('/dashboard-member', function () {
+    return view('dashboard-member');
 });
 
 

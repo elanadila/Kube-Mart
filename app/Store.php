@@ -18,6 +18,7 @@ class Store extends Model
         'description',
         'langitude',
         'longitude',
+        'category_store_id'
     ];
 
 }

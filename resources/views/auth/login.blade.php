@@ -18,25 +18,32 @@
                 Belanja kebutuhan utama, <br />
                 menjadi lebih mudah
               </h2>
-              <form class="mt-3">
+              @include('layout.alert')
+
+              <form method="POST" action="{{ route('auth.login-submit') }}" class="mt-3">
+                @csrf
                 <div class="form-group">
                   <label>Email address</label>
                   <input
+                    name="email"
                     type="email"
-                    class="form-control w-75"
+                    class="form-control w-75 {{$errors->has('email') ? 'is-invalid' : ''}}"
                     aria-describedby="emailHelp"
                   />
+                  @if($errors->has('email'))
+                    <div class="text-danger">{{ $errors->first('email') }}</div>
+                  @endif
                 </div>
                 <div class="form-group">
                   <label>Password</label>
-                  <input type="password" class="form-control w-75" />
+                  <input type="password" name="password" class="form-control w-75 {{$errors->has('password') ? 'is-invalid' : ''}}" />
+                  @if($errors->has('password'))
+                    <div class="text-danger">{{ $errors->first('password') }}</div>
+                  @endif
                 </div>
-                <a
-                  class="btn btn-success btn-block w-75 mt-4"
-                  href="login.html"
-                >
-                  Sign In to My Account
-                </a>
+                <button type="submit" class="btn btn-success btn-block mt-4">
+                  Sign In To My Account
+                </button>
                 <a class="btn btn-signup w-75 mt-2" href="register.html">
                   Sign Up
                 </a>

@@ -22,7 +22,9 @@ class CreateTableStores extends Migration
             $table->text('description')->nullable();
             $table->text('langitude')->nullable();
             $table->text('longitude')->nullable();
+            $table->BigInteger('category_store_id')->unsigned();
             $table->timestamps();
+            // $table->foreign('category_store_id')->reference('id')->on('stores')->onUpdate('cascade')->delete('cascade');
         });
     }
 

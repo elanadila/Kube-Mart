@@ -128,7 +128,33 @@
                                   id="price"
                                   aria-describedby="price"
                                   name="price"
-                                  value="200"
+                                  value="Rp. 200.000"
+                                />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="price">Stock</label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="stock"
+                                  aria-describedby="stock"
+                                  name="stock"
+                                  value="12"
+                                />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="price">Weight</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="weight"
+                                  aria-describedby="weight"
+                                  name="weight"
+                                  value="12 kg"
                                 />
                               </div>
                             </div>
