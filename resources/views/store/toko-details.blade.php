@@ -2,11 +2,12 @@
 
 @section('container')
   <body>
+  <div class="page-content page-home">
     <div class="page-dashboard">
       
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" style="  background: white;">
         
 
           <div
@@ -15,9 +16,9 @@
             >
             <div class="container-fluid">
               <div class="dashboard-heading">
-                <h2 class="dashboard-title">#STORE0839</h2>
+                <h2 class="dashboard-title">Store {{$store->id}}</h2>
                 <p class="dashboard-subtitle">
-                  Transaction Details
+                  Store Details
                 </p>
               </div>
               <div class="dashboard-content" id="transactionDetails">
@@ -36,37 +37,26 @@
                           <div class="col-12 col-md-8">
                             <div class="row">
                               <div class="col-12 col-md-6">
-                                <div class="product-title">Customer Name</div>
-                                <div class="product-subtitle">Rich Chigga</div>
+                                <div class="product-title">KUBE Name</div>
+                                <div class="product-subtitle">{{$store->name}}</div>
                               </div>
                               <div class="col-12 col-md-6">
-                                <div class="product-title">Product Name</div>
+                                <div class="product-title">Member KUBE </div>
                                 <div class="product-subtitle">
-                                  Shirup Marzzan
+                                  Ahmad Adli
                                 </div>
                               </div>
                               <div class="col-12 col-md-6">
                                 <div class="product-title">
-                                  Date of Transaction
+                                  Mobile
                                 </div>
                                 <div class="product-subtitle">
-                                  12 Januari, 2020
+                                {{$store->phone}}
                                 </div>
                               </div>
-                              <div class="col-12 col-md-6">
-                                <div class="product-title">Status</div>
-                                <div class="product-subtitle text-danger">
-                                </div>
-                              </div>
-                              <div class="col-12 col-md-6">
-                                <div class="product-title">Total Amount</div>
-                                <div class="product-subtitle">$280,409</div>
-                              </div>
-                              <div class="col-12 col-md-6">
-                                <div class="product-title">Mobile</div>
-                                <div class="product-subtitle">
-                                  +628 2020 11111
-                                </div>
+                              <div class="col-12 col-md-12">
+                                <div class="product-title">Description KUBE </div>
+                                <div class="product-subtitle">{{$store->description}}</div>
                               </div>
                             </div>
                           </div>
@@ -74,21 +64,16 @@
                         <div class="row">
                           <div class="col-12 mt-4">
                             <h5>
-                              Shipping Informations
+                              Address Details
                             </h5>
                             <div class="row">
                               <div class="col-12 col-md-6">
-                                <div class="product-title">Address 1</div>
+                                <div class="product-title">Address</div>
                                 <div class="product-subtitle">
                                   Setra Duta Cemara
                                 </div>
                               </div>
-                              <div class="col-12 col-md-6">
-                                <div class="product-title">Address 2</div>
-                                <div class="product-subtitle">
-                                  Blok B2 No. 34
-                                </div>
-                              </div>
+
                               <div class="col-12 col-md-6">
                                 <div class="product-title">
                                   Province
@@ -113,7 +98,7 @@
                                   Indonesia
                                 </div>
                               </div>
-                              <div class="col-12">
+                              <div class="col-12 col-md-6">
                                 <div class="row">
                                   <div class="col-md-3">
                                     <div class="product-title">Status</div>
@@ -167,6 +152,7 @@
         <!-- /#page-content-wrapper -->
       </div>
     </div>
+</div>
     <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.slim.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

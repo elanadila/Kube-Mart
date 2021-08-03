@@ -8,7 +8,7 @@
     <!-- Page Content -->
 	  <div class="page-content page-home">
 
-      <section class="store-trend-categories">
+    <section class="store-trend-categories">
         <div class="container">
           <div class="row">
             <div class="col-12" data-aos="fade-up">
@@ -24,13 +24,13 @@
               <a class="component-categories d-block" href="#">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/categories-gadgets.svg') }}"
+                    src="{{ ('assets/img/vegetable.png') }}"
                     alt="Gadgets Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                  UKM Pangan
+                  Sumber Sayuran
                 </p>
               </a>
             </div>
@@ -42,13 +42,13 @@
               <a class="component-categories d-block" href="#">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/categories-furniture.svg') }}"
+                    src="{{ ('assets/img/fruits.png') }}"
                     alt="Furniture Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                  UKM Pertanian
+                Sumber Buah Buahan
                 </p>
               </a>
             </div>
@@ -60,13 +60,13 @@
               <a class="component-categories d-block" href="#">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/categories-makeup.svg') }}"
+                    src="{{ ('assets/img/carbohydrates.png') }}"
                     alt="Makeup Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                  UKM Kerajinan
+                Sumber Karbohidrat
                 </p>
               </a>
             </div>
@@ -78,49 +78,13 @@
               <a class="component-categories d-block" href="#">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/categories-sneaker.svg') }}"
+                    src="{{ ('assets/img/protein.png') }}"
                     alt="Sneaker Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                  UKM Peternakan
-                </p>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-3 col-lg-2"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              <a class="component-categories d-block" href="#">
-                <div class="categories-image">
-                  <img
-                    src="{{ ('assets/img/categories-tools.svg') }}"
-                    alt="Tools Categories"
-                    class="w-100"
-                  />
-                </div>
-                <p class="categories-text">
-                  UKM Kesenian
-                </p>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-3 col-lg-2"
-              data-aos="fade-up"
-              data-aos-delay="600"
-            >
-              <a class="component-categories d-block" href="#">
-                <div class="categories-image">
-                  <img
-                    src="{{ ('assets/img/categories-baby.svg') }}"
-                    alt="Baby Categories"
-                    class="w-100"
-                  />
-                </div>
-                <p class="categories-text">
-                  UKM Rekreasi
+                Sumber Protein
                 </p>
               </a>
             </div>
@@ -141,7 +105,7 @@
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <a class="component-products d-block" href="/details">
+              <a class="component-products d-block" href="/product-details/{{ $product->id }}">
                 <div class="products-thumbnail">
                   <div
                     class="products-image"

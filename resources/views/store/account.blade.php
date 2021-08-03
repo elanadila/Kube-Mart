@@ -23,70 +23,6 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-          <nav
-            class="navbar navbar-store navbar-expand-lg navbar-light fixed-top"
-            data-aos="fade-down"
-          >
-            <button
-              class="btn btn-secondary d-md-none mr-auto mr-2"
-              id="menu-toggle"
-            >
-              &laquo; Menu
-            </button>
-
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto d-none d-lg-flex">
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <img
-                      src="images/icon-user.png"
-                      alt=""
-                      class="rounded-circle mr-2 profile-picture"
-                    />
-                    Hi, Ela
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block mt-2" href="cart.html">
-                    <img src="images/icon-cart-empty.svg" alt="" />
-                  </a>
-                </li>
-              </ul>
-              <!-- Mobile Menu -->
-              <ul class="navbar-nav d-block d-lg-none mt-3">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    Hi, Ela
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block" href="#">
-                    Cart
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
 
           <div
             class="section-content section-dashboard-home"
@@ -108,14 +44,14 @@
                           <div class="row mb-2">
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="name">Your Name</label>
+                                <label for="name">Nama KUBE</label>
                                 <input
                                   type="text"
                                   class="form-control"
-                                  id="name"
-                                  aria-describedby="emailHelp"
-                                  name="name"
-                                  value="Papel La Casa"
+                                  id="namatoko"
+                                  aria-describedby="namatoko"
+                                  name="namatoko"
+                                  value="{{$stores->name}}"
                                 />
                               </div>
                             </div>
@@ -134,27 +70,27 @@
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="addressOne">Address 1</label>
+                                <label for="addressOne">Categories</label>
                                 <input
                                   type="text"
                                   class="form-control"
-                                  id="addressOne"
+                                  id="categories"
                                   aria-describedby="emailHelp"
-                                  name="addressOne"
-                                  value="Setra Duta Cemara"
+                                  name="categories"
+                                  value="Produksi Karbohidrat"
                                 />
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="addressTwo">Address 2</label>
+                                <label for="addressTwo">Address</label>
                                 <input
-                                  type="text"
+                                  type="textarea"
                                   class="form-control"
                                   id="addressTwo"
                                   aria-describedby="emailHelp"
                                   name="addressTwo"
-                                  value="Blok B2 No. 34"
+                                  value="{{$stores->address}}"
                                 />
                               </div>
                             </div>

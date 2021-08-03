@@ -82,10 +82,18 @@
     <section class="store-heading">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8">
-            <h1>Sofa Ternyaman</h1>
+          <div class="col-12 col-lg-4">
+            <img
+              src="{{ ('../assets/img/product-details-dashboard.png') }} "
+              alt=""
+              class="w-100 mb-3"
+            />
+          </div>
+          <div class="col-lg-6">
+            <h1> {{$product->name}}</h1>
             <div class="owner">By Galih Pratama</div>
-            <div class="price">$1,409</div>
+            <div class="price">Rp. {{$product->price}}</div>
+            <div class="store-description"> {{$product->description}}</div>
           </div>
           <div class="col-lg-2" data-aos="zoom-in">
             <a
@@ -97,28 +105,7 @@
         </div>
       </div>
     </section>
-    <section class="store-description">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 col-lg-8">
-            <p>
-              The Nike Air Max 720 SE goes bigger than ever before with
-              Nike's tallest Air unit yet for unimaginable, all-day comfort.
-              There's super breathable fabrics on the upper, while colours
-              add a modern edge.
-            </p>
-            <p>
-              Bring the past into the future with the Nike Air Max 2090, a
-              bold look inspired by the DNA of the iconic Air Max 90.
-              Brand-new Nike Air cushioning underfoot adds unparalleled
-              comfort while transparent mesh and vibrantly coloured details
-              on the upper are blended with timeless OG features for an
-              edgy, modernised look.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+
     <section class="store-review">
       <div class="container">
         <div class="row">
@@ -130,7 +117,7 @@
           <div class="col-12 col-lg-8">
             <ul class="list-unstyled">
               <li class="media">
-                <img src="{{ ('assets/img/icon-testimonial-1.png') }}"
+                <img src="{{ ('../assets/img/icon-testimonial-1.png') }}"
                 class="mr-3 rounded-circle"
                 alt=""
                 />
@@ -143,7 +130,7 @@
               </li>
               <li class="media my-4">
                 <img
-                src="{{ ('assets/img/icon-testimonial-2.png') }}"
+                src="{{ ('../assets/img/icon-testimonial-2.png') }}"
                 class="mr-3 rounded-circle"
                 alt=""
                 />
@@ -156,7 +143,7 @@
               </li>
               <li class="media">
                 <img
-                src="{{ ('assets/img/icon-testimonial-3.png') }}"
+                src="{{ ('../assets/img/icon-testimonial-3.png') }}"
                 class="mr-3 rounded-circle"
                 alt=""
                 />

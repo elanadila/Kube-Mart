@@ -52,8 +52,8 @@
                   <div class="product-subtitle">by Andi Sukka</div>
                 </td>
                 <td style="width: 35%;">
-                  <div class="product-title">$29,112</div>
-                  <div class="product-subtitle">USD</div>
+                  <div class="product-title">Rp. 29.112</div>
+                  <div class="product-subtitle">Rupiah</div>
                 </td>
                 <td style="width: 20%;">
                   <a href="#" class="btn btn-remove-cart">
@@ -74,8 +74,8 @@
                   <div class="product-subtitle">by BuildWith Angga</div>
                 </td>
                 <td style="width: 25%;">
-                  <div class="product-title">$80,309</div>
-                  <div class="product-subtitle">USD</div>
+                  <div class="product-title">Rp. 80.309</div>
+                  <div class="product-subtitle">Rupiah</div>
                 </td>
                 <td style="width: 25%;">
                   <a href="#" class="btn btn-remove-cart">
@@ -96,8 +96,8 @@
                   <div class="product-subtitle">by Addictex</div>
                 </td>
                 <td style="width: 25%;">
-                  <div class="product-title">$13,492</div>
-                  <div class="product-subtitle">USD</div>
+                  <div class="product-title">Rp. 13.492</div>
+                  <div class="product-subtitle">Rupiah</div>
                 </td>
                 <td style="width: 25%;">
                   <a href="#" class="btn btn-remove-cart">
@@ -120,7 +120,7 @@
       <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="addressOne">Address 1</label>
+            <label for="addressOne">Address</label>
             <input
               type="text"
               class="form-control"
@@ -128,19 +128,6 @@
               aria-describedby="emailHelp"
               name="addressOne"
               value="Setra Duta Cemara"
-            />
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="addressTwo">Address 2</label>
-            <input
-              type="text"
-              class="form-control"
-              id="addressTwo"
-              aria-describedby="emailHelp"
-              name="addressTwo"
-              value="Blok B2 No. 34"
             />
           </div>
         </div>
@@ -207,19 +194,11 @@
       </div>
       <div class="row" data-aos="fade-up" data-aos-delay="200">
         <div class="col-4 col-md-2">
-          <div class="product-title">$10</div>
-          <div class="product-subtitle">Country Tax</div>
-        </div>
-        <div class="col-4 col-md-3">
-          <div class="product-title">$280</div>
-          <div class="product-subtitle">Product Insurance</div>
-        </div>
-        <div class="col-4 col-md-2">
-          <div class="product-title">$580</div>
+          <div class="product-title">Rp. 11.000</div>
           <div class="product-subtitle">Ship to Jakarta</div>
         </div>
         <div class="col-4 col-md-2">
-          <div class="product-title text-success">$392,409</div>
+          <div class="product-title text-success">Rp. 392.409</div>
           <div class="product-subtitle">Total</div>
         </div>
         <div class="col-8 col-md-3">

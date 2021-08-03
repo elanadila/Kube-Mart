@@ -13,12 +13,10 @@ class CategoryStoreSeed extends Seeder
     public function run()
     {
         DB::table('categories_store')->insert([
-            ['name' => 'UKM Pangan'],
-            ['name' => 'UKM Pertanian'],
-            ['name' => 'UKM Kerajinan'],
-            ['name' => 'UKM Peternakan'],
-            ['name' => 'UKM Kesenian'],
-            ['name' => 'UKM Rekreasi'],
+            ['name' => 'Produksi Sumber Vitamin & Mineral (Sayuran)'],
+            ['name' => 'Produksi Sumber Vitamin & Mineral (Buah Buahan)'],
+            ['name' => 'Produksi Sumber Karbohidrat'],
+            ['name' => 'Produksi Sumber Protein'],
         ]);
 
         

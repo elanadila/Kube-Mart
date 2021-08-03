@@ -39,25 +39,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="{{ Request::is('/') ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('/')}}">Home </a>
             </li>
-            <li class="nav-item">
+            <li class="{{ Request::is('categories') ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('/categories')}}">Categories</a>
             </li>
-            <li class="nav-item">
+            <li class="{{ Request::is('maps') ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('/maps')}}">Address</a>
             </li>
-			<li class="nav-item">
-              <a class="nav-link" href="{{ url('/toko')}}">Toko</a>
+			      <li class="{{ Request::is('store') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('/store')}}">Store</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/register')}}">Sign Up</a>
+            <li class="nav-item {{ Request::is('auth/register') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('auth/register')}}">Sign Up</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{ Request::is('auth/login') ? 'active' : '' }}">
               <a
-                class="btn btn-success nav-link px-4 text-white"
-                href="{{ url('/login')}}"
+                class="btn btn-success nav-link px-4 text-white "
+                href="{{ url('auth/login') }}"
                 >Sign In</a
               >
             </li>
@@ -92,6 +92,7 @@
     <script type="text/javascript" src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>
 
     <script  type="text/javascript" src="{{ asset('/assets/function.js') }}"></script>
+    <script  type="text/javascript" src="{{ asset('/assets/script.js') }}"></script>
 
     <script>
       AOS.init();

@@ -15,7 +15,7 @@
               </h2>
               <form method="POST" action="{{ route('auth.register-submit') }}" class="mt-3">
                 @csrf
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label>Full Name</label>
                   <input
                     type="text"
@@ -28,6 +28,20 @@
                   @if($errors->has('name'))
                     <div class="text-danger">{{ $errors->first('name') }}</div>
                   @endif
+                </div> -->
+                <div class="form-group">
+                  <label>Nama KUBE</label>
+                  <input
+                    type="text"
+                    class="form-control {{$errors->has('namatoko') ? 'is-invalid' : ''}}"
+                    aria-describedby="namatoko"
+                    v-model="namatoko"
+                    name="namatoko"
+                  />
+                  @if($errors->has('namatoko'))
+                    <div class="text-danger">{{ $errors->first('namatoko') }}</div>
+                  @endif
+
                 </div>
                 <div class="form-group">
                   <label>Email</label>
@@ -50,26 +64,13 @@
                     <div class="text-danger">{{ $errors->first('password') }}</div>
                   @endif
                 </div>
-                <div class="form-group">
-                  <label>Nama Toko</label>
-                  <input
-                    type="text"
-                    class="form-control {{$errors->has('namatoko') ? 'is-invalid' : ''}}"
-                    aria-describedby="namatoko"
-                    v-model="namatoko"
-                    name="namatoko"
-                  />
-                  @if($errors->has('namatoko'))
-                    <div class="text-danger">{{ $errors->first('namatoko') }}</div>
-                  @endif
-
-                </div>
-                <div class="form-group">
+                
+                <!-- <div class="form-group">
                   <p class="text-muted">
                     Isi nama toko jika anda ingin menjual produk anda
                   </p>
                   
-                </div>
+                </div> -->
                 <div class="form-group" v-if="is_store_open">
                   <label>Kategori</label>
                   <select name="category_store_id" class="form-control">

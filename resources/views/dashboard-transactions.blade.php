@@ -17,75 +17,52 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="style/main.css" rel="stylesheet" />
   </head>
+<style>
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: white;
+  color: #0c0d36;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+    /* border-bottom: 2px solid #0c0d36; */
+}
+
+.tablink:hover {
+  border-bottom: 2px solid #0c0d36;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: #0c0d36;
+  display: none;
+  padding: 60px 0px;
+  height: 100%;
+}
+
+#Sell {background-color: #f5f5fb;}
+#Buy {background-color: #f5f5fb;}
+</style>
 
   <body>
     <div class="page-dashboard">
       
         <!-- Page Content -->
         <div id="page-content-wrapper">
-          <nav
-            class="navbar navbar-store navbar-expand-lg navbar-light fixed-top"
-            data-aos="fade-down"
-          >
-            <button
-              class="btn btn-secondary d-md-none mr-auto mr-2"
-              id="menu-toggle"
-            >
-              &laquo; Menu
-            </button>
-
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto d-none d-lg-flex">
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <img
-                      src="{{ ('assets/img/icon-user.png') }}"
-                      alt=""
-                      class="rounded-circle mr-2 profile-picture"
-                    />
-                    Hi, Rich
-                  </a>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block mt-2" href="cart.html">
-                    <img src="{{ ('assets/img/icon-cart-empty.svg') }}" alt="" />
-                  </a>
-                </li>
-              </ul>
-              <!-- Mobile Menu -->
-              <ul class="navbar-nav d-block d-lg-none mt-3">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    Hi, Rich
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block" href="#">
-                    Cart
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+         
 
           <div
             class="section-content section-dashboard-home"
@@ -99,10 +76,12 @@
                 </p>
               </div>
               <div class="dashboard-content">
-                <ul class="nav nav-pills" id="myTab" role="tablist">
-                  <li class="nav-item" role="presentation">
+              <button class="tablink" onclick="openPage('Sell', this, '#f5f5fb')" id="defaultOpen">Sell Product</button>
+              <button class="tablink" onclick="openPage('Buy', this, '#f5f5fb')" >Buy Product</button>
+                <!-- <ul class="nav nav-pills" id="myTab" role="tablist" >
+                  <li class="nav-item" role="presentation" onclick="openPage('Sell', this, 'red')" id="defaultOpen">
                     <a
-                      class="nav-link active"
+                      class="nav-link"
                       id="sell-tab"
                       data-toggle="tab"
                       href="#sell"
@@ -112,7 +91,7 @@
                       >Sell Product</a
                     >
                   </li>
-                  <li class="nav-item" role="presentation">
+                  <li class="nav-item"  onclick="openPage('Buy', this, 'green')">
                     <a
                       class="nav-link"
                       id="buy-tab"
@@ -124,8 +103,8 @@
                       >Buy Product</a
                     >
                   </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
+                </ul> -->
+                <div class="tabcontent" id="Sell">
                   <div
                     class="tab-pane fade show active"
                     id="sell"
@@ -147,7 +126,7 @@
                                 />
                               </div>
                               <div class="col-md-4">
-                                Shirup Marzzan
+                                Ela Nadila
                               </div>
                               <div class="col-md-3">
                                 Rich Chigga
@@ -232,7 +211,7 @@
                     id="buy"
                     role="tabpanel"
                     aria-labelledby="buy-tab"
-                  >
+                    >
                     <div class="row mt-3">
                       <div class="col-12 mt-2">
                         <a
@@ -269,6 +248,109 @@
                     </div>
                   </div>
                 </div>
+                <div class="tabcontent" id="Buy">
+                  <div
+                    class="tab-pane fade show active"
+                    id="sell"
+                    role="tabpanel"
+                    aria-labelledby="sell-tab"
+                  >
+                    <div class="row mt-3">
+                      <div class="col-12 mt-2">
+                        <a
+                          class="card card-list d-block"
+                          href="/dashboard-transactions-details"
+                        >
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-md-1">
+                                <img
+                                  src="{{ ('assets/img/dashboard-icon-product-1.png') }}"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="col-md-4">
+                                Shirup Marzzan
+                              </div>
+                              <div class="col-md-3">
+                                Rich Chigga
+                              </div>
+                              <div class="col-md-3">
+                                12 Januari, 2020
+                              </div>
+                              <div class="col-md-1 d-none d-md-block">
+                                <img
+                                  src="{{ ('assets/img/dashboard-arrow-right.svg') }}"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <a
+                          class="card card-list d-block"
+                          href="/dashboard-transactions-details"
+                        >
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-md-1">
+                                <img
+                                  src="{{ ('assets/img/dashboard-icon-product-2.png') }}"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="col-md-4">
+                                LeBrone X
+                              </div>
+                              <div class="col-md-3">
+                                Masayoshi
+                              </div>
+                              <div class="col-md-3">
+                                11 January, 2020
+                              </div>
+                              <div class="col-md-1 d-none d-md-block">
+                                <img
+                                  src="{{ ('assets/img/dashboard-arrow-right.svg') }}"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <a
+                          class="card card-list d-block"
+                          href="/dashboard-transactions-details"
+                        >
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-md-1">
+                                <img
+                                  src="{{ ('assets/img/dashboard-icon-product-3.png') }}"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="col-md-4">
+                                Nadila
+                              </div>
+                              <div class="col-md-3">
+                                Shayna
+                              </div>
+                              <div class="col-md-3">
+                                11 January, 2020
+                              </div>
+                              <div class="col-md-1 d-none d-md-block">
+                                <img
+                                  src="{{ ('assets/img/dashboard-arrow-right.svg') }}"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -277,8 +359,8 @@
       </div>
     </div>
     <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/jquery/jquery.slim.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="{{ asset('/assets/vendor/jquery/jquery.slim.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
@@ -290,6 +372,25 @@
         $("#wrapper").toggleClass("toggled");
       });
     </script>
+    <script>
+      function openPage(pageName,elmnt,color) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+      }
+
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+    </script>
+   
   </body>
 </html>
 @endsection

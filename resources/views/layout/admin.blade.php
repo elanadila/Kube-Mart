@@ -28,32 +28,32 @@
           <div class="list-group list-group-flush">
             <a
               href="/dashboard"
-              class="list-group-item list-group-item-action active"
-              >Dashboard</a
+              class="list-group-item list-group-item-action  {{ Request::is('dashboard') ? 'active' : '' }}">
+              Dashboard</a
             >
             <a
-              href="/dashboard-products"
-              class="list-group-item list-group-item-action"
+              href="{{ url('product/dashboard-products')}}"
+              class="list-group-item list-group-item-action {{ Request::is('product/dashboard-products') ? 'active' : '' }}"
               >My Products</a
             >
             <a
               href="/dashboard-transactions"
-              class="list-group-item list-group-item-action"
+              class="list-group-item list-group-item-action {{ Request::is('dashboard-transactions') ? 'active' : '' }}"
               >Transactions</a
             >
-            <a
+            <!-- <a
               href="/dashboard-settings"
               class="list-group-item list-group-item-action"
               >Store Settings</a
-            >
+            > -->
             <a
               href="/dashboard-member"
-              class="list-group-item list-group-item-action"
+              class="list-group-item list-group-item-action {{ Request::is('dashboard-member') ? 'active' : '' }}"
               >Anggota Kube Mart</a
             >
             <a
-              href="/dashboard-account"
-              class="list-group-item list-group-item-action"
+              href="{{ url('/store/1')}}"
+              class="list-group-item list-group-item-action {{ Request::is('/store/{1}') ? 'active' : '' }}"
               >My Account</a
             >
           </div>
@@ -148,11 +148,5 @@
       });
     </script>
 
-    <script>
-    $("a").click(function() {
-    $(".active").removeClass("active");
-    $(this).addClass("active");
-  });  
-    </script>
   </body>
 </html>

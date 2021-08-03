@@ -52,7 +52,7 @@ class AuthController extends Controller
         $request['password'] = bcrypt($request->password);
         User::create($request->only('name', 'email','password', 'store_id'));
        
-        return redirect()->back()->with(['warning' => 'Berhasil Registrasi 1']);
+        return redirect()->back()->with(['warning' => 'Berhasil Registrasi']);
 
     }
 

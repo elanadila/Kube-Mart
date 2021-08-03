@@ -44,7 +44,7 @@
                 <button type="submit" class="btn btn-success btn-block mt-4">
                   Sign In To My Account
                 </button>
-                <a class="btn btn-signup w-75 mt-2" href="register.html">
+                <a class="btn btn-signup w-75 mt-2" href="{{ url('auth/register')}}">
                   Sign Up
                 </a>
               </form>

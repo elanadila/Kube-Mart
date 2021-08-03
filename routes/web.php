@@ -13,6 +13,19 @@
 
 Route::get('/', 'ProductController@index');
 Route::get('/categories', 'ProductController@categories');
+Route::get('/product-details/{product}', 'ProductController@show');
+
+
+Route::get('/product/dashboard-products-create', 'ProductController@createAdmin');
+Route::get('/product/dashboard-products', 'ProductController@indexAdmin');
+Route::post('/product/dashboard-products', 'ProductController@store');
+Route::get('/product/dashboard-products-details/{product}', 'ProductController@showAdmin');
+Route::get('/product/dashboard-products-details/{product}/edit', 'ProductController@edit');
+
+
+Route::get('/store/{store}', 'StoreController@show');
+Route::get('/store', 'StoreController@index');
+
 // Route::get('/', 'HomeController@index')->name('home.index');
 
 // Route::prefix('/product')->group(function (){
@@ -76,24 +89,15 @@ Route::group(['middleware' => 'auth'], function(){
 //             });
 //         });
 
-//         Route::prefix('/bank-account')->group(function (){
-//             Route::get('/', 'BankAccountController@index')->name('bank-account.index');
-//             Route::get('/create', 'BankAccountController@create')->name('bank-account.create');
-//             Route::post('/store', 'BankAccountController@store')->name('bank-account.store');
-//             Route::get('/edit/{id}', 'BankAccountController@edit')->name('bank-account.edit');
-//             Route::post('/update/{id}', 'BankAccountController@update')->name('bank-account.update');
-//             Route::post('/delete/{id}', 'BankAccountController@delete')->name('bank-account.delete');
-//         });
-
 //         Route::prefix('/invoice')->group(function (){
 //             Route::get('/detail/{id}', 'InvoiceController@detail')->name('invoice.index');
 //             Route::post('/update/{id}', 'InvoiceController@updateStatus')->name('invoice.update');    
 //         });
 
-//         Route::prefix('/store')->group(function (){
-//             Route::get('/', 'StoreController@index')->name('store.index');
-//             Route::post('/update/{id}', 'StoreController@update')->name('store.update');
-//         });
+        // Route::prefix('/store')->group(function (){
+        //     Route::get('/', 'StoreController@index')->name('store.index');
+        //     Route::post('/update/{id}', 'StoreController@update')->name('store.update');
+        // });
 
 //         Route::prefix('/transaction')->group(function (){
 //             Route::get('/detail', 'TransactionController@detail')->name('transaction.index');
@@ -121,14 +125,10 @@ Route::get('/maps', function () {
     return view('maps');
 });
 
-Route::get('/testimoni', function () {
-    return view('testimoni');
-});
 
-
-Route::get('/details', function () {
-    return view('details');
-});
+// Route::get('/details', function () {
+//     return view('details');
+// });
 
 Route::get('/cart', function () {
     return view('cart');
@@ -138,9 +138,9 @@ Route::get('/sukses', function () {
     return view('sukses');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 
 Route::get('/toko', function () {
     return view('toko');

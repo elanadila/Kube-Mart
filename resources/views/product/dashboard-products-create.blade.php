@@ -23,70 +23,7 @@
       
         <!-- Page Content -->
         <div id="page-content-wrapper">
-          <nav
-            class="navbar navbar-store navbar-expand-lg navbar-light fixed-top"
-            data-aos="fade-down"
-          >
-            <button
-              class="btn btn-secondary d-md-none mr-auto mr-2"
-              id="menu-toggle"
-            >
-              &laquo; Menu
-            </button>
-
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto d-none d-lg-flex">
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <img
-                      src="images/icon-user.png"
-                      alt=""
-                      class="rounded-circle mr-2 profile-picture"
-                    />
-                    Hi, Ela
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block mt-2" href="cart.html">
-                    <img src="images/icon-cart-empty.svg" alt="" />
-                  </a>
-                </li>
-              </ul>
-              <!-- Mobile Menu -->
-              <ul class="navbar-nav d-block d-lg-none mt-3">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    Hi, Ela
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block" href="#">
-                    Cart
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+        
 
           <div
             class="section-content section-dashboard-home"
@@ -102,7 +39,9 @@
               <div class="dashboard-content">
                 <div class="row">
                   <div class="col-12">
-                    <form action="">
+                  
+                    <form method="post" action="/product/dashboard-products">
+                    @csrf
                       <div class="card">
                         <div class="card-body">
                           <div class="row">
@@ -111,12 +50,15 @@
                                 <label for="name">Product Name</label>
                                 <input
                                   type="text"
-                                  class="form-control"
+                                  class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
                                   id="name"
                                   aria-describedby="name"
-                                  name="storeName"
-                                  value="Papel La Casa"
+                                  name="name"
+                                  value="{{ old('name' )}}"
                                 />
+                                @if($errors->has('name'))
+                                  <div class="text-danger">{{ $errors->first('name') }}</div>
+                                @endif
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -124,25 +66,31 @@
                                 <label for="price">Price</label>
                                 <input
                                   type="number"
-                                  class="form-control"
+                                  class="form-control {{$errors->has('price') ? 'is-invalid' : ''}}"
                                   id="price"
                                   aria-describedby="price"
                                   name="price"
-                                  value="Rp. 200.000"
+                                  value="{{ old('price' )}}"
                                 />
+                                @if($errors->has('price'))
+                                  <div class="text-danger">{{ $errors->first('price') }}</div>
+                                @endif
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="price">Stock</label>
+                                <label for="stock">Stock</label>
                                 <input
                                   type="number"
-                                  class="form-control"
+                                  class="form-control {{$errors->has('stock') ? 'is-invalid' : ''}}"
                                   id="stock"
                                   aria-describedby="stock"
                                   name="stock"
-                                  value="12"
+                                  value="{{ old('stock' )}}"
                                 />
+                                @if($errors->has('stock'))
+                                  <div class="text-danger">{{ $errors->first('stock') }}</div>
+                                @endif
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -154,7 +102,7 @@
                                   id="weight"
                                   aria-describedby="weight"
                                   name="weight"
-                                  value="12 kg"
+                                  value="{{ old('name' )}}"
                                 />
                               </div>
                             </div>
@@ -162,14 +110,16 @@
                               <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea
-                                  name="descrioption"
+                                  name="description"
                                   id=""
                                   cols="30"
                                   rows="4"
-                                  class="form-control"
-                                >
-The Nike Air Max 720 SE goes bigger than ever before with Nike's tallest Air unit yet for unimaginable, all-day comfort. There's super breathable fabrics on the upper, while colours add a modern edge. Bring the past into the future with the Nike Air Max 2090, a bold look inspired by the DNA of the iconic Air Max 90. Brand-new Nike Air cushioning
-                                </textarea>
+                                  class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}"
+                                  value="{{ old('description' )}}"
+                                ></textarea>
+                                @if($errors->has('description'))
+                                  <div class="text-danger">{{ $errors->first('description') }}</div>
+                                @endif
                               </div>
                             </div>
                             <div class="col-md-12">
@@ -182,10 +132,8 @@ The Nike Air Max 720 SE goes bigger than ever before with Nike's tallest Air uni
                                   id="thumbnails"
                                   aria-describedby="thumbnails"
                                   name="thumbnails"
+                                  value=""
                                 />
-                                <small class="text-muted">
-                                  Kamu dapat memilih lebih dari satu file
-                                </small>
                               </div>
                             </div>
                           </div>
