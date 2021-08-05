@@ -40,13 +40,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="{{ Request::is('/') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('/')}}">Home </a>
+              <a class="nav-link" href="{{ route('home.index')}}">Home </a>
             </li>
             <li class="{{ Request::is('categories') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('/categories')}}">Categories</a>
+              <a class="nav-link" href="{{ route('category.index')}}">Categories</a>
             </li>
-            <li class="{{ Request::is('maps') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('/maps')}}">Address</a>
+            <li class="{{ Request::is('map') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('/map')}}">Address</a>
             </li>
 			      <li class="{{ Request::is('store') ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('/store')}}">Store</a>

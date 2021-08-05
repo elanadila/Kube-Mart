@@ -54,7 +54,7 @@
                             <div class="row">
                               <div class="col-md-1">
                                 <img
-                                  src="{{ ('assets/img/icon-testimonial-1.png') }}"
+                                  src="{{ ('../assets/img/icon-testimonial-1.png') }}"
                                   alt="" style="width: 50px;"
                                 />
                               </div>
@@ -69,7 +69,7 @@
                               </div>
                               <div class="col-md-1 d-none d-md-block">
                                 <img
-                                  src="{{ ('assets/img/dashboard-arrow-right.svg') }}"
+                                  src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
                                   alt=""
                                 />
                               </div>
@@ -84,7 +84,7 @@
                             <div class="row">
                               <div class="col-md-1">
                                 <img
-                                  src="{{ ('assets/img/icon-testimonial-3.png') }}"
+                                  src="{{ ('../assets/img/icon-testimonial-3.png') }}"
                                   alt="" style="width: 50px;"
                                 />
                               </div>
@@ -114,7 +114,7 @@
                             <div class="row">
                               <div class="col-md-1">
                                 <img
-                                  src="{{ ('assets/img/icon-testimonial-2.png') }}"
+                                  src="{{ ('../assets/img/icon-testimonial-2.png') }}"
                                   alt=""
                                   style="width: 50px;"
                                 />
@@ -130,7 +130,7 @@
                               </div>
                               <div class="col-md-1 d-none d-md-block">
                                 <img
-                                  src="{{ ('assets/img/dashboard-arrow-right.svg') }}"
+                                  src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
                                   alt=""
                                 />
                               </div>
@@ -156,7 +156,7 @@
                             <div class="row">
                               <div class="col-md-1">
                                 <img
-                                  src="{{ ('assets/img/icon-testimonial-3.png') }}"
+                                  src="{{ ('../assets/img/icon-testimonial-3.png') }}"
                                   alt=""
                                 />
                               </div>
@@ -171,7 +171,7 @@
                               </div>
                               <div class="col-md-1 d-none d-md-block">
                                 <img
-                                  src="{{ ('assets/img/dashboard-arrow-right.svg') }}"
+                                  src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
                                   alt=""
                                 />
                               </div>

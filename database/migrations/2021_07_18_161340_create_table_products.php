@@ -21,9 +21,12 @@ class CreateTableProducts extends Migration
             $table->text('description')->nullable();
             $table->text('photo')->nullable();
             $table->bigInteger('store_id')->unsigned()->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->string('weight')->nullable();
             // $table->foreign('store_id')->reference('id')->on('stores');
             $table->bigInteger('category_id')->unsigned()->nullable();
             // $table->foreign('category_id')->reference('id')->on('categories');
+            // $table->foreign('user_id')->reference('id')->on('users');
             $table->timestamps();
         });
     }

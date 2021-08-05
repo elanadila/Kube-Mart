@@ -20,6 +20,8 @@ class CreateTableTransactions extends Migration
             $table->string('city');
             $table->string('postal_code');
             $table->string('country');
+            $table->string('receipt');
+            $table->string('courier');
             $table->string('phone', 20)->nullable();
             $table->text('payment_prove')->nullable();
             $table->bigInteger('user_id')->unsigned()->nullable();

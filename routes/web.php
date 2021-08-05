@@ -11,20 +11,31 @@
 |
 */
 
-Route::get('/', 'ProductController@index');
-Route::get('/categories', 'ProductController@categories');
-Route::get('/product-details/{product}', 'ProductController@show');
+Route::get('/', 'ProductController@indexPublic')->name('home.index');
+Route::get('/categories', 'CategoryStoreController@index')->name('category.index');
+Route::get('/detail/{product}', 'ProductController@detail')->name('home.detail');
+
+Route::get('/map', 'StoreController@updateStore')->name('map.index');
 
 
-Route::get('/product/dashboard-products-create', 'ProductController@createAdmin');
-Route::get('/product/dashboard-products', 'ProductController@indexAdmin');
-Route::post('/product/dashboard-products', 'ProductController@store');
-Route::get('/product/dashboard-products-details/{product}', 'ProductController@showAdmin');
-Route::get('/product/dashboard-products-details/{product}/edit', 'ProductController@edit');
+// Route::get('/dashboard-products-create', 'ProductController@createAdmin');
+// Route::get('/dashboard-products', 'ProductController@indexAdmin');
+// Route::post('/dashboard-products', 'ProductController@store');
+// Route::get('/dashboard-products-details/{product}', 'ProductController@showAdmin');
+// Route::get('/dashboard-products-details/{product}/edit', 'ProductController@edit');
 
 
 Route::get('/store/{store}', 'StoreController@show');
 Route::get('/store', 'StoreController@index');
+Route::get('/dashboard-account', 'StoreController@indexAccount');
+
+// Route::get('/cart/{store}', 'StoreController@show');
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::get('/checkout', 'CartController@checkout')->name('cart.checkout');
+
+// Route::get('/dashboard-admin', 'TransactionController@index');
+// Route::get('/dashboard-transactions', 'TransactionController@indexTransaction');
+// Route::get('/dashboard-transactions-details/{transaction}', 'TransactionController@indexDetail');
 
 // Route::get('/', 'HomeController@index')->name('home.index');
 
@@ -66,6 +77,12 @@ Route::group(['middleware' => 'auth'], function(){
 //             Route::post('/update/{id}', 'CategoryController@update')->name('category.update');
 //         });
 
+        Route::prefix('/user')->group(function (){
+            Route::get('/', 'UserController@index')->name('user.index');
+            // Route::get('/detail', 'UserController@detail')->name('category.edit');
+            // Route::post('/update/{id}', 'UserController@update')->name('category.update');
+        });
+
 //         Route::prefix('/category')->group(function (){
 //             Route::get('/', 'CategoryController@index')->name('category.index');
 //             Route::get('/create', 'CategoryController@create')->name('category.create');
@@ -75,33 +92,35 @@ Route::group(['middleware' => 'auth'], function(){
 //             Route::post('/delete/{id}', 'CategoryController@delete')->name('category.delete');
 //         });
 
-//         Route::prefix('/product')->group(function (){
-//             Route::get('/', 'ProductController@index')->name('product.index');
-//             Route::get('/create', 'ProductController@create')->name('product.create');
-//             Route::post('/store', 'ProductController@store')->name('product.store');
-//             Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
-//             Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
-//             Route::post('/update/{id}', 'ProductController@update')->name('product.update');
-//             Route::post('/delete/{id}', 'ProductController@delete')->name('product.delete');
+        Route::prefix('/product')->group(function (){
+            Route::get('/', 'ProductController@index')->name('product.index');
+            Route::get('/create', 'ProductController@create')->name('product.create');
+            Route::post('/store', 'ProductController@store')->name('product.store');
+            Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
+            // Route::get('/detail/{id}', 'ProductController@detail')->name('product.detail');
+            Route::post('/update/{id}', 'ProductController@update')->name('product.update');
+            Route::get('/delete/{id}', 'ProductController@delete')->name('product.delete');
 
-//             Route::prefix('/review')->group(function (){
-//                 Route::post('/update/{id}', 'ProductController@review')->name('product.review');
-//             });
-//         });
+            Route::prefix('/review')->group(function (){
+                Route::post('/update/{id}', 'ProductController@review')->name('product.review');
+            });
+        });
 
 //         Route::prefix('/invoice')->group(function (){
 //             Route::get('/detail/{id}', 'InvoiceController@detail')->name('invoice.index');
-//             Route::post('/update/{id}', 'InvoiceController@updateStatus')->name('invoice.update');    
+//             Route::post('/update/{id}', 'InvoiceController@updateStatus')->name('invoice.update');
 //         });
 
-        // Route::prefix('/store')->group(function (){
-        //     Route::get('/', 'StoreController@index')->name('store.index');
-        //     Route::post('/update/{id}', 'StoreController@update')->name('store.update');
-        // });
+        Route::prefix('/store')->group(function (){
+            Route::get('/', 'StoreController@index')->name('store.index');
+            Route::post('/update/{id}', 'StoreController@update')->name('store.update');
+        });
 
-//         Route::prefix('/transaction')->group(function (){
-//             Route::get('/detail', 'TransactionController@detail')->name('transaction.index');
-//         });
+        Route::prefix('/transaction')->group(function (){
+            Route::get('/', 'TransactionController@index')->name('transaction.index');
+            Route::get('/detail', 'TransactionController@detail')->name('transaction.detail');   
+            Route::get('/invoice', 'TransactionController@indexTransaction');
+        });
 
 //         Route::prefix('/chart')->group(function (){
 //             Route::get('/', 'ChartController@index')->name('chart.index');
@@ -121,66 +140,66 @@ Route::group(['middleware' => 'auth'], function(){
 //     return view('kategori');
 // });
 
-Route::get('/maps', function () {
-    return view('maps');
-});
+// Route::get('/maps', function () {
+//     return view('maps');
+// });
 
 
 // Route::get('/details', function () {
 //     return view('details');
 // });
 
-Route::get('/cart', function () {
-    return view('cart');
-});
+// Route::get('/cart', function () {
+//     return view('cart');
+// });
 
-Route::get('/sukses', function () {
-    return view('sukses');
-});
+// Route::get('/sukses', function () {
+//     return view('sukses');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // });
 
-Route::get('/toko', function () {
-    return view('toko');
-});
+// Route::get('/toko', function () {
+//     return view('toko');
+// });
 
-Route::get('/toko-details', function () {
-    return view('toko-details');
-});
+// Route::get('/toko-details', function () {
+//     return view('toko-details');
+// });
 
-Route::get('/dashboard-products', function () {
-    return view('dashboard-products');
-});
+// Route::get('/dashboard-products', function () {
+//     return view('dashboard-products');
+// });
 
-Route::get('/dashboard-products-details', function () {
-    return view('dashboard-products-details');
-});
+// Route::get('/dashboard-products-details', function () {
+//     return view('dashboard-products-details');
+// });
 
-Route::get('/dashboard-transactions', function () {
-    return view('dashboard-transactions');
-});
+// Route::get('/dashboard-transactions', function () {
+//     return view('dashboard-transactions');
+// });
 
-Route::get('/dashboard-settings', function () {
-    return view('dashboard-settings');
-});
+// Route::get('/dashboard-settings', function () {
+//     return view('dashboard-settings');
+// });
 
-Route::get('/dashboard-account', function () {
-    return view('dashboard-account');
-});
+// Route::get('/dashboard-account', function () {
+//     return view('dashboard-account');
+// });
 
-Route::get('/dashboard-transactions-details', function () {
-    return view('dashboard-transactions-details');
-});
+// Route::get('/dashboard-transactions-details', function () {
+//     return view('dashboard-transactions-details');
+// });
 
-Route::get('/dashboard-products-create', function () {
-    return view('dashboard-products-create');
-});
+// Route::get('/dashboard-products-create', function () {
+//     return view('dashboard-products-create');
+// });
 
-Route::get('/dashboard-member', function () {
-    return view('dashboard-member');
-});
+// Route::get('/dashboard-member', function () {
+//     return view('dashboard-member');
+// });
 
 
 

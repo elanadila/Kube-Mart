@@ -14,6 +14,10 @@ class UserController extends Controller
     public function index()
     {
         //
+        // $user = auth()->user();
+        // // $products = Product::with('category')->where('store_id', $user->store_id)->get();
+        // return view('cms.user.index', compact('users'));
+        return view('cms.user.index');
     }
 
     /**

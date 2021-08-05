@@ -6,7 +6,7 @@
       <!-- Mobile Menu -->
       <ul class="navbar-nav d-block d-lg-none">
         <li class="nav-item">
-          <a class="nav-link" href="/cart">
+          <a class="nav-link" href="{{ route('cart.index') }}">
             Hi, Rich
           </a>
         </li>
@@ -84,7 +84,7 @@
         <div class="row">
           <div class="col-12 col-lg-4">
             <img
-              src="{{ ('../assets/img/product-details-dashboard.png') }} "
+              src="{{ url('storage/'.$product->photo) }} "
               alt=""
               class="w-100 mb-3"
             />
@@ -98,7 +98,7 @@
           <div class="col-lg-2" data-aos="zoom-in">
             <a
               class="btn btn-success nav-link px-4 text-white btn-block mb-3"
-              href="/cart"
+              href=" {{ route('cart.index') }}"
               >Add to Cart</a
             >
           </div>

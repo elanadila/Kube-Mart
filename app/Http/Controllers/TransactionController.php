@@ -15,6 +15,25 @@ class TransactionController extends Controller
     public function index()
     {
         //
+        $transactions = Transaction::all();
+        // dd($carts);
+        return view('cms.transaction.index', compact('transactions'));
+    }
+
+    public function indexTransaction()
+    {
+        //
+        $transactions = Transaction::all();
+        // dd($carts);
+        return view('transaction.dashboard-transactions', compact('transactions'));
+    }
+
+    public function detail()
+    {
+        //
+        $transactions = Transaction::all();
+        // dd($carts);
+        return view('transaction.detail', compact('transactions'));
     }
 
     /**

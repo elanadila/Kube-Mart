@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use Illuminate\Http\Request;
-use View;
+use Illuminate\Support\Facades\Storage;
+use File;
+use App\Product;
+use App\Category;
 
 class ProductController extends Controller
 {
@@ -15,20 +17,34 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-        $products = Product::all();
-        // dd($products);
-        return view('product.index', compact('products'));
-        // return \View::make('asddsa');
-        // return view('asddsa', $products);
+      //contoh join has many
+      // $store = \App\Store::with('users')->first();
+
+      // foreach($store->users as $item){
+      //   return $item->name;
+      // }
+      // return $store->users[0]->name;
+      //end contoh
+      $user = auth()->user();
+      $products = Product::with('category')->where('store_id', $user->store_id)->get();
+      // return($products);
+      return view('cms.product.index', compact('products'));
     }
 
-    public function indexAdmin()
+    public function indexPublic()
     {
-        //
-        $products = Product::all();
-        return view('product.dashboard-products', compact('products'));
-        // return view('product.dashboard-products', compact('product'));
+      //contoh join has many
+      // $store = \App\Store::with('users')->first();
+
+      // foreach($store->users as $item){
+      //   return $item->name;
+      // }
+      // return $store->users[0]->name;
+      //end contoh
+      // $user = auth()->user();
+      // $products = Product::with('category')->where('store_id', $user->store_id)->get();
+      $products = Product::all();
+      return view('public.home.index', compact('products'));
     }
 
     /**
@@ -38,14 +54,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
-    }
+      $categories = Category::all();
 
-    public function createAdmin()
-    {
-        //
-        $products = Product::all();
-        return view('product.dashboard-products-create', compact('products'));
+      return view('cms.product.create', compact('categories'));
     }
 
     /**
@@ -56,35 +67,41 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $product = new Product;
-        // $product->name = $request->name;
-        // $product->price = $request->price;
-        // $product->stock = $request->stock;
-        // $product->description = $request->description;
-        // $product->save();
+      $user = auth()->user();
+      $this->validate($request, [
+        'name' => 'required|max:181',
+        'price' => 'required|numeric',
+        'stock' => 'required|numeric',
+        'weight' => 'required|max:181',
+        'description' => 'required',
+        'category_id' => 'required',
+        'thumbnail'   => 'nullable|file|max:5048|mimes:jpg,jpeg,png'
+      ]);
 
-        $this->validate($request, [
-            'name' => 'required|max:181',
-            'price' => 'required|max:181',
-            'stock' => 'required|max:181',
-            'description' => 'required',
-        ]);
+      if($request->has('thumbnail')){
+        $directory = 'product';
+        $image = $request->file('thumbnail');
+        if (!File::isDirectory($directory)) {
+          File::makeDirectory($directory, 0777, true, true);
+        }
+        $imageName    = uniqid() . $image->getClientOriginalName();
+        Storage::disk('public')->put($directory .'/'. $imageName,  file_get_contents($image));
+        $request['file'] = $directory .'/'. $imageName;
+      }
 
-        Product::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'stock' => $request->stock,
-            'description' => $request->description,
-    
-        ]);
+      Product::create([
+        'name' => $request->name,
+        'price' => $request->price,
+        'stock' => $request->stock,
+        'weight' => $request->weight,
+        'description' => $request->description,
+        'category_id' => $request->category_id,
+        'store_id' => $user->store_id,
+        'user_id' => $user->id,
+        'photo' => $request->file,
+      ]);
 
-        // Product::create($request->all());
-            
-
-        return redirect('/product/dashboard-products')->with(['success' => 'Product added successfully']);;
-
-        // return $request;
+      return redirect()->route('product.index')->with(['success' => 'Product added successfully']);;
     }
 
     /**
@@ -99,10 +116,22 @@ class ProductController extends Controller
         // $products = DB::table('products')->find($id);
 
         // $products =  DB::table('products')->where('id',$id)->first();
-        
-    
+
+
         // return $stores->name;
         return view('product.product-details', compact('product'));
+    }
+
+    public function detail(Product $product)
+    {
+        //
+        // $products = DB::table('products')->find($id);
+
+        // $products =  DB::table('products')->where('id',$id)->first();
+
+
+        // return $stores->name;
+        return view('public.home.detail', compact('product'));
     }
 
     public function showAdmin(Product $product)
@@ -111,8 +140,8 @@ class ProductController extends Controller
         // $products = DB::table('products')->find($id);
 
         // $products =  DB::table('products')->where('id',$id)->first();
-        
-    
+
+
         // return $stores->name;
         return view('product.dashboard-products-details', compact('product'));
     }
@@ -124,10 +153,14 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
-        return view('product.dashboard-products-details', compact('product'));
+      $categories = Category::all();
+      $product = Product::find($id);
+      if($product){
+        return view('cms.product.edit', compact('categories', 'product'));
+      }
+      abort(500);
     }
 
     /**
@@ -137,9 +170,52 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+      $user = auth()->user();
+      $this->validate($request, [
+        'name' => 'required|max:181',
+        'price' => 'required|numeric',
+        'stock' => 'required|numeric',
+        'weight' => 'required|max:181',
+        'description' => 'required',
+        'category_id' => 'required',
+        'thumbnail'   => 'nullable|file|max:5048|mimes:jpg,jpeg,png'
+      ]);
+      $data = Product::find($id);
+
+      if($data){
+        if($request->has('thumbnail')){
+          $directory = 'product';
+          $image = $request->file('thumbnail');
+          if (!File::isDirectory($directory)) {
+            File::makeDirectory($directory, 0777, true, true);
+          }
+          $imageName    = uniqid() . $image->getClientOriginalName();
+          Storage::disk('public')->put($directory .'/'. $imageName,  file_get_contents($image));
+          $request['file'] = $directory .'/'. $imageName;
+
+          if(!is_null($data->photo)){ //hapus photo lama update yg baru
+            Storage::disk('public')->delete($data->photo);
+          }
+          $data->update([
+            'photo' => $request->file
+          ]);
+        }
+
+        $data->update([
+          'name' => $request->name,
+          'price' => $request->price,
+          'stock' => $request->stock,
+          'weight' => $request->weight,
+          'description' => $request->description,
+          'category_id' => $request->category_id,
+          'store_id' => $user->store_id,
+          'user_id' => $user->id,
+        ]);
+        return redirect()->route('product.index')->with(['success' => 'Product successfully Updated']);;
+      }
+      return redirect()->route('product.index')->with(['danger' => 'Data not found, Update Failed!']);;
     }
 
     /**
@@ -148,14 +224,16 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function delete($id)
     {
-        //
+      $user = auth()->user();
+      $data = Product::where('id', $id)->where('store_id', $user->store_id)->first();
+      if($data){
+        Storage::disk('public')->delete($data->photo);
+        $data->delete();
+        return redirect()->route('product.index')->with(['success' => 'Product successfully DELETED']);;
+      }
+      return redirect()->route('product.index')->with(['danger' => 'Product not found']);;
     }
 
-    public function categories(){
-        $products = Product::all();
-        // dd($products);
-        return view('product.categories', ['products' => $products]);
-    }
 }

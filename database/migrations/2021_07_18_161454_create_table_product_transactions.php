@@ -19,7 +19,9 @@ class CreateTableProductTransactions extends Migration
             $table->bigInteger('quantity')->default(1);
             $table->text('review')->nullable();
             $table->bigInteger('product_id')->unsigned()->nullable();
+            $table->bigInteger('transaction_id')->unsigned()->nullable();
             // $table->foreign('product_id')->reference('id')->on('products');
+            // $table->foreign('transaction_id')->reference('id')->on('transaction');
             $table->timestamps();
         });
     }

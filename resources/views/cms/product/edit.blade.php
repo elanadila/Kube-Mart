@@ -20,28 +20,28 @@
 
   <body>
     <div class="page-dashboard">
-      
+
+
         <!-- Page Content -->
         <div id="page-content-wrapper">
-        
+
 
           <div
             class="section-content section-dashboard-home"
             data-aos="fade-up"
-          >
+            >
             <div class="container-fluid">
               <div class="dashboard-heading">
-                <h2 class="dashboard-title">Add New Product</h2>
+                <h2 class="dashboard-title">{{$product->name}}</h2>
                 <p class="dashboard-subtitle">
-                  Create your own product
+                  Product Details
                 </p>
               </div>
               <div class="dashboard-content">
                 <div class="row">
                   <div class="col-12">
-                  
-                    <form method="post" action="/product/dashboard-products">
-                    @csrf
+                    <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+                      @csrf
                       <div class="card">
                         <div class="card-body">
                           <div class="row">
@@ -54,7 +54,7 @@
                                   id="name"
                                   aria-describedby="name"
                                   name="name"
-                                  value="{{ old('name' )}}"
+                                  value="{{$product->name}}"
                                 />
                                 @if($errors->has('name'))
                                   <div class="text-danger">{{ $errors->first('name') }}</div>
@@ -70,7 +70,7 @@
                                   id="price"
                                   aria-describedby="price"
                                   name="price"
-                                  value="{{ old('price' )}}"
+                                  value="{{$product->price}}"
                                 />
                                 @if($errors->has('price'))
                                   <div class="text-danger">{{ $errors->first('price') }}</div>
@@ -79,14 +79,14 @@
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="stock">Stock</label>
+                                <label for="price">Stock</label>
                                 <input
                                   type="number"
                                   class="form-control {{$errors->has('stock') ? 'is-invalid' : ''}}"
                                   id="stock"
                                   aria-describedby="stock"
                                   name="stock"
-                                  value="{{ old('stock' )}}"
+                                  value="{{$product->stock}}"
                                 />
                                 @if($errors->has('stock'))
                                   <div class="text-danger">{{ $errors->first('stock') }}</div>
@@ -98,12 +98,15 @@
                                 <label for="price">Weight</label>
                                 <input
                                   type="text"
-                                  class="form-control"
+                                  class="form-control {{$errors->has('weight') ? 'is-invalid' : ''}}"
                                   id="weight"
                                   aria-describedby="weight"
                                   name="weight"
-                                  value="{{ old('name' )}}"
+                                  value="{{$product->weight}}"
                                 />
+                                @if($errors->has('weight'))
+                                  <div class="text-danger">{{ $errors->first('weight') }}</div>
+                                @endif
                               </div>
                             </div>
                             <div class="col-md-12">
@@ -115,41 +118,72 @@
                                   cols="30"
                                   rows="4"
                                   class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}"
-                                  value="{{ old('description' )}}"
-                                ></textarea>
+                                >{{$product->description}}
+                                </textarea>
                                 @if($errors->has('description'))
                                   <div class="text-danger">{{ $errors->first('description') }}</div>
                                 @endif
                               </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                               <div class="form-group">
-                                <label for="thumbnails">Thumbnails</label>
+                                <label for="thumbnail">thumbnail</label>
                                 <input
                                   type="file"
                                   multiple
                                   class="form-control pt-1"
-                                  id="thumbnails"
-                                  aria-describedby="thumbnails"
-                                  name="thumbnails"
+                                  id="thumbnail"
+                                  aria-describedby="thumbnail"
+                                  name="thumbnail"
                                   value=""
                                 />
+                                @if($errors->has('thumbnail'))
+                                  <div class="text-danger">{{ $errors->first('thumbnail') }}</div>
+                                @endif
                               </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="category_id">Category Product</label>
+                                <select name="category_id" class="form-control {{$errors->has('category_id') ? 'is-invalid' : ''}}">
+                                  @foreach($categories as $category)
+                                  @if($product->category_id == $category->id)
+                                    <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                                  @else
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                  @endif
+                                  @endforeach
+                                </select>
+                                @if($errors->has('category_id'))
+                                  <div class="text-danger">{{ $errors->first('category_id') }}</div>
+                                @endif
+                              </div>
+                            </div>
+                            <div class="col">
+                              <a href="{{ route('product.delete', $product->id) }}" class="btn btn-danger btn-block px-5">
+                                Delete this Product
+                              </a>
+                                <button
+                                type="submit"
+                                class="btn btn-success btn-block px-5"
+                              >
+                                Update Data
+                              </button>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="row mt-2">
-                        <div class="col">
-                          <button
-                            type="submit"
-                            class="btn btn-success btn-block px-5"
-                          >
-                            Save Now
-                          </button>
+                    </form>
+                  </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -172,6 +206,11 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
       });
+    </script>
+    <script>
+      function thisFileUpload() {
+        document.getElementById("file").click();
+      }
     </script>
   </body>
 </html>

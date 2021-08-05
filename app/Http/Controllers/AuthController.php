@@ -23,7 +23,7 @@ class AuthController extends Controller
         ]);
         $auth = Auth::attempt($request->only('email', 'password'));
         if(!$auth){
-            return redirect()->back()->with(['warning' => 'akun tidak ditemukan']);
+            return redirect()->back()->with(['danger' => 'Account Not Found']);
         }
         return redirect()->route('dashboard.index');
     }
@@ -52,13 +52,13 @@ class AuthController extends Controller
         $request['password'] = bcrypt($request->password);
         User::create($request->only('name', 'email','password', 'store_id'));
        
-        return redirect()->back()->with(['warning' => 'Berhasil Registrasi']);
+        return redirect()->back()->with(['success' => 'Successful Registration']);
 
     }
 
     public function logout()
     {
         Auth::logout();
-      return redirect()->route('auth.login')->with(['success' => 'Anda telah Logout']);
+      return redirect()->route('auth.login')->with(['success' => 'You Have Logged Out']);
     }
 }

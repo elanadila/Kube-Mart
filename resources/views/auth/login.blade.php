@@ -8,15 +8,15 @@
           <div class="row align-items-center row-login">
             <div class="col-lg-6 text-center">
               <img
-                src="{{ ('assets/img/login-placeholder.png') }}"
+                src="{{ ('../assets/img/login-placeholder.png') }}"
                 alt=""
                 class="img-fluid mb-4 mb-lg-none"
               />
             </div>
             <div class="col-lg-5">
               <h2>
-                Belanja kebutuhan utama, <br />
-                menjadi lebih mudah
+              Shopping for essentials, <br />
+              become easier
               </h2>
               @include('layout.alert')
 
@@ -41,7 +41,7 @@
                     <div class="text-danger">{{ $errors->first('password') }}</div>
                   @endif
                 </div>
-                <button type="submit" class="btn btn-success btn-block mt-4">
+                <button type="submit" class="btn btn-success btn-block mt-4" style="    width: 75%;"> 
                   Sign In To My Account
                 </button>
                 <a class="btn btn-signup w-75 mt-2" href="{{ url('auth/register')}}">

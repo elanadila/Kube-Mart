@@ -10,12 +10,12 @@
             <div class="col-lg-4">
               @include('layout.alert')
               <h2>
-                Memulai untuk jual beli <br />
-                dengan cara terbaru
+                Start buying and selling <br />
+                in the newest way
               </h2>
               <form method="POST" action="{{ route('auth.register-submit') }}" class="mt-3">
                 @csrf
-                <!-- <div class="form-group">
+                <div class="form-group">
                   <label>Full Name</label>
                   <input
                     type="text"
@@ -28,9 +28,9 @@
                   @if($errors->has('name'))
                     <div class="text-danger">{{ $errors->first('name') }}</div>
                   @endif
-                </div> -->
+                </div>
                 <div class="form-group">
-                  <label>Nama KUBE</label>
+                  <label>KUBE Name</label>
                   <input
                     type="text"
                     class="form-control {{$errors->has('namatoko') ? 'is-invalid' : ''}}"
@@ -72,7 +72,7 @@
                   
                 </div> -->
                 <div class="form-group" v-if="is_store_open">
-                  <label>Kategori</label>
+                  <label>Category</label>
                   <select name="category_store_id" class="form-control">
                     @foreach($categories as $category)
                     <option value="{{$category->id}}" >{{$category->name}}</option>

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Store;
 class CategoryStore extends Model
 {
     protected $table = "categories_store";
@@ -13,5 +13,10 @@ class CategoryStore extends Model
         'id',
         'name',
     ];
+
+    public function stores()
+    {
+      return $this->hasMany(Store::class, 'category_store_id');
+    }
 
 }

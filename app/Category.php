@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
 
 class Category extends Model
 {
@@ -14,5 +15,10 @@ class Category extends Model
         'name',
         'photo',
     ];
+
+    public function products()
+    {
+      return $this->hasMany(Product::class, 'category_store_id');
+    }
 
 }

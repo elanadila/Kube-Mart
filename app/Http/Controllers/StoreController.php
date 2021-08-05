@@ -20,7 +20,29 @@ class StoreController extends Controller
         //
         $stores = Store::all();
         // dd($products);
-        return view('store.toko', compact('stores'));
+        // return view('store.toko', compact('stores'));
+        // return \View::make('asddsa');
+        // return view('asddsa', $products);
+        return view('public.store.index', compact('stores'));
+    }
+
+    public function indexAccount()
+    {
+        //
+        $stores = Store::all();
+        // dd($products);
+        return view('store.dashboard-account', compact('stores'));
+        // return \View::make('asddsa');
+        // return view('asddsa', $products);
+    }
+  
+
+    public function updateStore()
+    {
+        //
+        $stores = Store::all();
+        // dd($products);
+        return view('public.map.index', compact('stores'));
         // return \View::make('asddsa');
         // return view('asddsa', $products);
     }
@@ -56,7 +78,7 @@ class StoreController extends Controller
     {
         //
         // return $store;
-        return view('store.toko-details', compact('store'));
+        return view('public.store.detail', compact('store'));
     }
 
     /**

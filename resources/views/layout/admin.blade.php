@@ -22,23 +22,23 @@
         <div class="border-right" id="sidebar-wrapper">
           <div class="sidebar-heading text-center">
           <a href="/">
-            <img src="{{ ('assets/img/dashboard-store-logo.svg') }}" alt="" class="my-4" />
+            <img src="{{ ('../assets/img/dashboard-store-logo.svg') }}" alt="" class="my-4" />
           </a>
 		    </div>
           <div class="list-group list-group-flush">
             <a
-              href="/dashboard"
+              href="{{ route('dashboard.index')}}"
               class="list-group-item list-group-item-action  {{ Request::is('dashboard') ? 'active' : '' }}">
               Dashboard</a
             >
             <a
-              href="{{ url('product/dashboard-products')}}"
-              class="list-group-item list-group-item-action {{ Request::is('product/dashboard-products') ? 'active' : '' }}"
+              href="{{ route('product.index')}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/product*')) ? 'active' : '' }}"
               >My Products</a
             >
             <a
-              href="/dashboard-transactions"
-              class="list-group-item list-group-item-action {{ Request::is('dashboard-transactions') ? 'active' : '' }}"
+              href="{{ route('transaction.index')}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/transaction*')) ? 'active' : '' }}"
               >Transactions</a
             >
             <!-- <a
@@ -47,13 +47,13 @@
               >Store Settings</a
             > -->
             <a
-              href="/dashboard-member"
-              class="list-group-item list-group-item-action {{ Request::is('dashboard-member') ? 'active' : '' }}"
+              href="{{ route('user.index')}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/user*')) ? 'active' : '' }}"
               >Anggota Kube Mart</a
             >
             <a
-              href="{{ url('/store/1')}}"
-              class="list-group-item list-group-item-action {{ Request::is('/store/{1}') ? 'active' : '' }}"
+              href="{{ route('store.index')}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
               >My Account</a
             >
           </div>
@@ -98,7 +98,7 @@
                     aria-expanded="false"
                   >
                     <img
-                      src="{{ ('assets/img/icon-user.png') }}"
+                      src="{{ ('../assets/img/icon-user.png') }}"
                       alt=""
                       class="rounded-circle mr-2 profile-picture"
                     />
@@ -107,7 +107,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-inline-block mt-2" href="cart.html">
-                    <img src="{{ ('assets/img/icon-cart-empty.svg') }}" alt="" />
+                    <img src="{{ ('../assets/img/icon-cart-empty.svg') }}" alt="" />
                   </a>
                 </li>
               </ul>
@@ -126,7 +126,7 @@
               </ul>
             </div>
           </nav>
-          
+
           @yield('container')
 
         </div>

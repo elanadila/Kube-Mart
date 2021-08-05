@@ -203,7 +203,7 @@
         </div>
         <div class="col-8 col-md-3">
           <a
-            href="/sukses"
+            href="/checkout"
             class="btn btn-success mt-4 px-4 btn-block"
           >
             Checkout Now

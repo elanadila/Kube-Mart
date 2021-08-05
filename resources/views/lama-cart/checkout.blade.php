@@ -133,16 +133,16 @@
                   </div>
                   <div class="button-row d-flex mt-4">
                     <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Send">Send</button>
                   </div>
 
                 </div>
               </div>
                <!--single form panel-->
                <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">TERIMA KASIH. PESANAN SEGERA</h3>
+                <h3 class="multisteps-form__title">TERIMA KASIH. PESANAN SEGERA DIKIRIMKAN</h3>
                 <div class="multisteps-form__content">
-                  <div class="form-row mt-4">
+                  <!-- <div class="form-row mt-4">
                     <div class="col">
                       <input class="multisteps-form__input form-control" type="text" placeholder="Address 1"/>
                     </div>
@@ -165,10 +165,10 @@
                     <div class="col-6 col-sm-3 mt-4 mt-sm-0">
                       <input class="multisteps-form__input form-control" type="text" placeholder="Zip"/>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="button-row d-flex mt-4">
                     <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                    <button class="btn btn-success ml-auto" type="button" title="Send">My Dashboard</button>
+                    <a href="/dashboard-admin" class="btn btn-success ml-auto" type="button" title="Go To My Dashboard">My Dashboard</a>
                   </div>
                 </div>
               </div>

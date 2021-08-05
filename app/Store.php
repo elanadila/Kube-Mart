@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
+use App\CategoryStore;
 
 class Store extends Model
 {
@@ -20,5 +22,15 @@ class Store extends Model
         'longitude',
         'category_store_id'
     ];
+
+    public function users()
+    {
+      return $this->hasMany(User::class, 'store_id');
+    }
+
+    public function category_store()
+    {
+      return $this->belongsTo(CategoryStore::class, 'category_store_id');
+    }
 
 }

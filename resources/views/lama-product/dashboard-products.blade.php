@@ -41,7 +41,7 @@
                   <div class="col-12">
                   @include('layout.alert')
                     <a
-                      href="/product/dashboard-products-create"
+                      href="/dashboard-products-create"
                       class="btn btn-success"
                       >Add New Product</a
                     >
@@ -52,7 +52,7 @@
                   <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <a
                       class="card card-dashboard-product d-block"
-                      href="/product/dashboard-products-details/{{$product->id}}"
+                      href="/dashboard-products-details/{{$product->id}}"
                     >
                       <div class="card-body">
                         <img

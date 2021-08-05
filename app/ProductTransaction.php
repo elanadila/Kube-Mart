@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Transaction;
+use App\Product;
 
 class ProductTransaction extends Model
 {
@@ -15,6 +17,18 @@ class ProductTransaction extends Model
         'quantity',
         'review',
         'product_id',
+        'transaction_id',
     ];
+
+
+    public function transaction()
+    {
+      return $this->belongsTo(Transaction::class, 'transaction_id');
+    }
+
+    public function product()
+    {
+      return $this->belongsTo(Product::class, 'product_id');
+    }
 
 }
