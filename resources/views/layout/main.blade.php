@@ -24,7 +24,7 @@
     >
       <div class="container">
         <a class="navbar-brand" href="dashboard.html">
-          <img src="{{ ('assets/img/logo.png') }}" alt="" />
+          <img src="{{ ('../assets/img/logo.png') }}" alt="" />
         </a>
         <button
           class="navbar-toggler"
@@ -49,11 +49,11 @@
               <a class="nav-link" href="{{ url('/map')}}">Address</a>
             </li>
 			      <li class="{{ Request::is('store') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('/store')}}">Store</a>
+              <a class="nav-link" href="{{ route('store.indexPublic')}}">Store</a>
             </li>
-            <li class="nav-item {{ Request::is('auth/register') ? 'active' : '' }}">
+            <!-- <li class="nav-item {{ Request::is('auth/register') ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('auth/register')}}">Sign Up</a>
-            </li>
+            </li> -->
             <li class="nav-item {{ Request::is('auth/login') ? 'active' : '' }}">
               <a
                 class="btn btn-success nav-link px-4 text-white "

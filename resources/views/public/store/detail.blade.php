@@ -16,7 +16,7 @@
             >
             <div class="container-fluid">
               <div class="dashboard-heading">
-                <h2 class="dashboard-title">Store {{$store->id}}</h2>
+                <h2 class="dashboard-title">Store</h2>
                 <p class="dashboard-subtitle">
                   Store Details
                 </p>
@@ -43,7 +43,8 @@
                               <div class="col-12 col-md-6">
                                 <div class="product-title">Member KUBE </div>
                                 <div class="product-subtitle">
-                                  Ahmad Adli
+                                  Ahmad Adli<br>
+                                  Ela
                                 </div>
                               </div>
                               <div class="col-12 col-md-6">
@@ -58,85 +59,9 @@
                                 <div class="product-title">Description KUBE </div>
                                 <div class="product-subtitle">{{$store->description}}</div>
                               </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12 mt-4">
-                            <h5>
-                              Address Details
-                            </h5>
-                            <div class="row">
-                              <div class="col-12 col-md-6">
-                                <div class="product-title">Address</div>
-                                <div class="product-subtitle">
-                                  Setra Duta Cemara
-                                </div>
-                              </div>
-
-                              <div class="col-12 col-md-6">
-                                <div class="product-title">
-                                  Province
-                                </div>
-                                <div class="product-subtitle">
-                                  West Java
-                                </div>
-                              </div>
-                              <div class="col-12 col-md-6">
-                                <div class="product-title">City</div>
-                                <div class="product-subtitle">
-                                  Bandung
-                                </div>
-                              </div>
-                              <div class="col-12 col-md-6">
-                                <div class="product-title">Postal Code</div>
-                                <div class="product-subtitle">123999</div>
-                              </div>
-                              <div class="col-12 col-md-6">
-                                <div class="product-title">Country</div>
-                                <div class="product-subtitle">
-                                  Indonesia
-                                </div>
-                              </div>
-                              <div class="col-12 col-md-6">
-                                <div class="row">
-                                  <div class="col-md-3">
-                                    <div class="product-title">Status</div>
-                                    <select
-                                      name="status"
-                                      id="status"
-                                      class="form-control"
-                                      v-model="status"
-                                    >
-                                      <option value="UNPAID">Unpaid</option>
-                                      <option value="PENDING">Pending</option>
-                                      <option value="SHIPPING">Shipping</option>
-                                      <option value="SUCCESS">Success</option>
-                                    </select>
-                                  </div>
-                                  <template v-if="status == 'SHIPPING'">
-                                    <div class="col-md-3">
-                                      <div class="product-title">
-                                        Input Resi
-                                      </div>
-                                      <input
-                                        class="form-control"
-                                        type="text"
-                                        name="resi"
-                                        id="openStoreTrue"
-                                        v-model="resi"
-                                      />
-                                    </div>
-                                    <div class="col-md-2">
-                                      <button
-                                        type="submit"
-                                        class="btn btn-success btn-block mt-4"
-                                      >
-                                        Update Resi
-                                      </button>
-                                    </div>
-                                  </template>
-                                </div>
+                              <div class="col-12 col-md-12">
+                                <div class="product-title">Address </div>
+                                <div class="product-subtitle">{{$store->address}}</div>
                               </div>
                             </div>
                           </div>

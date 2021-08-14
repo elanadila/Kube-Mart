@@ -46,6 +46,21 @@ var marker = new google.maps.Marker({
     map: map,
     title: 'Jakarta'
 });
+var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(-6.241586,106.992416), // longitude latitude
+    map: map,
+    title: 'Bekasi'
+});
+var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(-6.923700,106.928726), // longitude latitude
+    map: map,
+    title: 'Sukabumi'
+});
+var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(	-7.319563,108.202972), // longitude latitude
+    map: map,
+    title: 'Tasikmalaya'
+});
 }
 // membuat Event Listener untuk memanggil fungsi initialize pada saat halaman selesai di load
 google.maps.event.addDomListener(window, 'load', initialize);

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use File;
 use App\Product;
 use App\Category;
+use App\Store;
 
 class ProductController extends Controller
 {
@@ -131,6 +132,9 @@ class ProductController extends Controller
 
 
         // return $stores->name;
+
+        $products = Product::with('store')->where('store_id')->get();
+        // return ($products->name);
         return view('public.home.detail', compact('product'));
     }
 

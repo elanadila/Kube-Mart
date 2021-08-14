@@ -40,7 +40,7 @@
                           Revenue
                         </div>
                         <div class="dashboard-card-subtitle">
-                          Rp. 931,290
+                          $931,290
                         </div>
                       </div>
                     </div>
@@ -63,7 +63,7 @@
                     <h5 class="mb-3">Recent Transactions</h5>
                     <a
                       class="card card-list d-block"
-                      href="{{ route('transaction.detail')}}"
+                      href="{{ route('transaction.index')}}"
                     >
                       <div class="card-body">
                         <div class="row">
@@ -89,6 +89,66 @@
                             />
                           </div>
                           
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      class="card card-list d-block"
+                      href="/dashboard-transactions-details"
+                    >
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-1">
+                            <img
+                              src="{{ ('assets/img/dashboard-icon-product-2.png') }}"
+                              alt=""
+                            />
+                          </div>
+                          <div class="col-md-4">
+                            LeBrone X
+                          </div>
+                          <div class="col-md-3">
+                            Masayoshi
+                          </div>
+                          <div class="col-md-3">
+                            11 January, 2020
+                          </div>
+                          <div class="col-md-1 d-none d-md-block">
+                            <img
+                              src="{{ ('assets/img/dashboard-arrow-right.svg') }}"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      class="card card-list d-block"
+                      href="/dashboard-transactions-details"
+                    >
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-1">
+                            <img
+                              src="{{ ('assets/img/dashboard-icon-product-3.png') }}"
+                              alt=""
+                            />
+                          </div>
+                          <div class="col-md-4">
+                            Soffa Lembutte
+                          </div>
+                          <div class="col-md-3">
+                            Shayna
+                          </div>
+                          <div class="col-md-3">
+                            11 January, 2020
+                          </div>
+                          <div class="col-md-1 d-none d-md-block">
+                            <img
+                            src="{{ ('assets/img/dashboard-arrow-right.svg') }}"
+                            alt=""
+                            />
+                          </div>
                         </div>
                       </div>
                     </a>

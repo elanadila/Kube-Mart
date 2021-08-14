@@ -25,8 +25,9 @@ class User extends Authenticatable
         'store_id',
     ];
 
-    CONST ROLE_CUSTOMER = 'Customer';
-    CONST ROLE_SELLER = 'Seller';
+    //kube=member
+
+    CONST ROLE_KUBE = 'Kube';
     CONST ROLE_ADMIN = 'Admin';
 
     public function store()

@@ -13,7 +13,7 @@
 
 Route::get('/', 'ProductController@indexPublic')->name('home.index');
 Route::get('/categories', 'CategoryStoreController@index')->name('category.index');
-Route::get('/detail/{product}', 'ProductController@detail')->name('home.detail');
+Route::get('/product/detail/{product}', 'ProductController@detail')->name('home.detail');
 
 Route::get('/map', 'StoreController@updateStore')->name('map.index');
 
@@ -26,12 +26,21 @@ Route::get('/map', 'StoreController@updateStore')->name('map.index');
 
 
 Route::get('/store/{store}', 'StoreController@show');
-Route::get('/store', 'StoreController@index');
+Route::get('/store', 'StoreController@indexPublic')->name('store.indexPublic');
 Route::get('/dashboard-account', 'StoreController@indexAccount');
 
 // Route::get('/cart/{store}', 'StoreController@show');
 Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::get('/add-cart', 'CartController@store')->name('cart.store');
+Route::get('/remove-cart', 'CartController@remove')->name('cart.remove');
 Route::get('/checkout', 'CartController@checkout')->name('cart.checkout');
+
+Route::get('/checkout-step-1', 'CheckoutController@step1')->name('checkout.step-1');
+Route::post('/checkout-step-1-submit', 'CheckoutController@step1Submit')->name('checkout.step-1-submit');
+Route::get('/checkout-step-2', 'CheckoutController@step2')->name('checkout.step-2');
+Route::post('/checkout-step-2-submit', 'CheckoutController@step2Submit')->name('checkout.step-2-submit');
+Route::get('/checkout-step-3', 'CheckoutController@step3')->name('checkout.step-3');
+Route::post('/checkout-step-3-submit', 'CheckoutController@step3Submit')->name('checkout.step-3-submit');
 
 // Route::get('/dashboard-admin', 'TransactionController@index');
 // Route::get('/dashboard-transactions', 'TransactionController@indexTransaction');
@@ -113,14 +122,20 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::prefix('/store')->group(function (){
             Route::get('/', 'StoreController@index')->name('store.index');
+            Route::get('/edit', 'StoreController@edit')->name('store.edit');
+            Route::get('/create', 'StoreController@create')->name('store.create');
             Route::post('/update/{id}', 'StoreController@update')->name('store.update');
+            Route::post('/register', 'StoreController@registerSubmit')->name('store.register-submit');
+
         });
 
         Route::prefix('/transaction')->group(function (){
             Route::get('/', 'TransactionController@index')->name('transaction.index');
-            Route::get('/detail', 'TransactionController@detail')->name('transaction.detail');   
+            Route::get('/detail', 'TransactionController@detail')->name('transaction.detail');
             Route::get('/invoice', 'TransactionController@indexTransaction');
         });
+
+
 
 //         Route::prefix('/chart')->group(function (){
 //             Route::get('/', 'ChartController@index')->name('chart.index');
@@ -130,76 +145,37 @@ Route::group(['middleware' => 'auth'], function(){
 //         });
     });
 
+    // Route::prefix('/admin')->group(function (){
+    //     Route::get('/', 'DashboardController@index')->name('dashboard.index');
+
+    //     Route::get('/auth/logout', 'AuthController@logout')->name('auth.logout');
+
+
+    //     Route::prefix('/user')->group(function (){
+    //         Route::get('/', 'UserController@index')->name('user.index');
+    //         // Route::get('/detail', 'UserController@detail')->name('category.edit');
+    //         // Route::post('/update/{id}', 'UserController@update')->name('category.update');
+    //     });
+
+    //     Route::prefix('/store')->group(function (){
+    //         Route::get('/', 'StoreController@index')->name('store.index');
+    //         Route::get('/create', 'StoreController@create')->name('store.create');
+    //         Route::get('/edit', 'StoreController@edit')->name('store.edit');
+    //         Route::post('/update/{id}', 'StoreController@update')->name('store.update');
+    //         Route::get('/delete/{id}', 'StoreController@delete')->name('store.delete');
+
+    //     });
+
+    //     Route::prefix('/transaction')->group(function (){
+    //         Route::get('/', 'TransactionController@index')->name('transaction.index');
+    //         Route::get('/detail', 'TransactionController@detail')->name('transaction.detail');
+    //         Route::get('/invoice', 'TransactionController@indexTransaction');
+    //     });
+
+    // });
+
+
 });
-
-// Route::get('/', function () {
-//     return view('index');
-// });
-
-// Route::get('/kategori', function () {
-//     return view('kategori');
-// });
-
-// Route::get('/maps', function () {
-//     return view('maps');
-// });
-
-
-// Route::get('/details', function () {
-//     return view('details');
-// });
-
-// Route::get('/cart', function () {
-//     return view('cart');
-// });
-
-// Route::get('/sukses', function () {
-//     return view('sukses');
-// });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
-
-// Route::get('/toko', function () {
-//     return view('toko');
-// });
-
-// Route::get('/toko-details', function () {
-//     return view('toko-details');
-// });
-
-// Route::get('/dashboard-products', function () {
-//     return view('dashboard-products');
-// });
-
-// Route::get('/dashboard-products-details', function () {
-//     return view('dashboard-products-details');
-// });
-
-// Route::get('/dashboard-transactions', function () {
-//     return view('dashboard-transactions');
-// });
-
-// Route::get('/dashboard-settings', function () {
-//     return view('dashboard-settings');
-// });
-
-// Route::get('/dashboard-account', function () {
-//     return view('dashboard-account');
-// });
-
-// Route::get('/dashboard-transactions-details', function () {
-//     return view('dashboard-transactions-details');
-// });
-
-// Route::get('/dashboard-products-create', function () {
-//     return view('dashboard-products-create');
-// });
-
-// Route::get('/dashboard-member', function () {
-//     return view('dashboard-member');
-// });
 
 
 

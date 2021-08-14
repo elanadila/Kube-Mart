@@ -1,4 +1,4 @@
-@extends('layout/main')
+@extends('layout/account')
 
 @section('container')
  <!-- Page Content -->
@@ -55,8 +55,8 @@
                     <h3 class="multisteps-form__title">Your Order</h3>
                     </div>
                   </div>
-                  
-                </div>  
+
+                </div>
                 <div class="multisteps-form__content">
                   <div class="form-row mt-4">
                     <div class="col-12 col-sm-6">
@@ -92,6 +92,28 @@
                 <h3 class="multisteps-form__title">THANK YOU!. YOUR ORDER HAS BEEN RECEIVED</h3>
                 <div class="multisteps-form__content">
                   <div class="form-row mt-4">
+                    <table class="table">
+                      <tr>
+                        <td>Semangka <br>10.000 x 2</td>
+                        <td>200000</td>
+                      </tr>
+                      <tr>
+                        <td>Semangka <br>10.000 x 2</td>
+                        <td>200000</td>
+                      </tr>
+                      <tr>
+                        <td>Semangka <br>10.000 x 2</td>
+                        <td>200000</td>
+                      </tr>
+                      <tr>
+                        <td>Semangka <br>10.000 x 2</td>
+                        <td>200000</td>
+                      </tr>
+                      <tr>
+                        <td><h5>Total</h5></td>
+                        <td><h5>80000</h5></td>
+                      </tr>
+                    </table>
                     <div class="col">
                      Please Transfer Money Amounting to <b>Rp. 11.000 </b>
                     </div>
@@ -140,7 +162,8 @@
               </div>
                <!--single form panel-->
                <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">THANK YOU. ORDER SHIPPED IMMEDIATELY</h3>
+                <h3 class="multisteps-form__title">THANK YOU. PLEASE WAIT FOR VERIFICATION PAYMENT PROOF</h3>
+                <P>if your payment status doesnt have any update in long time, just email us in support@mail.com</P>
                 <div class="multisteps-form__content">
                   <!-- <div class="form-row mt-4">
                     <div class="col">
@@ -207,5 +230,5 @@
       </div>
     </div> -->
 
-   
+
 @endsection

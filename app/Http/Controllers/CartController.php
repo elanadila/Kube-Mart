@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -14,11 +16,18 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+      if(Auth::user()){
+         $carts = Cart::with(['product.store'])->where('user_id', auth()->user()->id)->get();
+         $totalPrice = 0;
+         foreach($carts as $cart){
+           $totalPrice += $cart->quantity * $cart->product->price;
+          //  $totalPrice += $cart->quantity * 1;
+         }
+        return view('cms.cart.index', compact('carts', 'totalPrice'));
+      }else{
+        return redirect()->route('auth.login');
+      }
 
-        $carts = Cart::all();
-        // dd($carts);
-        return view('cms.cart.index', compact('carts'));
     }
 
     public function checkout()
@@ -48,7 +57,28 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+          'product_id' => 'required',
+      ]);
+
+      if(Auth::user()){
+          $cart = Cart::where('product_id', $request->product_id)
+          ->where('user_id', auth()->user()->id)->first();
+          if($cart){
+              $cart->update([
+                  'quantity' => $cart->quantity+1,
+              ]);
+          }else{
+              Cart::create([
+                  'quantity' => 1,
+                  'user_id' => auth()->user()->id,
+                  'product_id' => $request->product_id,
+              ]);
+          }
+          return redirect()->route('cart.index');
+      }else{
+        return redirect()->route('auth.login');
+      }
     }
 
     /**
@@ -91,8 +121,21 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function remove(Request $request)
     {
-        //
+      $this->validate($request, [
+        'product_id' => 'required',
+      ]);
+
+    if(Auth::user()){
+      $cart = Cart::where('product_id', $request->product_id)
+      ->where('user_id', auth()->user()->id)->first();
+      if($cart){
+        $cart->delete();
+        return redirect()->route('cart.index');
+      }
+    }else{
+      return redirect()->route('auth.login');
     }
+  }
 }

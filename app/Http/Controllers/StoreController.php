@@ -23,15 +23,47 @@ class StoreController extends Controller
         // return view('store.toko', compact('stores'));
         // return \View::make('asddsa');
         // return view('asddsa', $products);
-        return view('public.store.index', compact('stores'));
+        $auth= auth()->user()->role;
+        // return $auth;
+        if(auth()->user()->role == User::ROLE_KUBE){
+            return view('cms.store.index', compact('stores'));
+        }
+
+        elseif(auth()->user()->role == User::ROLE_ADMIN){
+            return view('cms.admin.store.index', compact('stores'));
+        }
+
     }
 
-    public function indexAccount()
+    public function registerSubmit(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:181',
+            'namatoko' => 'nullable|max:181',
+            'password' => 'required|min:8',
+            'email' => 'required|email|unique:users',
+        ]);
+
+       $store =  Store::create([
+            'name' => $request->namatoko,
+            'category_store_id' => $request->category_store_id
+        ]);
+
+        $request['store_id'] = $store->id;
+        $request['password'] = bcrypt($request->password);
+        $request['role'] = User::ROLE_KUBE;
+        User::create($request->only('name', 'email','password', 'store_id', 'role'));
+       
+        return redirect()->route('cms.admin.store.index')->with(['success' => 'Successful Registration']);
+
+    }
+
+    public function indexPublic()
     {
         //
         $stores = Store::all();
         // dd($products);
-        return view('store.dashboard-account', compact('stores'));
+        return view('public.store.index', compact('stores'));
         // return \View::make('asddsa');
         // return view('asddsa', $products);
     }
@@ -55,6 +87,10 @@ class StoreController extends Controller
     public function create()
     {
         //
+        $stores = Store::all();
+        $categories = CategoryStore::all();
+        // return view(self::BASE_VIEW_DIR . 'register', compact('categories'));
+        return view('cms.admin.store.create', compact('categories'));
     }
 
     /**
@@ -87,9 +123,18 @@ class StoreController extends Controller
      * @param  \App\Store  $store
      * @return \Illuminate\Http\Response
      */
+
+    
     public function edit(Store $store)
     {
         //
+        $user = auth()->user();
+        $store = Store::where('id', $user->store_id)->first();;
+        // return($store->name);
+        if($store){
+            return view('cms.store.edit', compact('store'));
+        }
+        abort(500);
     }
 
     /**
@@ -102,6 +147,27 @@ class StoreController extends Controller
     public function update(Request $request, Store $store)
     {
         //
+        $user = auth()->user();
+        $this->validate($request, [
+            'name' => 'required|max:181',
+            'phone' => 'required|numeric',
+            'address' => 'required',
+            'description' => 'required',
+        ]);
+        $data = Store::where('id', $user->store_id)->first();;
+
+        if($data){
+
+            $data->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'description' => $request->description,
+            'store_id' => $user->store_id,
+            ]);
+            return redirect()->back()->with(['success' => 'Store successfully Updated']);;
+        }
+        return redirect()->back()->with(['danger' => 'Data not found, Update Failed!']);;
     }
 
     /**

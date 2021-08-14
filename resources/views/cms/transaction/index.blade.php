@@ -114,8 +114,8 @@ body, html {
                     <div class="row mt-3">
                       <div class="col-12 mt-2">
                         <a
-                          class="card card-list d-block"
-                          href="/dashboard-transactions-details"
+                          class="card card-list d-block {{ (request()->is('transaction/store*')) ? 'active' : '' }}"
+                          href="{{ route('transaction.detail')}}"
                         >
                           <div class="card-body">
                             <div class="row">
@@ -133,66 +133,6 @@ body, html {
                               </div>
                               <div class="col-md-3">
                                 12 Januari, 2020
-                              </div>
-                              <div class="col-md-1 d-none d-md-block">
-                                <img
-                                  src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                        <a
-                          class="card card-list d-block"
-                          href="/dashboard-transactions-details"
-                        >
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-1">
-                                <img
-                                  src="{{ ('../assets/img/dashboard-icon-product-2.png') }}"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="col-md-4">
-                                Kangkung
-                              </div>
-                              <div class="col-md-3">
-                              Sukabirus Mart
-                              </div>
-                              <div class="col-md-3">
-                                11 January, 2020
-                              </div>
-                              <div class="col-md-1 d-none d-md-block">
-                                <img
-                                  src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                        <a
-                          class="card card-list d-block"
-                          href="/dashboard-transactions-details"
-                        >
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-1">
-                                <img
-                                  src="{{ ('../assets/img/dashboard-icon-product-3.png') }}"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="col-md-4">
-                                Jagung
-                              </div>
-                              <div class="col-md-3">
-                              Bojongsoang Mart
-                              </div>
-                              <div class="col-md-3">
-                                11 January, 2020
                               </div>
                               <div class="col-md-1 d-none d-md-block">
                                 <img
@@ -259,7 +199,7 @@ body, html {
                       <div class="col-12 mt-2">
                         <a
                           class="card card-list d-block"
-                          href="/dashboard-transactions-details"
+                          href="{{ route('transaction.detail') }}"
                         >
                           <div class="card-body">
                             <div class="row">
@@ -281,66 +221,6 @@ body, html {
                               <div class="col-md-1 d-none d-md-block">
                                 <img
                                   src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                        <a
-                          class="card card-list d-block"
-                          href="/dashboard-transactions-details"
-                        >
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-1">
-                                <img
-                                  src="{{ ('../assets/img/dashboard-icon-product-2.png') }}"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="col-md-4">
-                                Vitamin
-                              </div>
-                              <div class="col-md-3">
-                                Buah Batu Mart
-                              </div>
-                              <div class="col-md-3">
-                                11 January, 2020
-                              </div>
-                              <div class="col-md-1 d-none d-md-block">
-                                <img
-                                  src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                        <a
-                          class="card card-list d-block"
-                          href="/dashboard-transactions-details"
-                        >
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-1">
-                                <img
-                                  src="{{ ('assets/img/dashboard-icon-product-3.png') }}"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="col-md-4">
-                                Semangka
-                              </div>
-                              <div class="col-md-3">
-                                Soekarno Hatta Mart
-                              </div>
-                              <div class="col-md-3">
-                                11 January, 2020
-                              </div>
-                              <div class="col-md-1 d-none d-md-block">
-                                <img
-                                  src="{{ ('assets/img/dashboard-arrow-right.svg') }}"
                                   alt=""
                                 />
                               </div>

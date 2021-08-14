@@ -13,6 +13,7 @@ class Transaction extends Model
 
     protected $fillable = [
         'id',
+        'invoice',
         'address',
         'province',
         'city',

@@ -50,7 +50,8 @@ class AuthController extends Controller
 
         $request['store_id'] = $store->id;
         $request['password'] = bcrypt($request->password);
-        User::create($request->only('name', 'email','password', 'store_id'));
+        $request['role'] = User::ROLE_KUBE;
+        User::create($request->only('name', 'email','password', 'store_id', 'role'));
        
         return redirect()->back()->with(['success' => 'Successful Registration']);
 

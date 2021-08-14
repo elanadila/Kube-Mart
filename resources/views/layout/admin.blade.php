@@ -26,6 +26,9 @@
           </a>
 		    </div>
           <div class="list-group list-group-flush">
+          @if(auth()->user()->role == \App\User::ROLE_KUBE)
+           
+       
             <a
               href="{{ route('dashboard.index')}}"
               class="list-group-item list-group-item-action  {{ Request::is('dashboard') ? 'active' : '' }}">
@@ -41,21 +44,52 @@
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/transaction*')) ? 'active' : '' }}"
               >Transactions</a
             >
+          
             <!-- <a
               href="/dashboard-settings"
               class="list-group-item list-group-item-action"
               >Store Settings</a
             > -->
-            <a
+            <!-- <a
               href="{{ route('user.index')}}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/user*')) ? 'active' : '' }}"
               >Anggota Kube Mart</a
+            > -->
+            <a
+              href="{{ route('store.edit')}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
+              >My Account</a
+            >
+        
+          @elseif(auth()->user()->role == \App\User::ROLE_ADMIN)
+          <a
+              href="{{ route('dashboard.index')}}"
+              class="list-group-item list-group-item-action  {{ Request::is('dashboard') ? 'active' : '' }}">
+              Dashboard</a
             >
             <a
               href="{{ route('store.index')}}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
-              >My Account</a
+              >Store</a
             >
+            <!-- <a
+              href="{{ route('transaction.index')}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/transaction*')) ? 'active' : '' }}"
+              >Report</a
+            > -->
+          
+          @endif
+            <!-- <a
+              href="/dashboard-settings"
+              class="list-group-item list-group-item-action"
+              >Store Settings</a
+            > -->
+            <!-- <a
+              href="{{ route('user.index')}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/user*')) ? 'active' : '' }}"
+              >Anggota Kube Mart</a
+            > -->
+            
           </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -102,7 +136,9 @@
                       alt=""
                       class="rounded-circle mr-2 profile-picture"
                     />
-                    Hi, Ela
+                
+                    Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+
                   </a>
                 </li>
                 <li class="nav-item">
@@ -115,7 +151,7 @@
               <ul class="navbar-nav d-block d-lg-none mt-3">
                 <li class="nav-item">
                   <a class="nav-link" href="#">
-                    Hi, Ela
+                    Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
                   </a>
                 </li>
                 <li class="nav-item">

@@ -1,13 +1,13 @@
 @extends('layout/account')
 
 @section('container')
-  
-     
+
+
       <!-- Mobile Menu -->
       <ul class="navbar-nav d-block d-lg-none">
         <li class="nav-item">
           <a class="nav-link" href="{{ route('cart.index') }}">
-            Hi, Rich
+            Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
           </a>
         </li>
         <li class="nav-item">
@@ -91,14 +91,14 @@
           </div>
           <div class="col-lg-6">
             <h1> {{$product->name}}</h1>
-            <div class="owner">By Galih Pratama</div>
+            <div class="owner">By {{$product->store->name}}</div>
             <div class="price">Rp. {{$product->price}}</div>
             <div class="store-description"> {{$product->description}}</div>
           </div>
           <div class="col-lg-2" data-aos="zoom-in">
             <a
               class="btn btn-success nav-link px-4 text-white btn-block mb-3"
-              href=" {{ route('cart.index') }}"
+              href=" {{ route('cart.store') . '?product_id=' . $product->id }}"
               >Add to Cart</a
             >
           </div>
@@ -161,5 +161,5 @@
     </section>
   </div>
 </div>
-   
+
 @endsection

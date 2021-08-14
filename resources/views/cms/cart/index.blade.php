@@ -1,4 +1,4 @@
-@extends('layout/main')
+@extends('layout/account')
 
 @section('container')
 <div class="page-content page-cart">
@@ -35,33 +35,50 @@
                 <th scope="col">Image</th>
                 <th scope="col">Name &amp; Seller</th>
                 <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
                 <th scope="col">Menu</th>
               </tr>
             </thead>
             <tbody>
+              @forelse($carts as $cart)
               <tr>
-                <td style="width: 25%;">
+                <td style="width: 20%;">
                   <img
-                    src="{{ ('assets/img/product-cart-1.jpg') }}"
+                    src="{{ url('storage/'.$cart->product->photo) }}"
                     alt=""
                     class="cart-image"
                   />
                 </td>
-                <td style="width: 35%;">
-                  <div class="product-title">Sofa Ternyaman</div>
-                  <div class="product-subtitle">by Andi Sukka</div>
-                </td>
-                <td style="width: 35%;">
-                  <div class="product-title">Rp. 29.112</div>
-                  <div class="product-subtitle">Rupiah</div>
+                <td style="width: 30%;">
+                  <div class="product-title">{{ $cart->product->name }}</div>
+                  <div class="product-subtitle">{{ $cart->product->store->name }}</div>
                 </td>
                 <td style="width: 20%;">
-                  <a href="#" class="btn btn-remove-cart">
+                  <div class="product-title">Rp. {{$cart->product->price}}</div>
+                  <div class="product-subtitle">Rupiah</div>
+                </td>
+                <td style="width: 10%;">
+                <div class="product-title">{{$cart->quantity}}</div>
+                    
+                </td>
+                <td style="width: 20%;">
+                <div class="product-title">Rp. {{$cart->quantity * $cart->product->price}}</div>
+                </td>
+                <td style="width: 15%;">
+                  <a href="{{ route('cart.remove') . '?product_id='.$cart->product->id }}" class="btn btn-remove-cart">
                     Remove
                   </a>
                 </td>
               </tr>
+              @empty
               <tr>
+                <td>
+                0 Cart found
+                </td>
+              </tr>
+              @endforelse
+              <!-- <tr>
                 <td style="width: 25%;">
                   <img
                     src="{{ ('assets/img/product-cart-2.jpg') }}"
@@ -104,7 +121,7 @@
                     Remove
                   </a>
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         </div>
@@ -198,12 +215,12 @@
           <div class="product-subtitle">Ship to Jakarta</div>
         </div>
         <div class="col-4 col-md-2">
-          <div class="product-title text-success">Rp. 392.409</div>
+          <div class="product-title text-success">Rp. {{ $totalPrice }}</div>
           <div class="product-subtitle">Total</div>
         </div>
         <div class="col-8 col-md-3">
           <a
-            href=" {{ route('cart.checkout') }}"
+            href=" {{ route('checkout.step-1') }}"
             class="btn btn-success mt-4 px-4 btn-block"
           >
             Checkout Now
@@ -214,5 +231,5 @@
   </section>
 </div>
 
-   
+
 @endsection

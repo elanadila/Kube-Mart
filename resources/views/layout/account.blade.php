@@ -26,7 +26,7 @@
     >
       <div class="container">
         <a class="navbar-brand" href="dashboard.html">
-          <img src="images/logo.svg" alt="" />
+          <img src="{{ ('../assets/img/logo.svg') }}" alt="" />
         </a>
         <button
           class="navbar-toggler"
@@ -41,22 +41,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home </a>
+            <li class="{{ Request::is('/') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('home.index')}}">Home </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/categories">Categories</a>
+            <li class="{{ Request::is('categories') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('category.index')}}">Categories</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/maps">Address</a>
+            <li class="{{ Request::is('map') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('/map')}}">Address</a>
             </li>
-			<li class="nav-item">
-              <a class="nav-link" href="/toko">Toko</a>
+			      <li class="{{ Request::is('store') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('/store')}}">Store</a>
             </li>
           </ul>
 
           <!-- Desktop Menu -->
           <ul class="navbar-nav d-none d-lg-flex">
+            @if(auth()->check(Auth::check()))
             <li class="nav-item dropdown">
               <a
                 class="nav-link"
@@ -68,11 +69,11 @@
                 aria-expanded="false"
               >
                 <img
-                  src="images/icon-user.png"
+                  src="{{ ('../assets/img/icon-user.png') }}"
                   alt=""
                   class="rounded-circle mr-2 profile-picture"
                 />
-                Hi, Rich
+                Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="dashboard.html">Dashboard</a>
@@ -83,9 +84,11 @@
                 <a class="dropdown-item" href="#">Logout</a>
               </div>
             </li>
+            @else
+            @endif
             <li class="nav-item">
               <a class="nav-link d-inline-block mt-2" href="/cart">
-                <img src="images/icon-cart-empty.svg" alt="" />
+                <img src="{{ ('../assets/img/icon-cart-empty.svg') }}" alt="" />
               </a>
             </li>
           </ul>
@@ -94,7 +97,7 @@
           <ul class="navbar-nav d-block d-lg-none">
             <li class="nav-item">
               <a class="nav-link" href="/cart">
-                Hi, Rich
+                Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
               </a>
             </li>
             <li class="nav-item">
@@ -134,6 +137,7 @@
     <script type="text/javascript" src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>
 
     <script  type="text/javascript" src="{{ asset('/assets/function.js') }}"></script>
+    <script  type="text/javascript" src="{{ asset('/assets/script.js') }}"></script>
 
     <script>
       AOS.init();

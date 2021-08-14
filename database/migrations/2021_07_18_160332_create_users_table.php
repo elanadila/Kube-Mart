@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->text('password');
             $table->string('phone', 20)->nullable();
             $table->text('address')->nullable();
-            $table->enum('role', ['Customer', 'Seller', 'Admin'])->nullable();
+            $table->enum('role', ['Kube', 'Admin'])->nullable();
             $table->text('photo')->nullable();
             $table->BigInteger('store_id')->unsigned();
             $table->timestamps();

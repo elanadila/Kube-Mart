@@ -46,7 +46,7 @@
                   >
                     <div class="row mt-3">
                       <div class="col-12 mt-2">
-                      @foreach( $users as $user)
+                
                         <a
                           class="card card-list d-block"
                           href="/dashboard-transactions-details"
@@ -60,13 +60,13 @@
                                 />
                               </div>
                               <div class="col-md-3">
-                                {{$user->name}}
+                            hyh
                               </div>
                               <div class="col-md-4">
-                                {{$user->address}}
+                           jyrj
                               </div>
                               <div class="col-md-3">
-                              {{$user->phone}}
+                            yfj
                               </div>
                               <div class="col-md-1 d-none d-md-block">
                                 <img
@@ -77,7 +77,7 @@
                             </div>
                           </div>
                         </a>
-                        @endforeach
+           
                         
                       </div>
                     </div>

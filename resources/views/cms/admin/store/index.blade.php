@@ -1,13 +1,28 @@
-@extends('layout/main')
+@extends('layout/admin')
 
 @section('container')
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Dashboard - Your Best Marketplace</title>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="style/main.css" rel="stylesheet" />
+  </head>
+
+  <body>
  <!-- Page Content -->
- <div class="page-content page-home">
+ <div class="page-dashboard">
    
-      
-   <section class="store-new-products">
-        <div class="container">
-            <div class="container">
+    
             <!-- Page Content -->
         <div id="page-content-wrapper">
           
@@ -17,11 +32,21 @@
             >
             <div class="container-fluid">
               <div class="dashboard-heading">
-                <h2 class="dashboard-title">List Toko</h2>
+                <h2 class="dashboard-title">List KUBE</h2>
                 <p class="dashboard-subtitle">
                   Berikut Adalah List Toko KUBE Mart
                 </p>
               </div>
+              <div class="row">
+                  <div class="col-12">
+                  @include('layout.alert')
+                    <a
+                      href="{{ route('store.create') }}"
+                      class="btn btn-success"
+                      >Add New Store (Registration)</a
+                    >
+                  </div>
+                </div>
               <div class="dashboard-content">
                 <div class="tab-content" id="myTabContent">
                   <div
@@ -35,13 +60,13 @@
                       @foreach( $stores as $store)
                         <a
                           class="card card-list d-block"
-                          href="/store/{{ $store->id }}"
+                          href="{{ route('store.create') }}  /store/{{ $store->id }}"
                         >
                           <div class="card-body">
                             <div class="row">
                               <div class="col-md-1">
                                 <img
-                                  src="{{ ('assets/img/dashboard-icon-product-1.png') }}"
+                                  src="{{ ('../assets/img/dashboard-icon-product-1.png') }}"
                                   alt=""
                                 />
                               </div>
@@ -72,9 +97,5 @@
             </div>
           </div>
 
-
-     </div>
-     </div>
-   </section>
    
 @endsection

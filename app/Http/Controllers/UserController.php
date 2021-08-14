@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Store;
 use Illuminate\Http\Request;
+use App\User;
+use View;
 
 class UserController extends Controller
 {
@@ -17,7 +20,14 @@ class UserController extends Controller
         // $user = auth()->user();
         // // $products = Product::with('category')->where('store_id', $user->store_id)->get();
         // return view('cms.user.index', compact('users'));
-        return view('cms.user.index');
+        $user = auth()->user();
+        $users = User::where('store_id', $user->store_id)->get();;
+        // return($user);
+        // if($store){
+        //     return view('cms.store.edit', compact('store'));
+        // }
+        // abort(500);
+        return view('cms.user.index', compact('users'));
     }
 
     /**
