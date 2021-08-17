@@ -30,9 +30,9 @@
           >
             <div class="container-fluid">
               <div class="dashboard-heading">
-                <h2 class="dashboard-title">My Account</h2>
+                <h2 class="dashboard-title">Store {{$store->name}}</h2>
                 <p class="dashboard-subtitle">
-                  Update your current profile
+                  Update your current store
                 </p>
               </div>
               @include('layout.alert')
@@ -46,7 +46,7 @@
                           <div class="row mb-2">
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="name">Your Name</label>
+                                <label for="name">Your Store Name</label>
                                 <input
                                   type="text"
                                   class="form-control"
@@ -74,6 +74,33 @@
                                 @if($errors->has('phone'))
                                   <div class="text-danger">{{ $errors->first('phone') }}</div>
                                 @endif
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="email">Email</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="email"
+                                  aria-describedby="emailHelp"
+                                  name="email"
+                                  value="{{auth()->user()->email}}"
+                                />
+                                @if($errors->has('name'))
+                                  <div class="text-danger">{{ $errors->first('name') }}</div>
+                                @endif
+                              </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                              <div class="form-group" v-if="is_store_open">
+                                <label>Category</label>
+                                <select name="category_store_id" class="form-control">
+                                  @foreach($categories as $category)
+                                  <option value="{{$product->category->name}}" >{{$category->name}}</option>
+                                  @endforeach
+                                </select>
                               </div>
                             </div>
                             <div class="col-md-12">
@@ -108,75 +135,17 @@
                                 @endif
                               </div>
                             </div>
-                            <!-- <div class="col-md-4">
-                              <div class="form-group">
-                                <label for="province">Province</label>
-                                <select
-                                  name="province"
-                                  id="province"
-                                  class="form-control"
-                                >
-                                  <option value="West Java">West Java</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                <label for="city">City</label>
-                                <select
-                                  name="city"
-                                  id="city"
-                                  class="form-control"
-                                >
-                                  <option value="Bandung">Bandung</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                <label for="postalCode">Postal Code</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="postalCode"
-                                  name="postalCode"
-                                  value="40512"
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label for="country">Country</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="country"
-                                  name="country"
-                                  value="Indonesia"
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label for="mobile">Mobile</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="mobile"
-                                  name="mobile"
-                                  value="+628 2020 11111"
-                                />
-                              </div>
-                            </div> -->
-                          </div>
-                          <div class="row">
-                            <div class="col text-right">
+                            <div class="col">
                               <button
                                 type="submit"
-                                class="btn btn-success px-5"
+                                class="btn btn-success btn-block px-5"
                               >
-                                Save Now
+                                Update Data
                               </button>
+                              <a href="{{ route('store.delete', $store->id) }}" class="btn btn-danger btn-block px-5">
+                                Delete this Store
+                              </a>
+                              
                             </div>
                           </div>
                         </div>

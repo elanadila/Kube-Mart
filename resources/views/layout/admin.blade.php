@@ -56,7 +56,7 @@
               >Anggota Kube Mart</a
             > -->
             <a
-              href="{{ route('store.edit')}}"
+              href="{{ route('store.editAdmin', auth()->user()->store_id) }}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
               >My Account</a
             >
@@ -140,6 +140,14 @@
                     Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
 
                   </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="dashboard.html">Dashboard</a>
+                    <a class="dropdown-item" href="dashboard-account.html"
+                      >Settings</a
+                    >
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ url('auth/logout') }}">Logout</a>
+                  </div>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-inline-block mt-2" href="cart.html">

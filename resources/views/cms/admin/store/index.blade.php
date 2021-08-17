@@ -60,7 +60,7 @@
                       @foreach( $stores as $store)
                         <a
                           class="card card-list d-block"
-                          href="{{ route('store.create') }}  /store/{{ $store->id }}"
+                          href="{{ route('store.edit', $store->id) }}"
                         >
                           <div class="card-body">
                             <div class="row">

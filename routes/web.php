@@ -72,6 +72,7 @@ Route::prefix('/auth')->group(function (){
     Route::post('/login', 'AuthController@loginSubmit')->name('auth.login-submit');
     Route::get('/register', 'AuthController@register')->name('auth.register');
     Route::post('/register', 'AuthController@registerSubmit')->name('auth.register-submit');
+    Route::get('/logout', 'AuthController@logout')->name('auth.logout');
 });
 
 Route::group(['middleware' => 'auth'], function(){
@@ -122,9 +123,11 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::prefix('/store')->group(function (){
             Route::get('/', 'StoreController@index')->name('store.index');
-            Route::get('/edit', 'StoreController@edit')->name('store.edit');
+            Route::get('/editAdmin/{id}', 'StoreController@editAdmin')->name('store.editAdmin');
             Route::get('/create', 'StoreController@create')->name('store.create');
+            Route::get('/edit/{id}', 'StoreController@edit')->name('store.edit');
             Route::post('/update/{id}', 'StoreController@update')->name('store.update');
+            Route::get('/delete/{id}', 'StoreController@delete')->name('store.delete');
             Route::post('/register', 'StoreController@registerSubmit')->name('store.register-submit');
 
         });

@@ -125,12 +125,29 @@ class StoreController extends Controller
      */
 
     
-    public function edit(Store $store)
+    public function edit($id)
     {
         //
-        $user = auth()->user();
-        $store = Store::where('id', $user->store_id)->first();;
-        // return($store->name);
+        // $store = Category::all();
+        $store = Store::find($id);
+        // $user = auth()->user();
+        // $store = Store::where('id', $user->store_id)->first();;
+        // return($store);
+        if($store){
+            return view('cms.admin.store.edit', compact('store'));
+        }
+        abort(500);
+    }
+
+    
+    public function editAdmin($id)
+    {
+        //
+        // $store = Category::all();
+        $store = Store::find($id);
+        // $user = auth()->user();
+        // $store = Store::where('id', $user->store_id)->first();;
+        // return($store);
         if($store){
             return view('cms.store.edit', compact('store'));
         }
@@ -144,26 +161,34 @@ class StoreController extends Controller
      * @param  \App\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Store $store)
+    public function update(Request $request, $id)
     {
         //
         $user = auth()->user();
         $this->validate($request, [
             'name' => 'required|max:181',
+            'email' => 'required|email|unique:users',
             'phone' => 'required|numeric',
+            'category_id' => 'required',
             'address' => 'required',
             'description' => 'required',
         ]);
-        $data = Store::where('id', $user->store_id)->first();;
+
+        $data = Store::where('id', $id)->first();
+
+        $user = User::where('id', auth()->user()->id)->first();
 
         if($data){
 
             $data->update([
             'name' => $request->name,
             'phone' => $request->phone,
+            'category_store_id' => $request->category_id,
             'address' => $request->address,
             'description' => $request->description,
-            'store_id' => $user->store_id,
+            ]);
+            $user->update([
+                'email' => $request->email,
             ]);
             return redirect()->back()->with(['success' => 'Store successfully Updated']);;
         }

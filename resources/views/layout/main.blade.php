@@ -54,6 +54,34 @@
             <!-- <li class="nav-item {{ Request::is('auth/register') ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('auth/register')}}">Sign Up</a>
             </li> -->
+            @if(auth()->user())
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img
+                  src="images/icon-user.png"
+                  alt=""
+                  class="rounded-circle mr-2 profile-picture"
+                />
+                Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="dashboard.html">Dashboard</a>
+                <a class="dropdown-item" href="dashboard-account.html"
+                  >Settings</a
+                >
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url('auth/logout') }}">Logout</a>
+              </div>
+            </li>
+            @else
             <li class="nav-item {{ Request::is('auth/login') ? 'active' : '' }}">
               <a
                 class="btn btn-success nav-link px-4 text-white "
@@ -61,6 +89,7 @@
                 >Sign In</a
               >
             </li>
+            @endif
           </ul>
         </div>
       </div>
