@@ -23,7 +23,7 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-        
+
           <div
             class="section-content section-dashboard-home"
             data-aos="fade-up"
@@ -76,7 +76,7 @@
                                 @endif
                               </div>
                             </div>
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                               <div class="form-group">
                                 <label for="email">Email</label>
                                 <input
@@ -85,20 +85,24 @@
                                   id="email"
                                   aria-describedby="emailHelp"
                                   name="email"
-                                  value="{{auth()->user()->email}}"
+                                  value=""
                                 />
                                 @if($errors->has('name'))
                                   <div class="text-danger">{{ $errors->first('name') }}</div>
                                 @endif
                               </div>
-                            </div>
-                            
+                            </div> -->
+
                             <div class="col-md-6">
                               <div class="form-group" v-if="is_store_open">
                                 <label>Category</label>
                                 <select name="category_store_id" class="form-control">
                                   @foreach($categories as $category)
-                                  <option value="{{$product->category->name}}" >{{$category->name}}</option>
+                                  @if($store->category_store_id == $category->id)
+                                  <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                                  @else
+                                  <option value="{{$category->id}}" >{{$category->name}}</option>
+                                  @endif
                                   @endforeach
                                 </select>
                               </div>
@@ -145,7 +149,7 @@
                               <a href="{{ route('store.delete', $store->id) }}" class="btn btn-danger btn-block px-5">
                                 Delete this Store
                               </a>
-                              
+
                             </div>
                           </div>
                         </div>

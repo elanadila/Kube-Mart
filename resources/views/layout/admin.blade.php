@@ -56,9 +56,15 @@
               >Anggota Kube Mart</a
             > -->
             <a
-              href="{{ route('store.editAdmin', auth()->user()->store_id) }}"
+              href="{{ route('store.editKube', auth()->user()->store_id) }}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
               >My Account</a
+            >
+
+            <a
+              href="{{ route('store.editKube', auth()->user()->store_id) }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
+              >Report</a
             >
         
           @elseif(auth()->user()->role == \App\User::ROLE_ADMIN)
@@ -71,6 +77,11 @@
               href="{{ route('store.index')}}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
               >Store</a
+            >
+            <a
+              href="{{ route('store.editKube', auth()->user()->store_id) }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
+              >Report</a
             >
             <!-- <a
               href="{{ route('transaction.index')}}"
@@ -137,12 +148,12 @@
                       class="rounded-circle mr-2 profile-picture"
                     />
                 
-                    Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+                    Hi, KUBE {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
 
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="dashboard.html">Dashboard</a>
-                    <a class="dropdown-item" href="dashboard-account.html"
+                    <a class="dropdown-item" href="/">Go To Shopping</a>
+                    <a class="dropdown-item" href="{{ route('store.editKube', auth()->user()->store_id) }}"
                       >Settings</a
                     >
                     <div class="dropdown-divider"></div>
@@ -159,7 +170,7 @@
               <ul class="navbar-nav d-block d-lg-none mt-3">
                 <li class="nav-item">
                   <a class="nav-link" href="#">
-                    Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+                    Hi, KUBE {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
                   </a>
                 </li>
                 <li class="nav-item">

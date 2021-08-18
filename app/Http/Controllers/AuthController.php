@@ -53,7 +53,7 @@ class AuthController extends Controller
         $request['role'] = User::ROLE_KUBE;
         User::create($request->only('name', 'email','password', 'store_id', 'role'));
        
-        return redirect()->back()->with(['success' => 'Successful Registration']);
+        return redirect()->route('store.index')->with(['success' => 'Successful Registration']);
 
     }
 

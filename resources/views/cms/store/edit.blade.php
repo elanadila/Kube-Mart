@@ -39,7 +39,7 @@
               <div class="dashboard-content">
                 <div class="row">
                   <div class="col-12">
-                    <form action="{{ route('store.update', $store->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('store.updateKube', $store->id) }}" method="POST" enctype="multipart/form-data">
                       @csrf
                       <div class="card">
                         <div class="card-body">

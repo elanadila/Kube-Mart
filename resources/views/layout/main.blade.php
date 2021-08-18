@@ -70,11 +70,11 @@
                   alt=""
                   class="rounded-circle mr-2 profile-picture"
                 />
-                Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+                Hi, KUBE {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="dashboard.html">Dashboard</a>
-                <a class="dropdown-item" href="dashboard-account.html"
+                <a class="dropdown-item" href="{{ route('dashboard.index')}}">Dashboard</a>
+                <a class="dropdown-item" href="{{ route('store.editKube', auth()->user()->store_id) }}"
                   >Settings</a
                 >
                 <div class="dropdown-divider"></div>

@@ -123,7 +123,8 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::prefix('/store')->group(function (){
             Route::get('/', 'StoreController@index')->name('store.index');
-            Route::get('/editAdmin/{id}', 'StoreController@editAdmin')->name('store.editAdmin');
+            Route::get('/editKube/{id}', 'StoreController@editKube')->name('store.editKube');
+            Route::post('/updateKube/{id}', 'StoreController@updateKube')->name('store.updateKube');
             Route::get('/create', 'StoreController@create')->name('store.create');
             Route::get('/edit/{id}', 'StoreController@edit')->name('store.edit');
             Route::post('/update/{id}', 'StoreController@update')->name('store.update');

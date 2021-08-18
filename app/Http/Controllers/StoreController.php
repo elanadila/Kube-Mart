@@ -53,8 +53,8 @@ class StoreController extends Controller
         $request['password'] = bcrypt($request->password);
         $request['role'] = User::ROLE_KUBE;
         User::create($request->only('name', 'email','password', 'store_id', 'role'));
-       
-        return redirect()->route('cms.admin.store.index')->with(['success' => 'Successful Registration']);
+
+        return redirect()->route('store.index')->with(['success' => 'Successful Registration']);
 
     }
 
@@ -67,7 +67,7 @@ class StoreController extends Controller
         // return \View::make('asddsa');
         // return view('asddsa', $products);
     }
-  
+
 
     public function updateStore()
     {
@@ -124,7 +124,7 @@ class StoreController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
+
     public function edit($id)
     {
         //
@@ -134,13 +134,14 @@ class StoreController extends Controller
         // $store = Store::where('id', $user->store_id)->first();;
         // return($store);
         if($store){
-            return view('cms.admin.store.edit', compact('store'));
+          $categories = CategoryStore::all();
+          return view('cms.admin.store.edit', compact('store', 'categories'));
         }
         abort(500);
     }
 
-    
-    public function editAdmin($id)
+
+    public function editKube($id)
     {
         //
         // $store = Category::all();
@@ -152,6 +153,40 @@ class StoreController extends Controller
             return view('cms.store.edit', compact('store'));
         }
         abort(500);
+    }
+
+    public function updateKube(Request $request, $id)
+    {
+        //
+        $user = auth()->user();
+        $this->validate($request, [
+            'name' => 'required|max:181',
+            // 'email' => 'required|email|unique:users',
+            'phone' => 'required|numeric',
+            // 'category_store_id' => 'required',
+            'address' => 'required',
+            'description' => 'required',
+        ]);
+
+        $data = Store::where('id', $id)->first();
+
+        // $user = User::where('id', auth()->user()->id)->first();
+
+        if($data){
+
+            $data->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            // 'category_store_id' => $request->category_store_id,
+            'address' => $request->address,
+            'description' => $request->description,
+            ]);
+            // $user->update([
+            //     'email' => $request->email,
+            // ]);
+            return redirect()->back()->with(['success' => 'Account Store Successfully Updated']);;
+        }
+        return redirect()->back()->with(['danger' => 'Data not found, Update Failed!']);;
     }
 
     /**
@@ -167,29 +202,29 @@ class StoreController extends Controller
         $user = auth()->user();
         $this->validate($request, [
             'name' => 'required|max:181',
-            'email' => 'required|email|unique:users',
+            // 'email' => 'required|email|unique:users',
             'phone' => 'required|numeric',
-            'category_id' => 'required',
+            // 'category_store_id' => 'required',
             'address' => 'required',
             'description' => 'required',
         ]);
 
         $data = Store::where('id', $id)->first();
 
-        $user = User::where('id', auth()->user()->id)->first();
+        // $user = User::where('id', auth()->user()->id)->first();
 
         if($data){
 
             $data->update([
             'name' => $request->name,
             'phone' => $request->phone,
-            'category_store_id' => $request->category_id,
+            // 'category_store_id' => $request->category_store_id,
             'address' => $request->address,
             'description' => $request->description,
             ]);
-            $user->update([
-                'email' => $request->email,
-            ]);
+            // $user->update([
+            //     'email' => $request->email,
+            // ]);
             return redirect()->back()->with(['success' => 'Store successfully Updated']);;
         }
         return redirect()->back()->with(['danger' => 'Data not found, Update Failed!']);;
@@ -201,8 +236,20 @@ class StoreController extends Controller
      * @param  \App\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Store $store)
+    public function delete($id)
     {
-        //
+      $user = auth()->user();
+      $data = Store::where('id', $id)->first();
+    //   $user = User::where('id', auth()->user()->id)->first();
+      if($data){
+        $data->delete();
+        // $user->delete();
+        return redirect()->route('store.index')->with(['success' => 'Product successfully DELETED']);;
+      }
+      return redirect()->route('store.index')->with(['danger' => 'Product not found']);;
     }
 }
+
+
+
+
