@@ -26,32 +26,23 @@
     <div class="container">
       <div class="row" data-aos="fade-up" data-aos-delay="100">
         <div class="col-12 table-responsive">
+        
         <div class="multisteps-form__content">
                   <div class="form-row mt-4">
                     <table class="table">
+                    @foreach($products as $product)
+                       
                       <tr>
-                        <td>Semangka <br>10.000 x 2</td>
-                        <td>200000</td>
+                        <td>{{ $product['name'] }} 
+                          <br>Rp. {{$product['price'] }} x {{$product['quantity']}}</td>
+                        <td>Rp. {{$product['quantity'] * $product['price']}}</td>
                       </tr>
-                      <tr>
-                        <td>Semangka <br>10.000 x 2</td>
-                        <td>200000</td>
-                      </tr>
-                      <tr>
-                        <td>Semangka <br>10.000 x 2</td>
-                        <td>200000</td>
-                      </tr>
-                      <tr>
-                        <td>Semangka <br>10.000 x 2</td>
-                        <td>200000</td>
-                      </tr>
-                      <tr>
-                        <td><h5>Total</h5></td>
-                        <td><h5>80000</h5></td>
-                      </tr>
+                      @endforeach
+                    
                     </table>
+                    {{$transaction->address}}
                     <div class="col">
-                     Please Transfer Money Amounting to <b>Rp. 11.000 </b>
+                     Please Transfer Money Amounting to <b>Rp. {{$transaction->total_price}} </b>
                     </div>
                   </div>
                   <div class="form-row mt-4">

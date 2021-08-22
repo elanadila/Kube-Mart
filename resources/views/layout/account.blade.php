@@ -97,7 +97,10 @@
           <ul class="navbar-nav d-block d-lg-none">
             <li class="nav-item">
               <a class="nav-link" href="/cart">
+              @if(auth()->check(Auth::check()))
                 Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+              @endif
+                
               </a>
             </li>
             <li class="nav-item">

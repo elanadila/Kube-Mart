@@ -7,7 +7,7 @@
       <ul class="navbar-nav d-block d-lg-none">
         <li class="nav-item">
           <a class="nav-link" href="{{ route('cart.index') }}">
-            Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+            Hi, {{is_null($product->store) ? "-" : $product->store->name}}
           </a>
         </li>
         <li class="nav-item">

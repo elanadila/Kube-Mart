@@ -123,17 +123,16 @@ class ProductController extends Controller
         return view('product.product-details', compact('product'));
     }
 
-    public function detail(Product $product)
+    public function detail($id)
     {
         //
         // $products = DB::table('products')->find($id);
 
         // $products =  DB::table('products')->where('id',$id)->first();
-
-
+        // return response()->json(auth()->user()->store());
         // return $stores->name;
 
-        $products = Product::with('store')->where('store_id')->get();
+        $product = Product::with('store')->where('id', $id)->first();
         // return ($products->name);
         return view('public.home.detail', compact('product'));
     }

@@ -28,12 +28,12 @@ class TransactionController extends Controller
         return view('transaction.dashboard-transactions', compact('transactions'));
     }
 
-    public function detail()
+    public function detail(Transaction $transaction)
     {
     //   $categories = Transaction::all();
     //   $product = Product::find($id);
     //   if($product){
-        $transaction = Transaction::all();
+        $transaction = Transaction::with('store')->where('store_id')->get();
         return view('cms.transaction.detail', compact('transaction'));
     //   }
     //   abort(500);

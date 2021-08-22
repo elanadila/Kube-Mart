@@ -20,7 +20,7 @@ class CartController extends Controller
          $carts = Cart::with(['product.store'])->where('user_id', auth()->user()->id)->get();
          $totalPrice = 0;
          foreach($carts as $cart){
-           $totalPrice += $cart->quantity * $cart->product->price;
+          $totalPrice += $cart->quantity * (is_null($cart->product) ? 0 : $cart->product->price);
           //  $totalPrice += $cart->quantity * 1;
          }
         return view('cms.cart.index', compact('carts', 'totalPrice'));

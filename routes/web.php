@@ -13,7 +13,7 @@
 
 Route::get('/', 'ProductController@indexPublic')->name('home.index');
 Route::get('/categories', 'CategoryStoreController@index')->name('category.index');
-Route::get('/product/detail/{product}', 'ProductController@detail')->name('home.detail');
+Route::get('/product/detail/{id}', 'ProductController@detail')->name('home.detail');
 
 Route::get('/map', 'StoreController@updateStore')->name('map.index');
 

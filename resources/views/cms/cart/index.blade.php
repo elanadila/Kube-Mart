@@ -42,20 +42,21 @@
             </thead>
             <tbody>
               @forelse($carts as $cart)
+              @if(!is_null($cart->product))
               <tr>
                 <td style="width: 20%;">
                   <img
-                    src="{{ url('storage/'.$cart->product->photo) }}"
+                    src="{{ url('storage/'.(is_null($cart->product) ? 0 : $cart->product->price) ) }}"
                     alt=""
                     class="cart-image"
                   />
                 </td>
                 <td style="width: 30%;">
-                  <div class="product-title">{{ $cart->product->name }}</div>
-                  <div class="product-subtitle">{{ $cart->product->store->name }}</div>
+                  <div class="product-title">{{ (is_null($cart->product) ? '-' : $cart->product->name) }}</div>
+                  <div class="product-subtitle">{{ (is_null($cart->product) ? 0 : $cart->product->store->name)  }}</div>
                 </td>
                 <td style="width: 20%;">
-                  <div class="product-title">Rp. {{$cart->product->price}}</div>
+                  <div class="product-title">Rp. {{ (is_null($cart->product) ? 0 :  $cart->product->price) }}</div>
                   <div class="product-subtitle">Rupiah</div>
                 </td>
                 <td style="width: 10%;">
@@ -63,7 +64,7 @@
                     
                 </td>
                 <td style="width: 20%;">
-                <div class="product-title">Rp. {{$cart->quantity * $cart->product->price}}</div>
+                <div class="product-title">Rp. {{$cart->quantity * (is_null($cart->product) ? 0 : $cart->product->price)}}</div>
                 </td>
                 <td style="width: 15%;">
                   <a href="{{ route('cart.remove') . '?product_id='.$cart->product->id }}" class="btn btn-remove-cart">
@@ -71,6 +72,7 @@
                   </a>
                 </td>
               </tr>
+              @endif
               @empty
               <tr>
                 <td>
@@ -134,18 +136,23 @@
           <h2 class="mb-4">Shipping Details</h2>
         </div>
       </div>
+      <form method="POST" action="{{ route('checkout.step-1-submit') }}" class="mt-3">
+      @csrf
       <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="addressOne">Address</label>
+            <label for="address">Address</label>
             <input
               type="text"
               class="form-control"
-              id="addressOne"
-              aria-describedby="emailHelp"
-              name="addressOne"
-              value="Setra Duta Cemara"
+              id="address"
+              aria-describedby="address"
+              name="address"
+              value="{{ old('address' )}}"
             />
+            @if($errors->has('address'))
+              <div class="text-danger">{{ $errors->first('address') }}</div>
+            @endif
           </div>
         </div>
         <div class="col-md-4">
@@ -156,6 +163,9 @@
             </select>
           </div>
         </div>
+        @if($errors->has('province'))
+          <div class="text-danger">{{ $errors->first('province') }}</div>
+        @endif
         <div class="col-md-4">
           <div class="form-group">
             <label for="city">City</label>
@@ -164,18 +174,24 @@
             </select>
           </div>
         </div>
+        @if($errors->has('city'))
+          <div class="text-danger">{{ $errors->first('city') }}</div>
+        @endif
         <div class="col-md-4">
           <div class="form-group">
-            <label for="postalCode">Postal Code</label>
+            <label for="postal_code">Postal Code</label>
             <input
               type="text"
               class="form-control"
-              id="postalCode"
-              name="postalCode"
-              value="40512"
+              id="postal_code"
+              name="postal_code"
+              value="{{ old('postal_code' )}}"
             />
           </div>
         </div>
+        @if($errors->has('postal_code'))
+          <div class="text-danger">{{ $errors->first('postal_code') }}</div>
+        @endif
         <div class="col-md-6">
           <div class="form-group">
             <label for="country">Country</label>
@@ -184,22 +200,39 @@
               class="form-control"
               id="country"
               name="country"
-              value="Indonesia"
+              value="{{ old('country' )}}"
             />
           </div>
         </div>
+        @if($errors->has('country'))
+          <div class="text-danger">{{ $errors->first('country') }}</div>
+        @endif
         <div class="col-md-6">
           <div class="form-group">
-            <label for="mobile">Mobile</label>
+            <label for="phone">Mobile</label>
             <input
               type="text"
               class="form-control"
-              id="mobile"
-              name="mobile"
-              value="+628 2020 11111"
+              id="phone"
+              name="phone"
+              value="{{ old('phone' )}}"
             />
           </div>
         </div>
+        @if($errors->has('phone'))
+          <div class="text-danger">{{ $errors->first('phone') }}</div>
+        @endif
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="courier">Courier</label>
+            <select name="courier" id="courier" class="form-control">
+              <option value="JNE">JNE</option>
+            </select>
+          </div>
+        </div>
+        @if($errors->has('courier'))
+          <div class="text-danger">{{ $errors->first('courier') }}</div>
+        @endif
       </div>
       <div class="row" data-aos="fade-up" data-aos-delay="150">
         <div class="col-12">
@@ -219,14 +252,14 @@
           <div class="product-subtitle">Total</div>
         </div>
         <div class="col-8 col-md-3">
-          <a
-            href=" {{ route('checkout.step-1') }}"
+          <button type="submit" 
             class="btn btn-success mt-4 px-4 btn-block"
           >
             Checkout Now
           </a>
         </div>
       </div>
+      </form>
     </div>
   </section>
 </div>
