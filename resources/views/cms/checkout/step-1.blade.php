@@ -38,16 +38,27 @@
                         <td>Rp. {{$product['quantity'] * $product['price']}}</td>
                       </tr>
                       @endforeach
-                    
-                    </table>
-                    {{$transaction->address}}
+                    </table> 
+                  </div>
+                  <div class="form-row mt-4">
                     <div class="col">
-                     Please Transfer Money Amounting to <b>Rp. {{$transaction->total_price}} </b>
+                    <b>Billing Address</b>
                     </div>
                   </div>
                   <div class="form-row mt-4">
                     <div class="col">
-                    Transfer to Account: MANDIRI : 13011293846
+                      {{$transaction->address}},  {{$transaction->city}}, {{$transaction->province}}, {{$transaction->country}}, {{$transaction->postal_code}}.
+                    </div>
+                   
+                  </div>
+                  <div class="form-row mt-4">
+                    <div class="col">
+                     Please <b>Transfer</b> Money Amounting to <b>Rp. {{$transaction->total_price}} </b>
+                    </div>
+                  </div>
+                  <div class="form-row mt-4">
+                    <div class="col">
+                    Transfer to Account: <b>MANDIRI : 13011293846</b>
                     </div>
                   </div>
                   <div class="form-row mt-4">

@@ -18,13 +18,15 @@
 
   <body>
     <!-- Navigation -->
-    <nav
+     <!-- Desktop Menu -->
+     <nav
       class="navbar navbar-expand-lg navbar-light navbar-store fixed-top navbar-fixed-top"
       data-aos="fade-down"
+      aria-label="Navbar"
     >
       <div class="container">
         <a class="navbar-brand" href="dashboard.html">
-          <img src="{{ ('../assets/img/logo.png') }}" alt="" />
+          <img src="{{ ('../assets/img/logo.svg') }}" alt="" />
         </a>
         <button
           class="navbar-toggler"
@@ -49,12 +51,13 @@
               <a class="nav-link" href="{{ url('/map')}}">Address</a>
             </li>
 			      <li class="{{ Request::is('store') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('store.indexPublic')}}">Store</a>
+              <a class="nav-link" href="{{ url('/store')}}">Store</a>
             </li>
-            <!-- <li class="nav-item {{ Request::is('auth/register') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('auth/register')}}">Sign Up</a>
-            </li> -->
-            @if(auth()->user())
+          </ul>
+
+          <!-- Desktop Menu -->
+          <ul class="navbar-nav d-none d-lg-flex">
+            @if(auth()->check(Auth::check()))
             <li class="nav-item dropdown">
               <a
                 class="nav-link"
@@ -66,14 +69,14 @@
                 aria-expanded="false"
               >
                 <img
-                  src="images/icon-user.png"
+                  src="{{ ('../assets/img/icon-user.png') }}"
                   alt=""
                   class="rounded-circle mr-2 profile-picture"
                 />
-                Hi, KUBE {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+                Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('dashboard.index')}}">Dashboard</a>
+              <a class="dropdown-item" href="{{ route('dashboard.index')}}">Dashboard</a>
                 <a class="dropdown-item" href="{{ route('store.editKube', auth()->user()->store_id) }}"
                   >Settings</a
                 >
@@ -82,18 +85,34 @@
               </div>
             </li>
             @else
-            <li class="nav-item {{ Request::is('auth/login') ? 'active' : '' }}">
-              <a
-                class="btn btn-success nav-link px-4 text-white "
-                href="{{ url('auth/login') }}"
-                >Sign In</a
-              >
-            </li>
             @endif
+            <li class="nav-item">
+              <a class="nav-link d-inline-block mt-2" href="/cart">
+                <img src="{{ ('../assets/img/icon-cart-empty.svg') }}" alt="" />
+              </a>
+            </li>
+          </ul>
+
+          <!-- Mobile Menu -->
+          <ul class="navbar-nav d-block d-lg-none">
+            <li class="nav-item">
+              <a class="nav-link" href="/cart">
+              @if(auth()->check(Auth::check()))
+                Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+              @endif
+                
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-inline-block" href="#">
+                Cart
+              </a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
+
 
     @yield('container')
 

@@ -161,7 +161,7 @@
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link d-inline-block mt-2" href="cart.html">
+                  <a class="nav-link d-inline-block mt-2" href="/cart">
                     <img src="{{ ('../assets/img/icon-cart-empty.svg') }}" alt="" />
                   </a>
                 </li>
@@ -174,7 +174,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link d-inline-block" href="#">
+                  <a class="nav-link d-inline-block" href="/cart">
                     Cart
                   </a>
                 </li>

@@ -119,6 +119,7 @@ body, html {
                         >
                           <div class="card-body">
                             <div class="row">
+                              @foreach($products as $product)
                               <div class="col-md-1">
                                 <img
                                   src="{{ ('../assets/img/dashboard-icon-product-1.png') }}"
@@ -126,20 +127,25 @@ body, html {
                                 />
                               </div>
                               <div class="col-md-4">
-                                Beras
+                             {{$product->name}} 
                               </div>
                               <div class="col-md-3">
                                 Sukapura Mart
                               </div>
+                              @endforeach
+                              @foreach($transactions as $transaction)
+                             
                               <div class="col-md-3">
-                                12 Januari, 2020
+                              {{$transaction->created_at}} 
                               </div>
+                              @endforeach
                               <div class="col-md-1 d-none d-md-block">
                                 <img
                                   src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
                                   alt=""
                                 />
                               </div>
+                             
                             </div>
                           </div>
                         </a>

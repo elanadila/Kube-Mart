@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
+use App\ProductTransaction;
+use App\Store;
+use App\User;
+use App\Product;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -15,9 +19,18 @@ class TransactionController extends Controller
     public function index()
     {
         //
-        $transactions = Transaction::all();
+        // $user = auth()->user();
+        $transactions = Transaction::with('products_transactions')->get();
+        $products = Product::with('products_transactions')->get();
+        // return($products);
+        // $products[]=[
+        //     'name' => $cart->product->name,
+        //     'quantity' => $cart->quantity,
+        //     'price' => $cart->product->price,
+        //     'total' => $cart->product->price * $cart->quantity,
+        //   ];
         // dd($carts);
-        return view('cms.transaction.index', compact('transactions'));
+        return view('cms.transaction.index', compact('transactions','products'));
     }
 
     public function indexTransaction()

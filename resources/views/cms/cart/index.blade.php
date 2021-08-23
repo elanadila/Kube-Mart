@@ -46,7 +46,7 @@
               <tr>
                 <td style="width: 20%;">
                   <img
-                    src="{{ url('storage/'.(is_null($cart->product) ? 0 : $cart->product->price) ) }}"
+                    src="{{ url('storage/'.(is_null($cart->product) ? 0 : $cart->product->photo) ) }}"
                     alt=""
                     class="cart-image"
                   />
