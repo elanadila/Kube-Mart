@@ -111,75 +111,34 @@ body, html {
                     role="tabpanel"
                     aria-labelledby="sell-tab"
                   >
+                  @foreach($transactionSell as $productTransaction)
                     <div class="row mt-3">
                       <div class="col-12 mt-2">
                         <a
                           class="card card-list d-block {{ (request()->is('transaction/store*')) ? 'active' : '' }}"
-                          href="{{ route('transaction.detail')}}"
+                          href="{{ route('transaction.detail', $productTransaction->transaction_id) }}"
                         >
+                        
                           <div class="card-body">
                             <div class="row">
-                              @foreach($products as $product)
+                             
                               <div class="col-md-1">
                                 <img
-                                  src="{{ ('../assets/img/dashboard-icon-product-1.png') }}"
+                                  src="{{ url('storage/'.$productTransaction->product->photo) }}"
+                                  class="w-100 mb-3"
                                   alt=""
                                 />
                               </div>
                               <div class="col-md-4">
-                             {{$product->name}} 
+                              {{$productTransaction->product->name}} 
                               </div>
                               <div class="col-md-3">
-                                Sukapura Mart
+                              {{$productTransaction->product->store->name}} 
                               </div>
-                              @endforeach
-                              @foreach($transactions as $transaction)
-                             
+                           
+
                               <div class="col-md-3">
-                              {{$transaction->created_at}} 
-                              </div>
-                              @endforeach
-                              <div class="col-md-1 d-none d-md-block">
-                                <img
-                                  src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
-                                  alt=""
-                                />
-                              </div>
-                             
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="tab-pane fade"
-                    id="buy"
-                    role="tabpanel"
-                    aria-labelledby="buy-tab"
-                    >
-                    <div class="row mt-3">
-                      <div class="col-12 mt-2">
-                        <a
-                          class="card card-list d-block"
-                          href="/dashboard-transactions-details"
-                        >
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-1">
-                                <img
-                                  src="{{ ('../assets/img/dashboard-icon-product-1.png') }}"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="col-md-4">
-                                Anggur
-                              </div>
-                              <div class="col-md-3">
-                                Logam Mart
-                              </div>
-                              <div class="col-md-3">
-                                12 Januari, 2020
+                              {{$productTransaction->created_at}} 
                               </div>
                               <div class="col-md-1 d-none d-md-block">
                                 <img
@@ -187,11 +146,14 @@ body, html {
                                   alt=""
                                 />
                               </div>
+                              
                             </div>
                           </div>
+                          
                         </a>
                       </div>
                     </div>
+                    @endforeach
                   </div>
                 </div>
                 <div class="tabcontent" id="Buy">
@@ -201,28 +163,38 @@ body, html {
                     role="tabpanel"
                     aria-labelledby="sell-tab"
                   >
+                  @foreach($transactionBuy as $productTransactionBuy)
                     <div class="row mt-3">
                       <div class="col-12 mt-2">
                         <a
                           class="card card-list d-block"
-                          href="{{ route('transaction.detail') }}"
+                          href="/dashboard-transactions-details"
                         >
                           <div class="card-body">
                             <div class="row">
-                              <div class="col-md-1">
+                            <div class="col-md-1">
+                                @foreach($productTransactionBuy->products_transactions as $product)
                                 <img
-                                  src="{{ ('../assets/img/dashboard-icon-product-1.png') }}"
+                                  src="{{ url('storage/'.$product->product->photo) }}"
                                   alt=""
+                                  class="w-100 mb-3"
                                 />
+                                @endforeach
                               </div>
                               <div class="col-md-4">
-                                Banana
+                              @foreach($productTransactionBuy->products_transactions as $product)
+                                  {{$product->product->name}}
+                                @endforeach
                               </div>
                               <div class="col-md-3">
-                                Margacinta Mart
+                              @foreach($productTransactionBuy->products_transactions as $product)
+                                  {{$product->product->store->name}}
+                                @endforeach
                               </div>
+                           
+
                               <div class="col-md-3">
-                                12 Januari, 2020
+                              {{$productTransactionBuy->created_at}} 
                               </div>
                               <div class="col-md-1 d-none d-md-block">
                                 <img
@@ -235,6 +207,7 @@ body, html {
                         </a>
                       </div>
                     </div>
+                    @endforeach
                   </div>
                 </div>
               </div>

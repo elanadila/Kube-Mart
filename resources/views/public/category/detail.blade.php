@@ -7,51 +7,8 @@
   <body>
     <!-- Page Content -->
 	  <div class="page-content page-home">
-      <section class="store-carousel">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12" data-aos="zoom-in">
-              <div
-                id="storeCarousel"
-                class="carousel slide"
-                data-ride="carousel"
-              >
-                <ol class="carousel-indicators">
-                  <li
-                    data-target="#storeCarousel"
-                    data-slide-to="0"
-                    class="active"
-                  ></li>
-                  <li data-target="#storeCarousel" data-slide-to="1"></li>
-                  <li data-target="#storeCarousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-				  <div class="slider">
-				  <figure>
-					<div class="slide">
-                    <img
-                      src="{{ ('assets/img/banner1.jpg') }}"
-                      class="d-block w-100"
-                      alt="Carousel Image"
-                    />
-					</div>
-                  <div class="slide">
-                    <img
-                      src="{{ ('assets/img/banner2.jpg') }}"
-                      class="d-block w-100"
-                      alt="Carousel Image"
-                    />
-                  </div>
-				  </figure>
-				  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="store-trend-categories">
+
+    <section class="store-trend-categories">
         <div class="container">
           <div class="row">
             <div class="col-12" data-aos="fade-up">
@@ -67,13 +24,13 @@
               <a class="component-categories d-block" href="{{ route('category.detail', 1) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/categories-baby.svg') }}"
+                    src="{{ ('../../assets/img/vegetable.png') }}"
                     alt="Gadgets Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                  UKM Pertanian
+                  Sumber Sayuran
                 </p>
               </a>
             </div>
@@ -85,13 +42,13 @@
               <a class="component-categories d-block" href="{{ route('category.detail', 2) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/categories-gadgets.svg') }}"
+                    src="{{ ('../../assets/img/fruits.png') }}"
                     alt="Furniture Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                UKM Pangan
+                Sumber Buah Buahan
                 </p>
               </a>
             </div>
@@ -103,13 +60,13 @@
               <a class="component-categories d-block" href="{{ route('category.detail', 3) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/categories-makeup.svg') }}"
+                    src="{{ ('../../assets/img/carbohydrates.png') }}"
                     alt="Makeup Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                UKM Souvenir
+                Sumber Karbohid
                 </p>
               </a>
             </div>
@@ -121,49 +78,13 @@
               <a class="component-categories d-block" href="{{ route('category.detail', 4) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/categories-sneaker.svg') }}"
+                    src="{{ ('../../assets/img/protein.png') }}"
                     alt="Sneaker Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                UKM Peternakan
-                </p>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-3 col-lg-2"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <a class="component-categories d-block" href="{{ route('category.detail', 4) }}">
-                <div class="categories-image">
-                  <img
-                    src="{{ ('assets/img/categories-tools.svg') }}"
-                    alt="Sneaker Categories"
-                    class="w-100"
-                  />
-                </div>
-                <p class="categories-text">
-                UKM Kerajinan
-                </p>
-              </a>
-            </div>
-            <div
-              class="col-6 col-md-3 col-lg-2"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <a class="component-categories d-block" href="{{ route('category.detail', 4) }}">
-                <div class="categories-image">
-                  <img
-                    src="{{ ('assets/img/categories-furniture.svg') }}"
-                    alt="Sneaker Categories"
-                    class="w-100"
-                  />
-                </div>
-                <p class="categories-text">
-                UKM Kesenian
+                Sumber Protein
                 </p>
               </a>
             </div>

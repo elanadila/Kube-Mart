@@ -75,10 +75,22 @@ Route::prefix('/auth')->group(function (){
     Route::get('/logout', 'AuthController@logout')->name('auth.logout');
 });
 
+Route::prefix('/category')->group(function (){
+    // Route::get('/', 'CategoryController@index')->name('category.index');
+    Route::get('/create', 'CategoryController@create')->name('category.create');
+    Route::get('/detail/{id}', 'CategoryStoreController@detail')->name('category.detail');
+    Route::post('/store', 'CategoryController@store')->name('category.store');
+    Route::get('/edit/{id}', 'CategoryController@edit')->name('category.edit');
+    Route::post('/update/{id}', 'CategoryController@update')->name('category.update');
+    Route::post('/delete/{id}', 'CategoryController@delete')->name('category.delete');
+});
+
+
 Route::group(['middleware' => 'auth'], function(){
 
     Route::prefix('/dashboard')->group(function (){
         Route::get('/', 'DashboardController@index')->name('dashboard.index');
+        Route::get('/indexAdmin', 'DashboardController@indexAdmin')->name('dashboard.indexAdmin');
 
         Route::get('/auth/logout', 'AuthController@logout')->name('auth.logout');
 
@@ -93,15 +105,7 @@ Route::group(['middleware' => 'auth'], function(){
             // Route::post('/update/{id}', 'UserController@update')->name('category.update');
         });
 
-//         Route::prefix('/category')->group(function (){
-//             Route::get('/', 'CategoryController@index')->name('category.index');
-//             Route::get('/create', 'CategoryController@create')->name('category.create');
-//             Route::post('/store', 'CategoryController@store')->name('category.store');
-//             Route::get('/edit/{id}', 'CategoryController@edit')->name('category.edit');
-//             Route::post('/update/{id}', 'CategoryController@update')->name('category.update');
-//             Route::post('/delete/{id}', 'CategoryController@delete')->name('category.delete');
-//         });
-
+        
         Route::prefix('/product')->group(function (){
             Route::get('/', 'ProductController@index')->name('product.index');
             Route::get('/create', 'ProductController@create')->name('product.create');
@@ -135,7 +139,15 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::prefix('/transaction')->group(function (){
             Route::get('/', 'TransactionController@index')->name('transaction.index');
-            Route::get('/detail', 'TransactionController@detail')->name('transaction.detail');
+            Route::get('/detail/{id}', 'TransactionController@detail')->name('transaction.detail');
+            Route::get('/report', 'TransactionController@report')->name('transaction.report');;
+            Route::get('/export_excel', 'TransactionController@export_excel')->name('transaction.export_excel');
+            Route::get('/invoice', 'TransactionController@indexTransaction');
+
+            Route::get('/indexAdmin', 'TransactionController@indexAdmin')->name('transaction.indexAdmin');
+            Route::get('/detailAdmin/{id}', 'TransactionController@detailAdmin')->name('transaction.detailAdmin');
+            Route::get('/reportAdmin', 'TransactionController@reportAdmin')->name('transaction.reportAdmin');;
+            Route::get('/export_excel_admin', 'TransactionController@export_excel_admin')->name('transaction.export_excel_admin');
             Route::get('/invoice', 'TransactionController@indexTransaction');
         });
 

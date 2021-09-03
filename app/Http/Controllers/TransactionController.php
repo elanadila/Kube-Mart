@@ -8,6 +8,9 @@ use App\Store;
 use App\User;
 use App\Product;
 use Illuminate\Http\Request;
+use App\Exports\TransactionExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class TransactionController extends Controller
 {
@@ -16,21 +19,17 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
-        // $user = auth()->user();
-        $transactions = Transaction::with('products_transactions')->get();
-        $products = Product::with('products_transactions')->get();
-        // return($products);
-        // $products[]=[
-        //     'name' => $cart->product->name,
-        //     'quantity' => $cart->quantity,
-        //     'price' => $cart->product->price,
-        //     'total' => $cart->product->price * $cart->quantity,
-        //   ];
-        // dd($carts);
-        return view('cms.transaction.index', compact('transactions','products'));
+        $products = Product::where('store_id', auth()->user()->store_id)->get('id');
+        $temporaryProductId = [];
+        foreach($products as $product){
+          $temporaryProductId[] = $product->id;
+        }
+        $transactionSell = ProductTransaction::with('product', 'product.store')->whereIn('product_id', $temporaryProductId)->orderBy('transaction_id', 'desc')->get();
+        $transactionBuy = Transaction::with('products_transactions', 'products_transactions.product', 'products_transactions.product.store')->where('user_id', auth()->user()->id)->get();
+        return view('cms.transaction.index', compact('transactionSell', 'transactionBuy'));
     }
 
     public function indexTransaction()
@@ -41,15 +40,78 @@ class TransactionController extends Controller
         return view('transaction.dashboard-transactions', compact('transactions'));
     }
 
-    public function detail(Transaction $transaction)
+    public function detail($id)
     {
-    //   $categories = Transaction::all();
-    //   $product = Product::find($id);
-    //   if($product){
-        $transaction = Transaction::with('store')->where('store_id')->get();
+      $transaction = Transaction::with(['products_transactions', 'products_transactions.product', 'user'])->find($id);
+
+      if($transaction){
         return view('cms.transaction.detail', compact('transaction'));
-    //   }
-    //   abort(500);
+      }
+      abort(404);
+    }
+
+    public function report()
+    {
+        $products = Product::where('store_id', auth()->user()->store_id)->get('id');
+        $temporaryProductId = [];
+        foreach($products as $product){
+          $temporaryProductId[] = $product->id;
+        }
+        $transactionSell = ProductTransaction::with('product', 'product.store')->whereIn('product_id', $temporaryProductId)->orderBy('transaction_id', 'desc')->get();
+        $transactionBuy = Transaction::with('products_transactions', 'products_transactions.product', 'products_transactions.product.store')->where('user_id', auth()->user()->id)->get();
+        return view('cms.transaction.report', compact('transactionSell', 'transactionBuy'));
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new TransactionExport, 'transaction.xlsx');
+    }
+
+    public function indexAdmin()
+    {
+        $products = Product::get('id');
+        $temporaryProductId = [];
+        foreach($products as $product){
+          $temporaryProductId[] = $product->id;
+        }
+        $transactionSell = ProductTransaction::with('product', 'product.store')->whereIn('product_id', $temporaryProductId)->orderBy('transaction_id', 'desc')->get();
+        $transactionBuy = Transaction::with('products_transactions', 'products_transactions.product', 'products_transactions.product.store')->get();
+        return view('cms.admin.transaction.index', compact('transactionSell', 'transactionBuy'));
+    }
+
+    public function indexTransactionAdmin()
+    {
+        //
+        $transactions = Transaction::all();
+        // dd($carts);
+        return view('transaction.dashboard-transactions', compact('transactions'));
+    }
+
+    public function detailAdmin($id)
+    {
+      $transaction = Transaction::with(['products_transactions', 'products_transactions.product', 'user'])->find($id);
+
+      if($transaction){
+        return view('cms.admin.transaction.detail', compact('transaction'));
+      }
+      abort(404);
+    }
+
+    public function reportAdmin()
+    {
+        $products = Product::get('id');
+        $temporaryProductId = [];
+        foreach($products as $product){
+          $temporaryProductId[] = $product->id;
+        }
+        $transactionSell = ProductTransaction::with('product', 'product.store')->whereIn('product_id', $temporaryProductId)->orderBy('transaction_id', 'desc')->get();
+        $transactionBuy = Transaction::with('products_transactions', 'products_transactions.product', 'products_transactions.product.store')->get();
+        return view('cms.admin.transaction.report', compact('transactionSell', 'transactionBuy'));
+    }
+
+    public function export_excel_admin()
+    {
+        return Excel::download(new TransactionExport, 'transaction.xlsx');
     }
 
     /**

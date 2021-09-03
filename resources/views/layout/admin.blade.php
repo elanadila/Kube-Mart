@@ -62,14 +62,14 @@
             >
 
             <a
-              href="{{ route('store.editKube', auth()->user()->store_id) }}"
-              class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
+              href="{{ route('transaction.report', auth()->user()->store_id) }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/transaction*')) ? 'active' : '' }}"
               >Report</a
             >
         
           @elseif(auth()->user()->role == \App\User::ROLE_ADMIN)
           <a
-              href="{{ route('dashboard.index')}}"
+              href="{{ route('dashboard.indexAdmin')}}"
               class="list-group-item list-group-item-action  {{ Request::is('dashboard') ? 'active' : '' }}">
               Dashboard</a
             >
@@ -78,9 +78,10 @@
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
               >Store</a
             >
+
             <a
-              href="{{ route('store.editKube', auth()->user()->store_id) }}"
-              class="list-group-item list-group-item-action {{ (request()->is('dashboard/store*')) ? 'active' : '' }}"
+              href="{{ route('transaction.indexAdmin')}}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/transaction*')) ? 'active' : '' }}"
               >Report</a
             >
             <!-- <a

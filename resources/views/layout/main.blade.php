@@ -53,6 +53,7 @@
 			      <li class="{{ Request::is('store') ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('/store')}}">Store</a>
             </li>
+           
           </ul>
 
           <!-- Desktop Menu -->
@@ -84,13 +85,21 @@
                 <a class="dropdown-item" href="{{ url('auth/logout') }}">Logout</a>
               </div>
             </li>
-            @else
-            @endif
+           
             <li class="nav-item">
               <a class="nav-link d-inline-block mt-2" href="/cart">
                 <img src="{{ ('../assets/img/icon-cart-empty.svg') }}" alt="" />
               </a>
             </li>
+            @else
+            <li class="nav-item {{ Request::is('auth/login') ? 'active' : '' }}">
+              <a
+                class="btn btn-success nav-link px-4 text-white "
+                href="{{ url('auth/login') }}"
+                >Sign In</a
+              >
+            </li>
+            @endif
           </ul>
 
           <!-- Mobile Menu -->

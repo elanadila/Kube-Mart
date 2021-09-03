@@ -19,7 +19,15 @@ class CategoryStoreController extends Controller
         $categorystores = CategoryStore::all();
         $products = Product::all();
         // $categorystores = CategoryStore::with('product')->get();
-        return view('public.category.index', compact('products'));
+        return view('public.category.detail', compact('products'));
+    }
+
+    public function detail($id)
+    {
+        //
+        $products = Product::where('category_id', $id)->get();
+        // $categorystores = CategoryStore::with('product')->get();
+        return view('public.category.detail', compact('products'));
     }
 
     /**
