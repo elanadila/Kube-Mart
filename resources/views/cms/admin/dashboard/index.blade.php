@@ -7,7 +7,7 @@
   <body>
         <!-- Page Content -->
         <div id="page-content-wrapper">
-        
+
           <div
             class="section-content section-dashboard-home"
             data-aos="fade-up"
@@ -28,7 +28,7 @@
                           Customer
                         </div>
                         <div class="dashboard-card-subtitle">
-                          15,209
+                        {{ count($totalCustomer)}}
                         </div>
                       </div>
                     </div>
@@ -40,7 +40,7 @@
                           Revenue
                         </div>
                         <div class="dashboard-card-subtitle">
-                          Rp. 931,290
+                        Rp. {{$totalRevenue}}
                         </div>
                       </div>
                     </div>
@@ -52,7 +52,7 @@
                           Transaction
                         </div>
                         <div class="dashboard-card-subtitle">
-                          22,409,399
+                        {{count($totalTransaction)}}
                         </div>
                       </div>
                     </div>
@@ -66,10 +66,10 @@
                           class="card card-list d-block {{ (request()->is('transaction/store*')) ? 'active' : '' }}"
                           href="{{ route('transaction.detail', $productTransaction->transaction_id) }}"
                         >
-                        
+
                           <div class="card-body">
                             <div class="row">
-                             
+
                               <div class="col-md-1">
                                 <img
                                   src="{{ url('storage/'.$productTransaction->product->photo) }}"
@@ -78,15 +78,15 @@
                                 />
                               </div>
                               <div class="col-md-4">
-                              {{$productTransaction->product->name}} 
+                              {{$productTransaction->product->name}}
                               </div>
                               <div class="col-md-3">
-                              {{$productTransaction->product->store->name}} 
+                              {{$productTransaction->product->store->name}}
                               </div>
-                           
+
 
                               <div class="col-md-3">
-                              {{$productTransaction->created_at}} 
+                              {{$productTransaction->created_at}}
                               </div>
                               <div class="col-md-1 d-none d-md-block">
                                 <img
@@ -94,10 +94,10 @@
                                   alt=""
                                 />
                               </div>
-                              
+
                             </div>
                           </div>
-                          
+
                         </a>
                         @endforeach
                         @foreach($transactionBuy as $productTransactionBuy)
@@ -126,10 +126,10 @@
                                   {{$product->product->store->name}}
                                 @endforeach
                               </div>
-                           
+
 
                               <div class="col-md-3">
-                              {{$productTransactionBuy->created_at}} 
+                              {{$productTransactionBuy->created_at}}
                               </div>
                               <div class="col-md-1 d-none d-md-block">
                                 <img

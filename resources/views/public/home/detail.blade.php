@@ -92,6 +92,7 @@
           <div class="col-lg-6">
             <h1> {{$product->name}}</h1>
             <div class="owner">By {{$product->store->name}}</div>
+            <div class="owner">Stock : {{$product->stock}}</div>
             <div class="price">Rp. {{$product->price}}</div>
             <div class="store-description"> {{$product->description}}</div>
           </div>

@@ -41,7 +41,7 @@
                     <div class="text-danger">{{ $errors->first('password') }}</div>
                   @endif
                 </div>
-                <button type="submit" class="btn btn-success btn-block mt-4" style="    width: 75%;"> 
+                <button type="submit" class="btn btn-success btn-block mt-4" style="    width: 75%;">
                   Sign In To My Account
                 </button>
                 <a class="btn btn-signup w-75 mt-2" href="{{ url('auth/register')}}">
@@ -53,5 +53,5 @@
         </div>
       </div>
     </div>
-   
+
 @endsection

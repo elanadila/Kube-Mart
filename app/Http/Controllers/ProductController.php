@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use File;
+use Auth;
 use App\Product;
 use App\Category;
 use App\Store;
@@ -44,7 +45,13 @@ class ProductController extends Controller
       //end contoh
       // $user = auth()->user();
       // $products = Product::with('category')->where('store_id', $user->store_id)->get();
-      $products = Product::all();
+
+      if(Auth::user()){
+        $products = product::where('store_id', '!=', auth()->user()->store_id)->get();
+      }else{
+        $products = Product::all();
+      }
+
       return view('public.home.index', compact('products'));
     }
 

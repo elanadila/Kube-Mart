@@ -65,9 +65,13 @@ class CartController extends Controller
           $cart = Cart::where('product_id', $request->product_id)
           ->where('user_id', auth()->user()->id)->first();
           if($cart){
+            if($cart->quantity < 10){
               $cart->update([
-                  'quantity' => $cart->quantity+1,
+                'quantity' => $cart->quantity+1,
               ]);
+            }else{
+              return redirect()->route('cart.index')->with(['warning' => 'Maximum 10 Quantity inside your cart for every each product']);
+            }
           }else{
               Cart::create([
                   'quantity' => 1,

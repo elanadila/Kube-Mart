@@ -10,6 +10,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
+        @include('layout.alert')
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ url('/')}}">Home</a></li>
@@ -61,7 +62,7 @@
                 </td>
                 <td style="width: 10%;">
                 <div class="product-title">{{$cart->quantity}}</div>
-                    
+
                 </td>
                 <td style="width: 20%;">
                 <div class="product-title">Rp. {{$cart->quantity * (is_null($cart->product) ? 0 : $cart->product->price)}}</div>
@@ -252,7 +253,7 @@
           <div class="product-subtitle">Total</div>
         </div>
         <div class="col-8 col-md-3">
-          <button type="submit" 
+          <button type="submit"
             class="btn btn-success mt-4 px-4 btn-block"
           >
             Checkout Now
