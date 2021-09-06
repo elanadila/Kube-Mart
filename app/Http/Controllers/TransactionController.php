@@ -164,9 +164,24 @@ class TransactionController extends Controller
      * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+        'status' => 'required',
+        'receipt' => 'nullable',
+      ]);
+
+      if($request->status == Transaction::STATUS_SHIPPING){
+        Transaction::where('id', $id)->update([
+          'status' => $request->status,
+          'receipt' => $request->resi,
+        ]);
+      }else{
+        Transaction::where('id', $id)->update([
+          'status' => $request->status,
+        ]);
+      }
+      return redirect()->route('transaction.index')->with(['success' => 'Status Transaction has been Updated!']);
     }
 
     /**

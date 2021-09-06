@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Store - Your Best Marketplace</title>
+    <title>KUBE Mart</title>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{ asset('/assets/style/main.css') }}">
@@ -25,7 +25,7 @@
       aria-label="Navbar"
     >
       <div class="container">
-        <a class="navbar-brand" href="dashboard.html">
+        <a class="navbar-brand" href="/">
           <img src="{{ ('../assets/img/logo.svg') }}" alt="" />
         </a>
         <button
@@ -53,7 +53,7 @@
 			      <li class="{{ Request::is('store') ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('/store')}}">Store</a>
             </li>
-           
+
           </ul>
 
           <!-- Desktop Menu -->
@@ -74,7 +74,7 @@
                   alt=""
                   class="rounded-circle mr-2 profile-picture"
                 />
-                Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+                Hi, KUBE {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{ route('dashboard.index')}}">Dashboard</a>
@@ -85,7 +85,7 @@
                 <a class="dropdown-item" href="{{ url('auth/logout') }}">Logout</a>
               </div>
             </li>
-           
+
             <li class="nav-item">
               <a class="nav-link d-inline-block mt-2" href="/cart">
                 <img src="{{ ('../assets/img/icon-cart-empty.svg') }}" alt="" />
@@ -107,9 +107,9 @@
             <li class="nav-item">
               <a class="nav-link" href="/cart">
               @if(auth()->check(Auth::check()))
-                Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+                Hi, KUBE {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
               @endif
-                
+
               </a>
             </li>
             <li class="nav-item">

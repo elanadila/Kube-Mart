@@ -33,14 +33,7 @@ Route::get('/dashboard-account', 'StoreController@indexAccount');
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::get('/add-cart', 'CartController@store')->name('cart.store');
 Route::get('/remove-cart', 'CartController@remove')->name('cart.remove');
-Route::get('/checkout', 'CartController@checkout')->name('cart.checkout');
 
-Route::get('/checkout-step-1', 'CheckoutController@step1')->name('checkout.step-1');
-Route::post('/checkout-step-1-submit', 'CheckoutController@step1Submit')->name('checkout.step-1-submit');
-Route::get('/checkout-step-2', 'CheckoutController@step2')->name('checkout.step-2');
-Route::post('/checkout-step-2-submit', 'CheckoutController@step2Submit')->name('checkout.step-2-submit');
-Route::get('/checkout-step-3', 'CheckoutController@step3')->name('checkout.step-3');
-Route::post('/checkout-step-3-submit', 'CheckoutController@step3Submit')->name('checkout.step-3-submit');
 
 // Route::get('/dashboard-admin', 'TransactionController@index');
 // Route::get('/dashboard-transactions', 'TransactionController@indexTransaction');
@@ -88,6 +81,15 @@ Route::prefix('/category')->group(function (){
 
 Route::group(['middleware' => 'auth'], function(){
 
+  Route::get('/checkout', 'CartController@checkout')->name('cart.checkout');
+  Route::get('/checkout-step-1', 'CheckoutController@step1')->name('checkout.step-1');
+  Route::post('/checkout-step-1-submit', 'CheckoutController@step1Submit')->name('checkout.step-1-submit');
+  // Route::get('/checkout-step-2', 'CheckoutController@step2')->name('checkout.step-2');
+  Route::post('/checkout-step-2-submit', 'CheckoutController@step2Submit')->name('checkout.step-2-submit');
+  // Route::get('/checkout-step-3', 'CheckoutController@step3')->name('checkout.step-3');
+  Route::post('/checkout-step-3-submit', 'CheckoutController@step3Submit')->name('checkout.step-3-submit');
+
+
     Route::prefix('/dashboard')->group(function (){
         Route::get('/', 'DashboardController@index')->name('dashboard.index');
         Route::get('/indexAdmin', 'DashboardController@indexAdmin')->name('dashboard.indexAdmin');
@@ -105,7 +107,7 @@ Route::group(['middleware' => 'auth'], function(){
             // Route::post('/update/{id}', 'UserController@update')->name('category.update');
         });
 
-        
+
         Route::prefix('/product')->group(function (){
             Route::get('/', 'ProductController@index')->name('product.index');
             Route::get('/create', 'ProductController@create')->name('product.create');
@@ -140,7 +142,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::prefix('/transaction')->group(function (){
             Route::get('/', 'TransactionController@index')->name('transaction.index');
             Route::get('/detail/{id}', 'TransactionController@detail')->name('transaction.detail');
-            Route::get('/report', 'TransactionController@report')->name('transaction.report');;
+            Route::post('/update/{id}', 'TransactionController@update')->name('transaction.update');
             Route::get('/export_excel', 'TransactionController@export_excel')->name('transaction.export_excel');
             Route::get('/invoice', 'TransactionController@indexTransaction');
 
@@ -150,6 +152,8 @@ Route::group(['middleware' => 'auth'], function(){
             Route::get('/export_excel_admin', 'TransactionController@export_excel_admin')->name('transaction.export_excel_admin');
             Route::get('/invoice', 'TransactionController@indexTransaction');
         });
+
+        Route::get('/report', 'TransactionController@report')->name('transaction.report');
 
 
 

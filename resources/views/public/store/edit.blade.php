@@ -63,7 +63,7 @@
                       alt=""
                       class="rounded-circle mr-2 profile-picture"
                     />
-                    Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+                    Hi, KUBE {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
                   </a>
                 </li>
                 <li class="nav-item">
@@ -76,7 +76,7 @@
               <ul class="navbar-nav d-block d-lg-none mt-3">
                 <li class="nav-item">
                   <a class="nav-link" href="#">
-                    Hi, {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
+                    Hi, KUBE {{is_null(auth()->user()->store) ? "-" : auth()->user()->store->name}}
                   </a>
                 </li>
                 <li class="nav-item">

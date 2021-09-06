@@ -15,19 +15,27 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
           [
             'id' => 1,
-            'name' => 'Makanan'
+            'name' => 'Agriculture'
           ],
           [
             'id' => 2,
-            'name' => 'Obat Obatan'
+            'name' => 'Food'
           ],
           [
             'id' => 3,
-            'name' => 'Minuman & Jamu'
+            'name' => 'Souvenir'
           ],
           [
             'id' => 4,
-            'name' => 'Lifestyle'
+            'name' => 'Farm'
+          ],
+          [
+            'id' => 5,
+            'name' => 'Craft'
+          ],
+          [
+            'id' => 6,
+            'name' => 'Art'
           ],
         ]);
     }

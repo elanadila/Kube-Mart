@@ -103,7 +103,7 @@
                         @foreach($transactionBuy as $productTransactionBuy)
                         <a
                           class="card card-list d-block"
-                          href="/dashboard-transactions-details"
+                          href="{{ route('transaction.detail', $productTransactionBuy->id) }}"
                         >
                           <div class="card-body">
                             <div class="row">

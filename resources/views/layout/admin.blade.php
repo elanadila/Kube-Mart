@@ -63,7 +63,7 @@
 
             <a
               href="{{ route('transaction.report', auth()->user()->store_id) }}"
-              class="list-group-item list-group-item-action {{ (request()->is('dashboard/transaction*')) ? 'active' : '' }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/report*')) ? 'active' : '' }}"
               >Report</a
             >
         

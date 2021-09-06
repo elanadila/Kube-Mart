@@ -28,4 +28,8 @@ class Cart extends Model
       return $this->belongsTo(Product::class, 'product_id');
     }
 
+    public static function getTotalCart($userId){
+      return count(self::where('user_id', $userId)->select('id')->get());
+    }
+
 }

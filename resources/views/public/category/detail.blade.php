@@ -24,13 +24,13 @@
               <a class="component-categories d-block" href="{{ route('category.detail', 1) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('../../assets/img/vegetable.png') }}"
+                    src="{{ ('/../assets/img/agronomy.png') }}"
                     alt="Gadgets Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                  Sumber Sayuran
+                  Agriculture
                 </p>
               </a>
             </div>
@@ -42,13 +42,13 @@
               <a class="component-categories d-block" href="{{ route('category.detail', 2) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('../../assets/img/fruits.png') }}"
+                    src="{{ ('/../assets/img/fast-food.png') }}"
                     alt="Furniture Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                Sumber Buah Buahan
+                Food
                 </p>
               </a>
             </div>
@@ -60,13 +60,13 @@
               <a class="component-categories d-block" href="{{ route('category.detail', 3) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('../../assets/img/carbohydrates.png') }}"
+                    src="{{ ('/../assets/img/souvenir.png') }}"
                     alt="Makeup Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                Sumber Karbohid
+                Souvenir
                 </p>
               </a>
             </div>
@@ -78,13 +78,49 @@
               <a class="component-categories d-block" href="{{ route('category.detail', 4) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('../../assets/img/protein.png') }}"
+                    src="{{ ('/../assets/img/cow.png') }}"
                     alt="Sneaker Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                Sumber Protein
+                Farm
+                </p>
+              </a>
+            </div>
+            <div
+              class="col-6 col-md-3 col-lg-2"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <a class="component-categories d-block" href="{{ route('category.detail', 5) }}">
+                <div class="categories-image">
+                  <img
+                    src="{{ ('/../assets/img/origami.png') }}"
+                    alt="Sneaker Categories"
+                    class="w-100"
+                  />
+                </div>
+                <p class="categories-text">
+                Craft
+                </p>
+              </a>
+            </div>
+            <div
+              class="col-6 col-md-3 col-lg-2"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <a class="component-categories d-block" href="{{ route('category.detail', 6) }}">
+                <div class="categories-image">
+                  <img
+                    src="{{ ('/../assets/img/paint-palette.png') }}"
+                    alt="Sneaker Categories"
+                    class="w-100"
+                  />
+                </div>
+                <p class="categories-text">
+                Art
                 </p>
               </a>
             </div>

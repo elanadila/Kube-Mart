@@ -160,7 +160,40 @@
           <div class="form-group">
             <label for="province">Province</label>
             <select name="province" id="province" class="form-control">
+              <option value="Nangroe Aceh Darussalam">Nangroe Aceh Darussalam</option>
+              <option value="North Sumatra">North Sumatra</option>
+              <option value="West Sumatra">West Sumatra</option>
+              <option value="Riau">Riau</option>
+              <option value="Riau Islands">Riau Islands</option>
+              <option value="Jambi">Jambi </option>
+              <option value="South Sumatra">South Sumatra</option>
+              <option value="Bangka Belitung">Bangka Belitung</option>
+              <option value="Bengkulu">Bengkulu </option>
+              <option value="Lampung">Lampung </option>
+              <option value="DKI Jakarta">DKI Jakarta</option>
               <option value="West Java">West Java</option>
+              <option value="Banten">Banten</option>
+              <option value="Central Java">Central Java</option>
+              <option value="DI Yogyakarta">DI Yogyakarta</option>
+              <option value="East Java">East Java</option>
+              <option value="Bali">Bali</option>
+              <option value="West Nusa Tenggara">West Nusa Tenggara</option>
+              <option value="East Nusa Tenggara">East Nusa Tenggara</option>
+              <option value="West Kalimantan">West Kalimantan</option>
+              <option value="Central Kalimantan">Central Kalimantan</option>
+              <option value="South Kalimantan">South Kalimantan</option>
+              <option value="East Kalimantan"> East Kalimantan</option>
+              <option value="North Kalimantan">North Kalimantan</option>
+              <option value="North Sulawesi">North Sulawesi</option>
+              <option value="West Sulawesi">West Sulawesi</option>
+              <option value="Central Sulawesi">Central Sulawesi</option>
+              <option value="Southeast Sulawesi">Southeast Sulawesi</option>
+              <option value="South Sulawesi">South Sulawesi</option>
+              <option value="Gorontalo">Gorontalo</option>
+              <option value="Maluku">Maluku</option>
+              <option value="North Maluku">North Maluku</option>
+              <option value="West Papua">West Papua</option>
+              <option value="Papua">Papua</option>
             </select>
           </div>
         </div>
@@ -171,7 +204,30 @@
           <div class="form-group">
             <label for="city">City</label>
             <select name="city" id="city" class="form-control">
+              <option value="Banda Aceh">Banda Aceh</option>
+              <option value="Medan">Medan</option>
+              <option value="Padang">Padang</option>
+              <option value="Pekanbaru">Pekanbaru</option>
+              <option value="Tanjung Pinang">Tanjung Pinang</option>
+              <option value="Jambi">Jambi</option>
+              <option value="Palembang">Palembang</option>
+              <option value="Pangkal Pinang">Pangkal Pinang</option>
+              <option value="Bengkulu">Bengkulu</option>
+              <option value="Bandar Lampung">Bandar Lampung</option>
+              <option value="Jakarta">Jakarta</option>
               <option value="Bandung">Bandung</option>
+              <option value="Serang">Serang</option>
+              <option value="Semarang">Semarang</option>
+              <option value="Yogyakarta">Yogyakarta</option>
+              <option value="Surabaya">Surabaya</option>
+              <option value="Denpasar">Denpasar</option>
+              <option value="Mataram">Mataram</option>
+              <option value="Kupang">Kupang</option>
+              <option value="Pontianak">Pontianak</option>
+              <option value="Palangkaraya">Palangkaraya</option>
+              <option value="Banjarmasin">Banjarmasin</option>
+              <option value="Samarinda">Samarinda</option>
+              <option value="Tanjung Selor">Tanjung Selor</option>
             </select>
           </div>
         </div>
@@ -228,6 +284,9 @@
             <label for="courier">Courier</label>
             <select name="courier" id="courier" class="form-control">
               <option value="JNE">JNE</option>
+              <option value="JNE">J&T</option>
+              <option value="JNE">Tiki</option>
+              <option value="JNE">Sicepat</option>
             </select>
           </div>
         </div>

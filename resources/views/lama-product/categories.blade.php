@@ -12,7 +12,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12" data-aos="fade-up">
-              <h5>Trend Categories</h5>
+              <h5>Categories</h5>
             </div>
           </div>
           <div class="row">
@@ -21,16 +21,16 @@
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <a class="component-categories d-block" href="#">
+              <a class="component-categories d-block" href="{{ route('category.detail', 1) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/vegetable.png') }}"
+                    src="{{ ('../assets/img/agronomy.png') }}"
                     alt="Gadgets Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                  Sumber Sayuran
+                  Agriculture
                 </p>
               </a>
             </div>
@@ -39,16 +39,16 @@
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <a class="component-categories d-block" href="#">
+              <a class="component-categories d-block" href="{{ route('category.detail', 2) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/fruits.png') }}"
+                    src="{{ ('../assets/img/fast-food.png') }}"
                     alt="Furniture Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                Sumber Buah Buahan
+                Food
                 </p>
               </a>
             </div>
@@ -57,16 +57,16 @@
               data-aos="fade-up"
               data-aos-delay="300"
             >
-              <a class="component-categories d-block" href="#">
+              <a class="component-categories d-block" href="{{ route('category.detail', 3) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/carbohydrates.png') }}"
+                    src="{{ ('../assets/img/souvenir.png') }}"
                     alt="Makeup Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                Sumber Karbohidrat
+                Souvenir
                 </p>
               </a>
             </div>
@@ -75,16 +75,52 @@
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              <a class="component-categories d-block" href="#">
+              <a class="component-categories d-block" href="{{ route('category.detail', 4) }}">
                 <div class="categories-image">
                   <img
-                    src="{{ ('assets/img/protein.png') }}"
+                    src="{{ ('../assets/img/cow.png') }}"
                     alt="Sneaker Categories"
                     class="w-100"
                   />
                 </div>
                 <p class="categories-text">
-                Sumber Protein
+                Farm
+                </p>
+              </a>
+            </div>
+            <div
+              class="col-6 col-md-3 col-lg-2"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <a class="component-categories d-block" href="{{ route('category.detail', 5) }}">
+                <div class="categories-image">
+                  <img
+                    src="{{ ('../assets/img/origami.png') }}"
+                    alt="Sneaker Categories"
+                    class="w-100"
+                  />
+                </div>
+                <p class="categories-text">
+                Craft
+                </p>
+              </a>
+            </div>
+            <div
+              class="col-6 col-md-3 col-lg-2"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <a class="component-categories d-block" href="{{ route('category.detail', 6) }}">
+                <div class="categories-image">
+                  <img
+                    src="{{ ('../assets/img/paint-palette.png') }}"
+                    alt="Sneaker Categories"
+                    class="w-100"
+                  />
+                </div>
+                <p class="categories-text">
+                Art
                 </p>
               </a>
             </div>
@@ -105,12 +141,12 @@
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <a class="component-products d-block" href="/product-details/{{ $product->id }}">
+              <a class="component-products d-block" href="{{ route('home.detail', $product->id) }}">
                 <div class="products-thumbnail">
                   <div
                     class="products-image"
                     style="
-                      background-image: url({{url('assets/img/products-apple-watch.jpg')}});
+                      background-image: url({{ url('storage/'.$product->photo) }});
                     "
                   ></div>
                 </div>
@@ -119,7 +155,7 @@
 				  
                 </div>
                 <div class="products-price">
-                {{$product->price}}
+                Rp. {{$product->price}}
                 </div>
 				
               </a>
