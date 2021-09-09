@@ -304,8 +304,9 @@
       </div>
       <div class="row" data-aos="fade-up" data-aos-delay="200">
         <div class="col-4 col-md-2">
-          <div class="product-title">Rp. 11.000</div>
-          <div class="product-subtitle">Ship to Jakarta</div>
+          <div class="product-title">Rp. {{\App\Transaction::ONGKIR}}</div>
+          <input type="hidden" value="{{\App\Transaction::ONGKIR}}" name="shipping_cost">
+          <div class="product-subtitle">Shippng Cost</div>
         </div>
         <div class="col-4 col-md-2">
           <div class="product-title text-success">Rp. {{ $totalPrice }}</div>

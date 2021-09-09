@@ -56,6 +56,7 @@
                   <input type="hidden" name="postal_code" value="{{$transaction->postal_code}}">
                   <input type="hidden" name="phone" value="{{$transaction->phone}}">
                   <input type="hidden" name="courier" value="{{$transaction->courier}}">
+                  <input type="hidden" name="shipping_cost" value="{{$transaction->shipping_cost}}">
                 </div>
 
               </div>

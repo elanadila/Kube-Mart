@@ -79,13 +79,23 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                   <div class="product-title">Status</div>
-                                  <div class="">
+                                  <div class="" style="color: white;">
                                     {!! \App\Transaction::handleStatus($transaction->status) !!}
                                   </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                   <div class="product-title">Total Amount</div>
                                   <div class="product-subtitle">Rp. 100.000</div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                  <div class="product-title">Payment Approve</div>
+                                
+                                    <img
+                                      src="{{ url('storage/'.$transaction->payment_prove) }}"
+                                      alt=""
+                                      class="w-100 mb-3"
+                                    />
+                 
                                 </div>
                                 <div class="col-12 col-md-6">
                                   <div class="product-title">Mobile</div>
@@ -132,7 +142,7 @@
                                   {{$transaction->country}}
                                   </div>
                                 </div>
-                                <div class="col-12 col-md-6">
+                                @if($transaction->user_id != auth()->user()->id)                               <div class="col-12 col-md-6">
                                   <div class="product-title">Status</div>
                                     <select name="status" id="status" class="form-control" v-model="status">
                                       @foreach(\App\Transaction::STATUS_LISTS as $key => $list)
@@ -144,9 +154,9 @@
                                       <div class="product-title">
                                         Input Resi
                                       </div>
-                                      <input class="form-control" type="text" name="resi" id="openStoreTrue" v-model="resi"/>
+                                      <input class="form-control" type="text" name="resi" value="{{$transaction->receipt}}" id="openStoreTrue" v-model="resi"/>
                                     </div>
-                                  <div class="col-md-6">
+                                    <div class="col-md-6">
                                       <button
                                         type="submit"
                                         class="btn btn-success btn-block mt-4"
@@ -154,6 +164,7 @@
                                         Update Status
                                       </button>
                                     </div>
+                                    @endif
                               </div>
                             </div>
                           </div>

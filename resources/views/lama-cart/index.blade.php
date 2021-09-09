@@ -195,7 +195,7 @@
       <div class="row" data-aos="fade-up" data-aos-delay="200">
         <div class="col-4 col-md-2">
           <div class="product-title">Rp. 11.000</div>
-          <div class="product-subtitle">Ship to Jakarta</div>
+          <div class="product-subtitle">Shipping Cost</div>
         </div>
         <div class="col-4 col-md-2">
           <div class="product-title text-success">Rp. 392.409</div>

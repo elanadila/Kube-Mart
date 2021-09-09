@@ -21,6 +21,7 @@ class Transaction extends Model
         'country',
         'receipt',
         'courier',
+        'shipping_cost',
         'phone',
         'payment_prove',
         'user_id',
@@ -28,6 +29,7 @@ class Transaction extends Model
         'status',
     ];
 
+    CONST ONGKIR = 11000;
     CONST STATUS_WAITING = 'Waitingprovepayment';
     CONST STATUS_REJECTED = 'Rejected';
     CONST STATUS_CONFIRM = 'Confirm';

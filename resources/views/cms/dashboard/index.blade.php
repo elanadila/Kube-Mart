@@ -61,86 +61,28 @@
                 <div class="row mt-3">
                   <div class="col-12 mt-2">
                     <h5 class="mb-3">Recent Transactions</h5>
-                    @foreach($transactionSell as $productTransaction)
-                    <a
-                          class="card card-list d-block {{ (request()->is('transaction/store*')) ? 'active' : '' }}"
-                          href="{{ route('transaction.detail', $productTransaction->transaction_id) }}"
-                        >
-
-                          <div class="card-body">
-                            <div class="row">
-
-                              <div class="col-md-1">
-                                <img
-                                  src="{{ url('storage/'.$productTransaction->product->photo) }}"
-                                  class="w-100 mb-3"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="col-md-4">
-                              {{$productTransaction->product->name}}
-                              </div>
-                              <div class="col-md-3">
-                              {{$productTransaction->product->store->name}}
-                              </div>
-
-
-                              <div class="col-md-3">
-                              {{$productTransaction->created_at}}
-                              </div>
-                              <div class="col-md-1 d-none d-md-block">
-                                <img
-                                  src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
-                                  alt=""
-                                />
-                              </div>
-
-                            </div>
+                    @foreach($listsTransactions as $productTransaction)
+                    <div class="card card-list d-block {{ (request()->is('transaction/store*')) ? 'active' : '' }}" >
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-3">
+                          <a href="{{ route('transaction.detail', $productTransaction['transaction_id']) }}">
+                            {{$productTransaction['type']}}
+                          </a>
                           </div>
-
-                        </a>
-                        @endforeach
-                        @foreach($transactionBuy as $productTransactionBuy)
-                        <a
-                          class="card card-list d-block"
-                          href="{{ route('transaction.detail', $productTransactionBuy->id) }}"
-                        >
-                          <div class="card-body">
-                            <div class="row">
-                            <div class="col-md-1">
-                                @foreach($productTransactionBuy->products_transactions as $product)
-                                <img
-                                  src="{{ url('storage/'.$product->product->photo) }}"
-                                  alt=""
-                                  class="w-100 mb-3"
-                                />
-                                @endforeach
-                              </div>
-                              <div class="col-md-4">
-                              @foreach($productTransactionBuy->products_transactions as $product)
-                                  {{$product->product->name}}
-                                @endforeach
-                              </div>
-                              <div class="col-md-3">
-                              @foreach($productTransactionBuy->products_transactions as $product)
-                                  {{$product->product->store->name}}
-                                @endforeach
-                              </div>
-
-
-                              <div class="col-md-3">
-                              {{$productTransactionBuy->created_at}}
-                              </div>
-                              <div class="col-md-1 d-none d-md-block">
-                                <img
-                                  src="{{ ('../assets/img/dashboard-arrow-right.svg') }}"
-                                  alt=""
-                                />
-                              </div>
-                            </div>
+                          <div class="col-md-3" style="color: white;">
+                          {!! $productTransaction['status'] !!}
                           </div>
-                        </a>
-                        @endforeach
+                          <div class="col-md-3">
+                          Rp. {{ $productTransaction['total'] }}
+                          </div>
+                          <div class="col-md-3">
+                          {{$productTransaction['date']}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    @endforeach
                   </div>
                 </div>
               </div>

@@ -35,6 +35,7 @@ class CheckoutController extends Controller
         'country' => 'required',
         'phone' => 'required',
         'courier' => 'required',
+        'shipping_cost' => 'required',
       ]);
       $carts = Cart::with(['product'])->where('user_id', auth()->user()->id)->get();
       $products = [];
@@ -42,27 +43,18 @@ class CheckoutController extends Controller
       $transaction['total_price'] = 0;
       foreach($carts as $cart){
         if(!is_null($cart->product)){
-          // ProductTransaction::create([
-          //   'product_id' => $cart->product_id,
-          //   'transaction_id' => $transaction->id,
-          //   'quantity' => $cart->quantity,
-          //   'price' => $cart->product->price,
-          // ]);
-        $products[]=[
-          'name' => $cart->product->name,
-          'quantity' => $cart->quantity,
-          'price' => $cart->product->price,
-          'total' => $cart->product->price * $cart->quantity,
-        ];
-        $transaction['total_price'] += $cart->product->price * $cart->quantity;
-        // Cart::where('id', $cart->id)->delete();
+          $products[]=[
+            'name' => $cart->product->name,
+            'quantity' => $cart->quantity,
+            'price' => $cart->product->price,
+            'total' => $cart->product->price * $cart->quantity,
+          ];
+          $transaction['total_price'] += $cart->product->price * $cart->quantity;
         }
       }
       $transaction = json_decode(json_encode($transaction), false);
 
       return view('cms.checkout.step-1', compact('transaction', 'products'));
-
-      // return redirect()->route('checkout.step-1')->with(['success' => 'Successful Checkout']);
     }
 
     public function step2Submit(Request $request){
@@ -74,6 +66,7 @@ class CheckoutController extends Controller
         'country' => 'required',
         'phone' => 'required',
         'courier' => 'required',
+        'shipping_cost' => 'required',
       ]);
 
       $transaction = $request->all();
@@ -91,6 +84,7 @@ class CheckoutController extends Controller
         'country' => 'required',
         'phone' => 'required',
         'courier' => 'required',
+        'shipping_cost' => 'required',
         'payment_file' => 'required|file|max:2048|mimes:jpg,jpeg,png,pdf,doc,docx',
       ]);
 
@@ -114,6 +108,7 @@ class CheckoutController extends Controller
           'phone' => $request->phone,
           'receipt' => '-',
           'courier' => $request->courier,
+          'shipping_cost' => $request->shipping_cost,
           'invoice' => strtotime(now()),
           'user_id' => auth()->user()->id,
           'payment_prove' => $request->payment_prove,
@@ -126,6 +121,13 @@ class CheckoutController extends Controller
           $stock = $cart->product->stock - $cart->quantity;
           Product::where('id', $cart->product->id)->update([
             'stock' => $stock
+          ]);
+          ProductTransaction::create([
+            'price' => $cart->product->price,
+            'quantity' => $cart->quantity,
+            'review' => '-',
+            'product_id' => $cart->product_id,
+            'transaction_id' => $transaction->id,
           ]);
         }
       }

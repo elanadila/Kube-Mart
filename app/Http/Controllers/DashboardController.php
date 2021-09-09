@@ -18,8 +18,8 @@ class DashboardController extends Controller
         foreach($products as $product){
           $temporaryProductId[] = $product->id;
         }
-        $transactionSell = ProductTransaction::with('transaction', 'product', 'product.store')->whereIn('product_id', $temporaryProductId)->orderBy('transaction_id', 'desc')->get();
-        $transactionBuy = Transaction::with('products_transactions', 'products_transactions.product', 'products_transactions.product.store')->where('user_id', auth()->user()->id)->get();
+        $transactionSell = ProductTransaction::with('transaction', 'product', 'product.store')->has('transaction')->whereIn('product_id', $temporaryProductId)->orderBy('transaction_id', 'desc')->get();
+        $transactionBuy = Transaction::with('products_transactions', 'products_transactions.product', 'products_transactions.product.store')->has('products_transactions')->where('user_id', auth()->user()->id)->get();
         $totalCustomer = [];
         foreach($transactionBuy as $transaction){
           $totalCustomer[$transaction->user_id] = $transaction->user_id; //otomatis terdistinct / non duplicate user_id
@@ -33,10 +33,41 @@ class DashboardController extends Controller
           }
         }
 
-        return view('cms.dashboard.index', compact('transactionSell', 'transactionBuy', 'totalCustomer', 'totalRevenue', 'totalTransaction'));
+        $listsTransactions = [];
+        foreach($transactionBuy as $buy){
+          $total = 0;
+          foreach($buy->products_transactions as $productTransaction){
+            $total += $productTransaction->quantity * $productTransaction->price;
+          }
+          $listsTransactions[] = [
+            'transaction_id' => $buy->id,
+            'type' => 'BUY',
+            'status' => Transaction::handleStatus($buy->status),
+            'total' => $total,
+            'date' => $buy->created_at->diffForHumans(),
+          ];
+        }
+        $tempListsTransactions = [];
+        foreach($transactionSell as $sell){
+          $total = 0;
+          foreach($transactionSell as $childSell){
+            if($childSell->transaction_id == $sell->transaction_id){
+              $total += $childSell->quantity * $childSell->price;
+            }
+          }
+          $tempListsTransactions[$sell->transaction_id] = [
+            'transaction_id' => $sell->transaction_id,
+            'type' => 'SELL',
+            'status' => Transaction::handleStatus($sell->transaction->status),
+            'total' => $total,
+            'date' => $sell->created_at->diffForHumans(),
+          ];
+        }
 
-        // return 'sukses login';
-
+        foreach($tempListsTransactions as $transaction){
+          $listsTransactions[] = $transaction;
+        }
+        return view('cms.dashboard.index', compact('transactionSell', 'transactionBuy', 'totalCustomer', 'totalRevenue', 'totalTransaction', 'listsTransactions'));
     }
 
     public function indexAdmin()
