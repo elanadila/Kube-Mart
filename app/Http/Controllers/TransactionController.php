@@ -194,4 +194,10 @@ class TransactionController extends Controller
     {
         //
     }
+
+    public function history()
+    {
+      $transactions = Transaction::with(['user', 'user_approval', 'products_transactions.product'])->has('user')->has('user_approval')->has('products_transactions')->has('products_transactions.product')->get();
+      return view('cms.history.transaction.index', compact('transactions'));
+    }
 }

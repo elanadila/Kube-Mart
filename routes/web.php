@@ -153,6 +153,10 @@ Route::group(['middleware' => 'auth'], function(){
             Route::get('/invoice', 'TransactionController@indexTransaction');
         });
 
+        Route::prefix('/history')->group(function (){
+            Route::get('/transaction', 'TransactionController@history')->name('history.transaction');
+        });
+
         Route::get('/report', 'TransactionController@report')->name('transaction.report');
 
 
